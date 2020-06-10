@@ -4,7 +4,6 @@ import example.pojo.Message.Msg.*;
 
 public class Message {
 
-    public int id;
     public String type;
     public Object message;
 

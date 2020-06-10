@@ -1,13 +1,14 @@
 package example.pojo.Message.Msg;
 
-public class News {
-    public String title;
+public class comment {
+
     public String content;
     public int user_id;
+    public int blogs_id;
 
-    public News(String title, String content, int user_id) {
-        this.title = title;
+    public comment(String content,int user_id,int blogs_id) {
         this.content = content;
         this.user_id = user_id;
+        this.blogs_id = blogs_id;
     }
 }
