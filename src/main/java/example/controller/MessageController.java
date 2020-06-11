@@ -19,63 +19,56 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @RequestMapping(value="/{id}",  method=RequestMethod.GET)
+    @RequestMapping(value="/chat/send",  method=RequestMethod.POST)
     @ResponseBody
-    public List<Message> findMessages(@PathVariable("id") String id) {
-        return messageService.findMessages(id);
+    public void sendChat(@RequestBody Map<String, Object> chat) {
+        System.out.println("Send chat");
+        System.out.println(chat);
     }
 
 
-    @RequestMapping(value="/dest/{to}", method=RequestMethod.GET)
+    @RequestMapping(value="/chat/find/num",  method=RequestMethod.POST)
     @ResponseBody
-    public List<Message> findMessages(@PathVariable("to") String to, String type) {
-        return messageService.findMessages(to, type);
-    }
-
-
-    @RequestMapping(value="/src/{from}", method=RequestMethod.GET)
-    @ResponseBody
-    public List<Message> findMessages(@PathVariable("from") String from, String to, String type) {
-        return messageService.findMessages(from, to, type);
-    }
-
-    @RequestMapping(value="/type/{type}", method=RequestMethod.GET)
-    @ResponseBody
-    public List<Message> fetchMessages(@PathVariable("type") String type) {//查看论坛或新闻
-        return messageService.fetchMessages(type);
-    }
-
-
-    @RequestMapping(value="/", method=RequestMethod.POST)
-    @ResponseBody
-    public List<User> sendMessage(String username, String function) {
-        User user1 = new User(1,"hhh", "china", 55, 12);
-        User user2 = new User(2,"hhh", "china", 55, 12);
-
-        List<User> list = new LinkedList<>();
-        list.add(user1);
-        list.add(user2);
-
+    public int findChatNum(String username, String function) {
+        System.out.println("Find chat num");
         System.out.println(username);
-        System.out.println(function);
+        return 5;
+    }
+
+    @RequestMapping(value="/chat/find/page",  method=RequestMethod.POST)
+    @ResponseBody
+    public List<Map<String, Object>> findChatPage(String username, String function, int page) {
+        System.out.println("Find chat page");
+        System.out.println(username);
+        System.out.println(page);
+
+        List<Map<String, Object>> list = new LinkedList<>();
+        for (int i = 0;i < 10;i++) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("sender", "zhang" + ((page - 1) * 10 + i));
+            map.put("title", "This is the title " + ((page - 1) * 10 + i));
+            list.add(map);
+        }
         return list;
     }
 
-    @RequestMapping(value="/broadcast", method=RequestMethod.PUT)
+    @RequestMapping(value="/chat/find/content",  method=RequestMethod.POST)
     @ResponseBody
-    public boolean sendMessage(Message message, List<String> usernames) {
-        return messageService.sendMessage(message, usernames);
+    public Map<String, Object> findChatContent(String username, int page, int id) {
+        System.out.println("Find chat content");
+
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(id);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("username", "zhang" + ((page - 1) * 10 + id));
+        map.put("title", "This is the title " + ((page - 1) * 10 + id));
+        map.put("main_text", "This is the text " + ((page - 1) * 10 + id));
+
+        return map;
     }
 
-    @RequestMapping(value="/{id}", method=RequestMethod.POST)
-    @ResponseBody
-    public boolean modifyMessage(@PathVariable("id") String id, Message message) {
-        return messageService.modifyMessage(id, message);
-    }
 
-    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-    @ResponseBody
-    public boolean deleteMessage(@PathVariable("id") String id) {
-        return messageService.deleteMessage(id);
-    }
+
 }

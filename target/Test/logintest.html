@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>login</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+</head>
+<body>
+
+<div id="particles-js">
+    <div style="background: url('img/2.png') repeat 0px 0px; background: rgba(225,225,225,0.5);"
+         class="login">
+        <div class="login-top">
+            登录
+        </div>
+        <div class="login-center clearfix">
+            <div class="login-center-img"><img src="img/name.png"/></div>
+            <div class="login-center-input">
+                <input type="text" id="username" name="" value="" placeholder="请输入您的用户名" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的用户名'"/>
+                <div class="login-center-input-text">用户名</div>
+            </div>
+        </div>
+        <div class="login-center clearfix">
+            <div class="login-center-img"><img src="img/password.png"/></div>
+            <div class="login-center-input">
+                <input type="password" id="password" name=""value="" placeholder="请输入您的密码" onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的密码'"/>
+                <div class="login-center-input-text">密码</div>
+            </div>
+        </div>
+        <div class="login-button" id="btn1" onclick="login()">
+            登录
+        </div>
+        <div class="signin-button" id="btn2" onclick="signin()">
+            注册
+        </div>
+        <p id="message"></p>
+    </div>
+    <div class="sk-rotating-plane"></div>
+</div>
+
+<!-- scripts -->
+<script src="js/particles.min.js"></script>
+<script src="js/app.js"></script>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+function login(){  
+	var account = $("#username").val();
+	var pwd =$("#password").val();
+	var prts =  document.getElementById("message");
+	if(account==""||account==null){
+		prts.style.color="red";
+        prts.innerHTML = "账号不能为空";
+		return;
+	}
+	if(pwd==""||pwd==null){
+		prts.style.color="red";
+		prts.innerHTML = "密码不能为空";
+		return;
+	}
+	$.ajax({
+		type:"post",
+		url:"login.do",
+        dataType:"text",  
+        data:{"username":$("#username").val(),"password":$("#password").val()},
+		error:function(data){
+			alert("请求失败，网络异常")
+		},
+		/*success:function(data){
+			if(true==data.result){
+				prts.style.color="green";
+				prts.innerHTML = "登录成功";
+			}else{
+				prts.style.color="red";
+				prts.innerHTML = "用户名或者密码错误";
+			}
+		}*/
+        success:function(data){
+			if("false"==data.result){
+                prts.style.color="red";
+				prts.innerHTML = "用户名或者密码错误";
+			}else{
+				prts.style.color="green";
+				prts.innerHTML = "登录成功";
+                window.location.href = "home.html" + "?txt=" + data.result;
+			}
+		}
+    });
+}  
+
+function signin(){
+    window.location.href = 'signintest.html';
+}
+
+</script>
+
+</body>
+</html>
+

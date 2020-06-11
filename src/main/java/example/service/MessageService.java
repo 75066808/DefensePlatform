@@ -19,15 +19,15 @@ public class MessageService {
     private UserDao userDao;
 
     public List<Message> findMessages(String id) {
-        return messageDao.findMessages(id);
+        return null;//messageDao.findMessages(id);
     }
 
     public List<Message> findMessages(String to, String type) {
-        return messageDao.findMessages(to, type);
+        return null;//messageDao.findMessages(to, type);
     }
 
     public List<Message> findMessages(String from, String to, String type) {
-        return messageDao.findMessages(from, to, type);
+        return null;//messageDao.findMessages(from, to, type);
     }
 
 
@@ -37,7 +37,7 @@ public class MessageService {
 
 
     public boolean sendMessage(Message message) {
-        messageDao.addMessage(message);
+        //messageDao.addMessage(message);
         return true;
     }
 
@@ -48,12 +48,12 @@ public class MessageService {
 
 
     public boolean modifyMessage(String id, Message message) {
-        messageDao.modifyMessage(message, id);
+        //messageDao.modifyMessage(message, id);
         return true;
     }
 
     public boolean deleteMessage(String id) {
-        messageDao.deleteMessage(id);
+        //messageDao.deleteMessage(id);
         return true;
     }
 

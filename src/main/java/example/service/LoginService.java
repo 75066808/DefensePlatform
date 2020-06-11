@@ -12,8 +12,8 @@ public class LoginService {
     private UserDao userDao;
 
     public String login(String username, String password) {
-        String pwd = userDao.findPassword(username);
-        System.out.println(username + "#111");
+        //String pwd = userDao.findPassword(username);
+        //System.out.println(username + "#111");
         return username + "#110";
         //return pwd.equals(password);
     }
@@ -23,12 +23,12 @@ public class LoginService {
     }
 
     public boolean register(User user, String password) {
-        userDao.addUser(user, password);
+        //userDao.addUser(user, password);
         return true;
     }
 
     public boolean modifyPassword(String username, String password) {
-        userDao.modifyPassword(username, password);
+        //userDao.modifyPassword(username, password);
         return true;
     }
 }
