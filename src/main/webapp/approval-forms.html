@@ -1549,7 +1549,7 @@
             alert("拒绝成功！")
         },
         error : function(data){
-            console.log("拒绝失败！");
+            alert("拒绝失败！");
         }
     });
     }
@@ -1563,7 +1563,7 @@
             alert("同意成功！")
         },
         error : function(data){
-            console.log("同意失败！");
+            alert("同意失败！");
         }
     });
     }
@@ -1643,7 +1643,7 @@
               }
               else if(current_role=="Main Admin application"){
                 $("#mainforms").show();
-                $("#amin-username-input").val(data.user);
+                $("#main-username-input").val(data.user);
                 $("#main-password-input").val(data.pwd);
                 $("#main-phone-input").val(data.phonenumber);
                 $("#main-email-input").val(data.email);
