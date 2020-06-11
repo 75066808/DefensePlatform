@@ -18,7 +18,9 @@
     <link href="css/nifty.min.css" rel="stylesheet">
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="css/demo/nifty-demo-icons.min.css" rel="stylesheet">
-
+    <!--Full Calendar [ OPTIONAL ]-->
+    <link href="plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet">
+	<link href="plugins/fullcalendar/nifty-skin/fullcalendar-nifty.min.css" rel="stylesheet">
     
     <!--JAVASCRIPT-->
     <!--=================================================-->
@@ -251,18 +253,33 @@
                 <!--Page content-->
                 <!--===================================================-->
                 <div id="page-content">
-                    
+                    <div class="col-md-2">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <h4 class="text-semibold">Select Application Type</h4>
+                                
+                                <hr>
+                                
+                                <div id="demo-external-events">
+                                    <div name="select-role" class="fc-event fc-list" data-class="warning">Main Admin application</div>
+                                    <div name="select-role" class="fc-event fc-list" data-class="success">Commercial Admin application</div>
+                                    <div name="select-role" class="fc-event fc-list" data-class="mint">Info Admin application</div>
+                                    <div name="select-role" class="fc-event fc-list" data-class="purple">Medical Admin application</div>
+                                    <div name="select-role" class="fc-event fc-list" data-class="danger">Area Admin application</div>
+                                    <div name="select-role" class="fc-event fc-list">Doctor application</div>                                  
+                                </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
 					<div class="fixed-fluid">
-					    <div class="col-sm-1">
-                
-					    </div>
 					    <div class="fluid">
                             <!--list 隐藏下面的div-->
 					        <div id="info_list" class="panel">
 					            <div id="demo-email-list" class="panel-body">
                                     <div>
                                         <div class=" pad-all bord-btm">
-                                            <h1 class="page-header text-overflow pad-btm">Approve Forms Box</h1>
+                                            <h1 id="box-title" class="page-header text-overflow pad-btm">Approve Forms Box</h1>
                                             
                                         </div>
                                     </div>
@@ -272,19 +289,19 @@
 					                    </div>
 					                    <hr class="hr-sm visible-xs">
 					                    <div class="col-sm-5 clearfix">
-					                        <div class="pull-right">
+					                        <div id="page-button" class="pull-right">
 					
 					                            <!--翻页按钮-->
 					                            <span class="text-muted">
-					                                <strong id="displayed_message_num">1-10</strong>
+					                                <strong id="displayed_message_num">1</strong>
 					                                of
 					                                <strong id="message_num">100</strong>
 					                            </span>
 					                            <div class="btn-group btn-group">
-					                                <button class="btn btn-sm btn-default" type="button">
+					                                <button class="btn btn-sm btn-default" type="button" id="left-page">
 					                                    <i class="demo-psi-arrow-left" id="left_arrow"></i>
 					                                </button>
-					                                <button class="btn btn-sm btn-default" type="button">
+					                                <button class="btn btn-sm btn-default" type="button" id="right-page">
 					                                    <i class="demo-psi-arrow-right" id="right_arrow"></i>
 					                                </button>
 					                            </div>
@@ -297,155 +314,155 @@
 					                 <ul id="demo-mail-list" class="mail-list">
 					
 					                    <!--Mail list item-->
-					                    <li id="li1" class="mail-starred mail-list-unread">
+					                    <li id="1" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username1" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username1" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title1" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title1" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
 					
 					                    <!--Mail list item-->
-					                    <li id="li2" class="mail-starred mail-list-unread">
+					                    <li id="2" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username2" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username2" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title2" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title2" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         
                                         <!--Mail list item-->
-					                    <li id="li3" class="mail-starred mail-list-unread">
+					                    <li id="3" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username3" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username3" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title3" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title3" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         <!--Mail list item-->
-					                    <li id="li4" class="mail-starred mail-list-unread">
+					                    <li id="4" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username4" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username4" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title4" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title4" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         <!--Mail list item-->
-					                    <li id="li5" class="mail-starred mail-list-unread">
+					                    <li id="5" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username5" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username5" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title5" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title5" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         <!--Mail list item-->
-					                    <li id="li6" class="mail-starred mail-list-unread">
+					                    <li id="6" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username6" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username6" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title6" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title6" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         <!--Mail list item-->
-					                    <li id="li7" class="mail-starred mail-list-unread">
+					                    <li id="7" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username7" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username7" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title7" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title7" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         <!--Mail list item-->
-					                    <li id="li8" class="mail-starred mail-list-unread">
+					                    <li id="8" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username8" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username8" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title8" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title8" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         <!--Mail list item-->
-					                    <li id="li9" class="mail-starred mail-list-unread">
+					                    <li id="9" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username9" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username9" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title9" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title9" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         <!--Mail list item-->
-					                    <li id="li10" class="mail-starred mail-list-unread">
+					                    <li id="10" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
 					                       
 					                        <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
-					                        <div class="mail-from"><a id="username10" href="#">Michael Robert</a></div>
+					                        <div class="mail-from"><a id="username10" href="#"></a></div>
 					                        <div class="mail-time">
                                                 <span href="javascript:void(0);"  class="label label-danger">
-                                                delete
+                                                查看
                                                 </span>
                                             </div>
                                             
 					                        <div class="mail-subject">
-					                            <a id="title10" href="javascript:void(0);">This is an example if there is a really really long text. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, </a>
+					                            <a id="title10" href="javascript:void(0);"> </a>
 					                        </div>
 					                    </li>
                                         
@@ -456,362 +473,10 @@
 					            
                             </div>
 
-                            <!--消息示例-->
-                            <!--每日表格-->
-                            <div id="dayforms" class="row" hidden>
-                                <div class="col-lg-3">
-        
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="panel">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Forms</h3>
-                                        </div>
-                            
-                            
-                                        <!-- BASIC FORM ELEMENTS -->
-                                        <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
-                                            <!--Static-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">Username</label>
-                                                <div class="col-md-9"><p id="name_form" class="form-control-static">Username</p></div>
-                                            </div>
-                                            
-                                            <!--Password-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-password-input">Password</label>
-                                                <div class="col-md-9">
-                                                    <input type="password" id="demo-password-input" class="form-control" placeholder="Password">
-                                                    <small class="help-block">Please enter password for verify</small>
-                                                </div>
-                                            </div>
-                                            
-                                            <!--Readonly Input-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-readonly-input">Date</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-readonly-input" class="form-control" placeholder="2020-06-06" readonly>
-                                                </div>
-                                            </div>
-                            
-                            
-                                            <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
-                                                <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
-                                                </div>
-        
-                                                <!--===================================================-->
-                                            </div>
-                            
-                                            <!--Address-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-address-input">Address</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-address-input" class="form-control" placeholder="Enter your address today lives">
-                                                    <small class="help-block">Please enter your address</small>
-                                                </div>
-                                            </div>
-                                            
-                                            <!--Real Name-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-name-input">Real Name</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-name-input" class="form-control" placeholder="Enter your Name">
-                                                    <small class="help-block">Please enter your real name for doctor is something issue</small>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">性别</label>
-                                                <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">男</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">女</label>
-                                                    </div>
-                            
-                                                </div>
-                                            </div>
-        
-                                            <!--Age-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-age-input">Age</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-commercial-input" class="form-control" placeholder="Enter your age">
-                                                    <small class="help-block">Please enter your age</small>
-                                                </div>
-                                            </div>
-        
-                                            <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">是否有以下情况</label>
-                                                <div class="col-md-9">
-                            
-                                                    <!-- Checkboxes -->
-                                                    <div class="checkbox">
-                                                        <input id="demo-form-checkbox" class="magic-checkbox" type="checkbox" checked>
-                                                        <label for="demo-form-checkbox">发热</label>
-                                                    </div>
-                            
-                                                    <div class="checkbox">
-                                                        <input id="demo-form-checkbox-2" class="magic-checkbox" type="checkbox">
-                                                        <label for="demo-form-checkbox-2">呼吸道病症</label>
-                                                    </div>
-                            
-                                                    <div class="checkbox">
-                                                        <input id="demo-form-checkbox-3" class="magic-checkbox" type="checkbox">
-                                                        <label for="demo-form-checkbox-3">腹泻</label>
-                                                    </div>
-                                                    
-                                                    <div class="checkbox">
-                                                        <input id="demo-form-checkbox-4" class="magic-checkbox" type="checkbox">
-                                                        <label for="demo-form-checkbox-4">今日接触过新冠疑似感染者</label>
-                                                    </div>
-                                                    
-                                                    <div class="checkbox">
-                                                        <input id="demo-form-checkbox-5" class="magic-checkbox" type="checkbox">
-                                                        <label for="demo-form-checkbox-5">今日接触过新冠感染者</label>
-                                                    </div>
-                                                    
-                                                    <div class="checkbox">
-                                                        <input id="demo-form-checkbox-6" class="magic-checkbox" type="checkbox">
-                                                        <label for="demo-form-checkbox-6">被要求隔离</label>
-                                                    </div>
-                                                    
-                                                    <div class="checkbox">
-                                                        <input id="demo-form-checkbox-7" class="magic-checkbox" type="checkbox">
-                                                        <label for="demo-form-checkbox-7">确诊新冠或疑似</label>
-                                                    </div>
-        
-                                                </div>
-                                            </div>
-        
-                                            <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">健康码颜色</label>
-                                                <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">绿色</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">黄色</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-3" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-3">橙色</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-                                            
-        
-                                        </form>
-                                        <!--===================================================-->
-                                        <!-- close 按钮 -->
-                                        <div class="panel-footer text-right">
-                                            
-                                            <label class="col-md-3 control-label"></label>
-                                            <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">approve</button>
-                                            </div>
-                                        </div>
-                            
-                                    </div>
-                                </div>
-                            </div>
-                            <!--病人-->
-                            <div id="patientforms" class="row" hidden>
-                                <div class="col-lg-3">
-        
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="panel">
-                                        <div class="panel-heading">
-                                            <h3 class="panel-title">Forms</h3>
-                                        </div>
-                            
-                            
-                                        <!-- BASIC FORM ELEMENTS -->
-                                        <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
-                            
-                            
-                                            <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
-                                                <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
-                                                </div>
-        
-                                                <!--===================================================-->
-                                            </div>
-                            
-                                            <!--Address-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-address-input">Address</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-address-input" class="form-control" placeholder="Enter your address today lives">
-                                                    <small class="help-block">Please enter your address</small>
-                                                </div>
-                                            </div>
-                                            
-                                            <!--Real Name-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-name-input">Real Name</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-name-input" class="form-control" placeholder="Enter your Name">
-                                                    <small class="help-block">Please enter your real name for doctor is something issue</small>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">性别</label>
-                                                <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">男</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">女</label>
-                                                    </div>
-                            
-                                                </div>
-                                            </div>
-        
-                                            <!--Age-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-age-input">Age</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-commercial-input" class="form-control" placeholder="Enter your age">
-                                                    <small class="help-block">Please enter your age</small>
-                                                </div>
-                                            </div>
-        
-                                            <!--Textarea-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-textarea-input">Symptoms</label>
-                                                <div class="col-md-9">
-                                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
-                                                </div>
-                                            </div>
 
-                                            <!--Textarea-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-assignto-input">Assign To</label>
-                                                <div class="col-md-9">
-                                                    <textarea id="demo-assignto-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
-                                                </div>
-                                            </div>
-        
-                                        </form>
-                                        <!--===================================================-->
-                                        <!-- close 按钮 -->
-                                        <div class="panel-footer text-right">
-                                            
-                                            <label class="col-md-3 control-label"></label>
-                                            <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">submit</button>
-                                            </div>
-                                        </div>
-                            
-                                    </div>
-                                </div>
-                            </div>
+                    
                             <!--area-->
-                            <div id="areaforms" class="row" hidden>
+                            <div id="areaform" class="row" hidden>
                                 <div class="col-lg-3">
         
                                 </div>
@@ -824,19 +489,22 @@
                             
                                         <!-- BASIC FORM ELEMENTS -->
                                         <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
+                                        <form id="info-form" class="panel-body form-horizontal form-padding">
+					
                                             <!--Static-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Username</label>
-                                                <div class="col-md-9"><p id="name_form" class="form-control-static">Username</p></div>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="area-username-input" class="form-control" placeholder="Username" name="user">
+                                                    <small class="help-block">Please enter username for verify</small>
+                                                </div>
                                             </div>
                                             
                                             <!--Password-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-password-input">Password</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="demo-password-input" class="form-control" placeholder="Password">
+                                                    <input type="password" id="area-password-input" class="form-control" placeholder="Password" name="pwd">
                                                     <small class="help-block">Please enter password for verify</small>
                                                 </div>
                                             </div>
@@ -845,7 +513,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
+                                                    <input type="text" id="area-phone-input" class="form-control" placeholder="Enter your phone number" name="phonenum">
                                                     <small class="help-block">Please enter your phone number</small>
                                                 </div>
                                             </div>
@@ -854,54 +522,16 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-email-input">Email Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
+                                                    <input type="email" id="area-email-input" class="form-control" placeholder="Enter your email" name="email">
                                                     <small class="help-block">Please enter your email</small>
                                                 </div>
                                             </div>
                             
                                             <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
+                                                <label class="col-md-3 control-label" for="demo-email-input">Province Input</label>
                                                 <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
+                                                    <input type="text" id="area-province-input" class="form-control" placeholder="Enter your email" name="province">
+                                                    <small class="help-block">Please enter your province</small>
                                                 </div>
         
                                                 <!--===================================================-->
@@ -911,7 +541,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-address-input">Address</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-address-input" class="form-control" placeholder="Enter your address">
+                                                    <input name="address" type="text" id="area-address-input" class="form-control" placeholder="Enter your address">
                                                     <small class="help-block">Please enter your address</small>
                                                 </div>
                                             </div>
@@ -920,7 +550,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-community-input">Community</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-community-input" class="form-control" placeholder="Enter your community name">
+                                                    <input name="community-name" type="text" id="area-community-input" class="form-control" placeholder="Enter your community name">
                                                     <small class="help-block">Please enter your community name</small>
                                                 </div>
                                             </div>
@@ -929,7 +559,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                                    <textarea name="reason" id="area-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
                                                 </div>
                                             </div>
                                             
@@ -937,7 +567,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-Code-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <input name="invite-code" type="text" id="area-Code-input" class="form-control" placeholder="Enter your Invite Code">
                                                     <small class="help-block">Please enter your invite code</small>
                                                 </div>
                                             </div>
@@ -946,43 +576,33 @@
                                                 <label class="col-md-3 control-label">时长</label>
                                                 <div class="col-md-9">
                             
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">永久</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">临时（一个月）</label>
+                                                    <label class="col-md-3 control-label" for="demo-Code-input">Invite time</label>
+                                                    <div class="col-md-9">
+                                                        <input name="time" type="text" id="area-time-input" class="form-control" placeholder="Enter your Invite Code">
+                                                        <small class="help-block">Please enter your invite time</small>
                                                     </div>
                             
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">File input (if you need)</label>
-                                                <div class="col-md-9">
-                                                    <span class="pull-left btn btn-primary btn-file">
-                                                    Browse... <input type="file">
-                                                    </span>
                                                 </div>
                                             </div>
                                         </form>
                                         <!--===================================================-->
                                         <!-- close 按钮 -->
-                                        <div class="panel-footer text-right">
+                                         <div class="panel-footer text-right">
                                             
                                             <label class="col-md-3 control-label"></label>
                                             <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">submit</button>
+                                                <button class="btn btn-danger btn-rounded" onclick="disagree()">Disagree</button>
+                                                <button class="btn btn-success btn-rounded" onclick="agree()">Agree</button>
                                             </div>
                                         </div>
+                                        <button class="btn btn-danger btn-rounded" onclick="show_list()">Close</button>
                             
                                     </div>
                                 </div>
                             </div>
+
                             <!--commercial-->
-                            <div id="commforms" class="row" hidden>
+                            <div id="commform" class="row" hidden>
                                 <div class="col-lg-3">
         
                                 </div>
@@ -995,19 +615,22 @@
                             
                                         <!-- BASIC FORM ELEMENTS -->
                                         <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
+                                        <form id="info-form" class="panel-body form-horizontal form-padding">
+					
                                             <!--Static-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Username</label>
-                                                <div class="col-md-9"><p id="name_form" class="form-control-static">Username</p></div>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="comm-username-input" class="form-control" placeholder="Username" name="user">
+                                                    <small class="help-block">Please enter username for verify</small>
+                                                </div>
                                             </div>
                                             
                                             <!--Password-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-password-input">Password</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="demo-password-input" class="form-control" placeholder="Password">
+                                                    <input type="password" id="comm-password-input" class="form-control" placeholder="Password" name="pwd">
                                                     <small class="help-block">Please enter password for verify</small>
                                                 </div>
                                             </div>
@@ -1016,7 +639,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
+                                                    <input type="text" id="comm-phone-input" class="form-control" placeholder="Enter your phone number" name="phonenumber">
                                                     <small class="help-block">Please enter your phone number</small>
                                                 </div>
                                             </div>
@@ -1025,64 +648,24 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-email-input">Email Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
+                                                    <input type="email" id="comm-email-input" class="form-control" placeholder="Enter your email" name="email">
                                                     <small class="help-block">Please enter your email</small>
                                                 </div>
                                             </div>
                             
                                             <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">Province</label>
                                                 <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
+                                                    <input name="invite-code" type="text" id="comm-province-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your province</small>
                                                 </div>
-        
-                                                <!--===================================================-->
                                             </div>
                             
                                             <!--Address-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-address-input">Address</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-address-input" class="form-control" placeholder="Enter your address">
+                                                    <input name="address" type="text" id="comm-address-input" class="form-control" placeholder="Enter your address">
                                                     <small class="help-block">Please enter your address</small>
                                                 </div>
                                             </div>
@@ -1091,7 +674,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-commercial-input">Business district</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-commercial-input" class="form-control" placeholder="Enter your business district name">
+                                                    <input name="business-district" type="text" id="comm-commercial-input" class="form-control" placeholder="Enter your business district name">
                                                     <small class="help-block">Please enter your business district name</small>
                                                 </div>
                                             </div>
@@ -1100,7 +683,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                                    <textarea name="reason" id="comm-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
                                                 </div>
                                             </div>
                                             
@@ -1108,35 +691,18 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-Code-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <input name="invite-code" type="text" id="comm-Code-input" class="form-control" placeholder="Enter your Invite Code">
                                                     <small class="help-block">Please enter your invite code</small>
                                                 </div>
                                             </div>
         
                                             <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">时长</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">Invite time</label>
                                                 <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">永久</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">临时（一个月）</label>
-                                                    </div>
-                            
+                                                    <input name="invite-code" type="text" id="comm-time-input" class="form-control" placeholder="Enter your Invite Time">
+                                                    <small class="help-block">Please enter your invite time</small>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">File input (if you need)</label>
-                                                <div class="col-md-9">
-                                                    <span class="pull-left btn btn-primary btn-file">
-                                                    Browse... <input type="file">
-                                                    </span>
-                                                </div>
-                                            </div>
+                                            </div>                                          
                                         </form>
                                         <!--===================================================-->
                                         <!-- close 按钮 -->
@@ -1144,14 +710,16 @@
                                             
                                             <label class="col-md-3 control-label"></label>
                                             <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">submit</button>
+                                                <button class="btn btn-danger btn-rounded" onclick="disagree()">Disagree</button>
+                                                <button class="btn btn-success btn-rounded" onclick="agree()">Agree</button>
                                             </div>
                                         </div>
+                                        <button class="btn btn-danger btn-rounded" onclick="show_list()">Close</button>
 
                                     </div>
                                 </div>
                             </div>
+
                             <!--doctor-->
                             <div id="docforms" class="row" hidden>
                                 <div class="col-lg-3">
@@ -1166,19 +734,22 @@
                             
                                         <!-- BASIC FORM ELEMENTS -->
                                         <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
+                                        <form class="panel-body form-horizontal form-padding" id="info-form">
+					
                                             <!--Static-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Username</label>
-                                                <div class="col-md-9"><p id="name_form" class="form-control-static">Username</p></div>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="doc-username-input" class="form-control" placeholder="Username" name="user">
+                                                    <small class="help-block">Please enter username for verify</small>
+                                                </div>
                                             </div>
                                             
                                             <!--Password-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-password-input">Password</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="demo-password-input" class="form-control" placeholder="Password">
+                                                    <input type="password" id="doc-password-input" class="form-control" placeholder="Password" name="pwd">
                                                     <small class="help-block">Please enter password for verify</small>
                                                 </div>
                                             </div>
@@ -1187,7 +758,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
+                                                    <input name="phonenumber" type="text" id="doc-phone-input" class="form-control" placeholder="Enter your phone number">
                                                     <small class="help-block">Please enter your phone number</small>
                                                 </div>
                                             </div>
@@ -1196,64 +767,24 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-email-input">Email Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
+                                                    <input name="email" type="email" id="doc-email-input" class="form-control" placeholder="Enter your email">
                                                     <small class="help-block">Please enter your email</small>
                                                 </div>
                                             </div>
                             
                                             <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">province</label>
                                                 <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
+                                                    <input name="province" type="text" id="doc-province-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your province</small>
                                                 </div>
-        
-                                                <!--===================================================-->
                                             </div>
                             
                                             <!--Address-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-address-input">Address</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-address-input" class="form-control" placeholder="Enter your address">
+                                                    <input name="address" type="text" id="doc-address-input" class="form-control" placeholder="Enter your address">
                                                     <small class="help-block">Please enter your address</small>
                                                 </div>
                                             </div>
@@ -1262,7 +793,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-name-input">Real Name</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-name-input" class="form-control" placeholder="Enter your Name">
+                                                    <input name="real-name" type="text" id="doc-name-input" class="form-control" placeholder="Enter your Name">
                                                     <small class="help-block">Please enter your real name for doctor is something issue</small>
                                                 </div>
                                             </div>
@@ -1271,7 +802,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-no-input">Certificate No</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-no-input" class="form-control" placeholder="Enter your certificate No">
+                                                    <input name="certificate-no" type="text" id="doc-no-input" class="form-control" placeholder="Enter your certificate No">
                                                     <small class="help-block">Please enter your certificate No</small>
                                                 </div>
                                             </div>
@@ -1280,7 +811,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                                    <textarea name="reason" id="doc-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
                                                 </div>
                                             </div>
                                             
@@ -1288,50 +819,35 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-Code-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <input name="invite-code" type="text" id="doc-Code-input" class="form-control" placeholder="Enter your Invite Code">
                                                     <small class="help-block">Please enter your invite code</small>
                                                 </div>
                                             </div>
         
                                             <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">时长</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">Invite time</label>
                                                 <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">永久</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">临时（一个月）</label>
-                                                    </div>
-                            
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">File input (if you need)</label>
-                                                <div class="col-md-9">
-                                                    <span class="pull-left btn btn-primary btn-file">
-                                                    Browse... <input type="file">
-                                                    </span>
+                                                    <input name="invite-code" type="text" id="doc-time-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your invite time</small>
                                                 </div>
                                             </div>
                                         </form>
-                                        <!--===================================================-->
+                                        <!--============================ime=======================-->
                                         <!-- close 按钮 -->
                                         <div class="panel-footer text-right">
                                             
                                             <label class="col-md-3 control-label"></label>
                                             <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">submit</button>
+                                                <button class="btn btn-danger btn-rounded" onclick="disagree()">Disagree</button>
+                                                <button class="btn btn-success btn-rounded" onclick="agree()">Agree</button>
                                             </div>
                                         </div>
+                                        <button class="btn btn-danger btn-rounded" onclick="show_list()">Close</button>
                             
                                     </div>
                                 </div>
                             </div>
+
                             <!--infoadmin-->
                             <div id="infoforms" class="row" hidden>
                                 <div class="col-lg-3">
@@ -1346,19 +862,22 @@
                             
                                         <!-- BASIC FORM ELEMENTS -->
                                         <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
+                                        <form class="panel-body form-horizontal form-padding" id="info-form">
+					
                                             <!--Static-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Username</label>
-                                                <div class="col-md-9"><p id="name_form" class="form-control-static">Username</p></div>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="info-username-input" class="form-control" placeholder="Username" name="user">
+                                                    <small class="help-block">Please enter username for verify</small>
+                                                </div>
                                             </div>
                                             
                                             <!--Password-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-password-input">Password</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="demo-password-input" class="form-control" placeholder="Password">
+                                                    <input type="password" id="info-password-input" class="form-control" placeholder="Password" name="pwd">
                                                     <small class="help-block">Please enter password for verify</small>
                                                 </div>
                                             </div>
@@ -1367,7 +886,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
+                                                    <input type="text" id="info-phone-input" class="form-control" placeholder="Enter your phone number">
                                                     <small class="help-block">Please enter your phone number</small>
                                                 </div>
                                             </div>
@@ -1376,54 +895,16 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-email-input">Email Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
+                                                    <input type="email" id="info-email-input" class="form-control" placeholder="Enter your email">
                                                     <small class="help-block">Please enter your email</small>
                                                 </div>
                                             </div>
                             
                                             <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">province</label>
                                                 <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
+                                                    <input name="invite-code" type="text" id="info-province-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your province</small>
                                                 </div>
         
                                                 <!--===================================================-->
@@ -1435,7 +916,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                                    <textarea name="reason" id="info-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
                                                 </div>
                                             </div>
                                             
@@ -1443,33 +924,16 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-Code-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <input name="invite-code" type="text" id="info-Code-input" class="form-control" placeholder="Enter your Invite Code">
                                                     <small class="help-block">Please enter your invite code</small>
                                                 </div>
                                             </div>
         
                                             <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">时长</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">Invite time</label>
                                                 <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">永久</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">临时（一个月）</label>
-                                                    </div>
-                            
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">File input (if you need)</label>
-                                                <div class="col-md-9">
-                                                    <span class="pull-left btn btn-primary btn-file">
-                                                    Browse... <input type="file">
-                                                    </span>
+                                                    <input name="invite-code" type="text" id="info-time-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your invite code</small>
                                                 </div>
                                             </div>
                                         </form>
@@ -1479,10 +943,11 @@
                                             
                                             <label class="col-md-3 control-label"></label>
                                             <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">submit</button>
+                                                <button class="btn btn-danger btn-rounded" onclick="disagree()">Disagree</button>
+                                                <button class="btn btn-success btn-rounded" onclick="agree()">Agree</button>
                                             </div>
                                         </div>
+                                        <button class="btn btn-danger btn-rounded" onclick="show_list()">Close</button>
                             
                                     </div>
                                 </div>
@@ -1501,19 +966,22 @@
                             
                                         <!-- BASIC FORM ELEMENTS -->
                                         <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
+                                        <form class="panel-body form-horizontal form-padding" id="info-form">
+					
                                             <!--Static-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Username</label>
-                                                <div class="col-md-9"><p id="name_form" class="form-control-static">Username</p></div>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="main-username-input" class="form-control" placeholder="Username" name="user">
+                                                    <small class="help-block">Please enter username for verify</small>
+                                                </div>
                                             </div>
                                             
                                             <!--Password-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-password-input">Password</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="demo-password-input" class="form-control" placeholder="Password">
+                                                    <input type="password" id="main-password-input" class="form-control" placeholder="Password" name="pwd">
                                                     <small class="help-block">Please enter password for verify</small>
                                                 </div>
                                             </div>
@@ -1522,7 +990,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
+                                                    <input name="phonenumber" type="text" id="main-phone-input" class="form-control" placeholder="Enter your phone number">
                                                     <small class="help-block">Please enter your phone number</small>
                                                 </div>
                                             </div>
@@ -1531,64 +999,24 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-email-input">Email Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
+                                                    <input name="email" type="email" id="main-email-input" class="form-control" placeholder="Enter your email">
                                                     <small class="help-block">Please enter your email</small>
                                                 </div>
                                             </div>
                             
                                             <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">province</label>
                                                 <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
+                                                    <input name="invite-code" type="text" id="main-province-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your province</small>
                                                 </div>
-        
-                                                <!--===================================================-->
                                             </div>
                             
                                             <!--Address-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-address-input">Address</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-address-input" class="form-control" placeholder="Enter your address">
+                                                    <input name="province" type="text" id="main-address-input" class="form-control" placeholder="Enter your address">
                                                     <small class="help-block">Please enter your address</small>
                                                 </div>
                                             </div>
@@ -1597,7 +1025,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                                    <textarea name="reason" id="main-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
                                                 </div>
                                             </div>
                                             
@@ -1605,33 +1033,16 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-Code-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <input name="invite-code" type="text" id="main-Code-input" class="form-control" placeholder="Enter your Invite Code">
                                                     <small class="help-block">Please enter your invite code</small>
                                                 </div>
                                             </div>
         
                                             <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">时长</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">Invite time</label>
                                                 <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">永久</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">临时（一个月）</label>
-                                                    </div>
-                            
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">File input (if you need)</label>
-                                                <div class="col-md-9">
-                                                    <span class="pull-left btn btn-primary btn-file">
-                                                    Browse... <input type="file">
-                                                    </span>
+                                                    <input name="invite-code" type="text" id="main-time-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your invite time</small>
                                                 </div>
                                             </div>
                                         </form>
@@ -1641,41 +1052,44 @@
                                             
                                             <label class="col-md-3 control-label"></label>
                                             <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">submit</button>
+                                                <button class="btn btn-danger btn-rounded" onclick="disagree()">Disagree</button>
+                                                <button class="btn btn-success btn-rounded" onclick="agree()">Agree</button>
                                             </div>
                                         </div>
-                            
+                                        <button class="btn btn-danger btn-rounded" onclick="show_list()">Close</button>
                                     </div>
                                 </div>
                             </div>
                             <!--other-->
-                            <div id="otherforms" class="row" hidden>
+                            <div id="medforms" class="row" hidden>
                                 <div class="col-lg-3">
         
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="panel">
                                         <div class="panel-heading">
-                                            <h3 class="panel-title">Other Application</h3>
+                                            <h3 class="panel-title">Apply for medical admin</h3>
                                         </div>
                             
                             
                                         <!-- BASIC FORM ELEMENTS -->
                                         <!--===================================================-->
-                                        <form class="panel-body form-horizontal form-padding">
-                            
+                                        <form class="panel-body form-horizontal form-padding" id="info-form">
+					
                                             <!--Static-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label">Username</label>
-                                                <div class="col-md-9"><p id="name_form" class="form-control-static">Username</p></div>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="med-username-input" class="form-control" placeholder="Username" name="user">
+                                                    <small class="help-block">Please enter username for verify</small>
+                                                </div>
                                             </div>
                                             
                                             <!--Password-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-password-input">Password</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="demo-password-input" class="form-control" placeholder="Password">
+                                                    <input type="password" id="med-password-input" class="form-control" placeholder="Password" name="pwd">
                                                     <small class="help-block">Please enter password for verify</small>
                                                 </div>
                                             </div>
@@ -1684,7 +1098,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
+                                                    <input name="phonenumber" type="text" id="med-phone-input" class="form-control" placeholder="Enter your phone number">
                                                     <small class="help-block">Please enter your phone number</small>
                                                 </div>
                                             </div>
@@ -1693,54 +1107,16 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-email-input">Email Input</label>
                                                 <div class="col-md-9">
-                                                    <input type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
+                                                    <input name="email" type="email" id="med-email-input" class="form-control" placeholder="Enter your email">
                                                     <small class="help-block">Please enter your email</small>
                                                 </div>
                                             </div>
                             
                                             <div class="panel-body">
-                                                <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">province</label>
                                                 <div class="col-md-9">
-                                                    
-                                                    <!-- Default choosen -->
-                                                    <!--===================================================-->
-                                                    <select data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                        <option value="Anhui">安徽省</option>
-                                                        <option value="Fujian">福建省</option>
-                                                        <option value="Gansu">甘肃省</option>
-                                                        <option value="Guangdong">广东省</option>
-                                                        <option value="Guizhou">贵州省</option>
-                                                        <option value="Hainan">海南省</option>
-                                                        <option value="Hebei">河北省</option>
-                                                        <option value="Henan">河南省</option>
-                                                        <option value="Heilongjiang">黑龙江省</option>
-                                                        <option value="Hubei">湖北省</option>
-                                                        <option value="Hunan">湖南省</option>
-                                                        <option value="Jilin">吉林省</option>
-                                                        <option value="Jiangsu">江苏省</option>
-                                                        <option value="Jiangxi">江西省</option>
-                                                        <option value="Liaoning">辽宁省</option>
-                                                        <option value="Qinghai">青海省</option>
-                                                        <option value="Shandong">山东省</option>
-                                                        <option value="Shanxi">山西省</option>
-                                                        <option value="Shanx">陕西省</option>
-                                                        <option value="Sichuan">四川省</option>
-                                                        <option value="Taiwan">台湾省</option>
-                                                        <option value="Yunnan">云南省</option>
-                                                        <option value="Zhejiang">浙江省</option>
-                                                        <option value="Beijing">北京市</option>
-                                                        <option value="Tianjin">天津市</option>
-                                                        <option value="Shanghai">上海市</option>
-                                                        <option value="Chongqing">重庆市</option>
-                                                        <option value="Neimeng">内蒙古</option>
-                                                        <option value="Guangxi">广西</option>
-                                                        <option value="Xizang">西藏</option>
-                                                        <option value="Ningxia">宁夏</option>
-                                                        <option value="Xinjiang">新疆</option>
-                                                        <option value="Hong Kong">香港</option>
-                                                        <option value="Aomen">澳门</option>
-                                                        
-                                                    </select>
+                                                    <input name="invite-code" type="text" id="med-province-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your province</small>
                                                 </div>
         
                                                 <!--===================================================-->
@@ -1750,34 +1126,16 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-address-input">Address</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-address-input" class="form-control" placeholder="Enter your address">
+                                                    <input name="province" type="text" id="med-address-input" class="form-control" placeholder="Enter your address">
                                                     <small class="help-block">Please enter your address</small>
                                                 </div>
                                             </div>
-                                            
-                                            <!--Real Name-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-name-input">Real Name</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-name-input" class="form-control" placeholder="Enter your Name">
-                                                    <small class="help-block">Please enter your real name for doctor is something issue</small>
-                                                </div>
-                                            </div>
-        
-                                            <!--Other-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-other-input">Other</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="demo-other-input" class="form-control" placeholder="Other">
-                                                    <small class="help-block">Please tell us what you want to be</small>
-                                                </div>
-                                            </div>
-        
+                            
                                             <!--Textarea-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
                                                 <div class="col-md-9">
-                                                    <textarea id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                                    <textarea name="reason" id="med-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
                                                 </div>
                                             </div>
                                             
@@ -1785,33 +1143,16 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="demo-Code-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <input name="invite-code" type="text" id="med-Code-input" class="form-control" placeholder="Enter your Invite Code">
                                                     <small class="help-block">Please enter your invite code</small>
                                                 </div>
                                             </div>
         
                                             <div class="form-group pad-ver">
-                                                <label class="col-md-3 control-label">时长</label>
+                                                <label class="col-md-3 control-label" for="demo-Code-input">Invite time</label>
                                                 <div class="col-md-9">
-                            
-                                                    <!-- Radio Buttons -->
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio" class="magic-radio" type="radio" name="form-radio-button" checked>
-                                                        <label for="demo-form-radio">永久</label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <input id="demo-form-radio-2" class="magic-radio" type="radio" name="form-radio-button">
-                                                        <label for="demo-form-radio-2">临时（一个月）</label>
-                                                    </div>
-                            
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label">File input (if you need)</label>
-                                                <div class="col-md-9">
-                                                    <span class="pull-left btn btn-primary btn-file">
-                                                    Browse... <input type="file">
-                                                    </span>
+                                                    <input name="invite-code" type="text" id="med-time-input" class="form-control" placeholder="Enter your Invite Code">
+                                                    <small class="help-block">Please enter your invite time</small>
                                                 </div>
                                             </div>
                                         </form>
@@ -1821,10 +1162,11 @@
                                             
                                             <label class="col-md-3 control-label"></label>
                                             <div class="panel-footer text-right">
-                                                <button class="btn btn-danger btn-rounded">Close</button>
-                                                <button class="btn btn-success btn-rounded">submit</button>
+                                                <button class="btn btn-danger btn-rounded" onclick="disagree()">Disagree</button>
+                                                <button class="btn btn-success btn-rounded" onclick="agree()">Agree</button>
                                             </div>
                                         </div>
+                                        <button class="btn btn-danger btn-rounded" onclick="show_list()">Close</button>
                             
                                     </div>
                                 </div>
@@ -2082,12 +1424,8 @@
 						                <a href='javascript:jump("forum-news.html")'>
 						                    <i class="demo-psi-mail"></i>
 						                    <span class="menu-title">News</span>
-											
 						                </a>
 						            </li>
-						
-						           
-						             
 
                             </div>
                         </div>
@@ -2132,6 +1470,13 @@
 
 <script type="text/javascript">
     var para_to_pass="USER1%10000";
+    var name="";
+    var current_role="";
+    var page_num=1;
+    var total_page_num=100;
+    var info_per_page=0;
+    var which_info=0;
+
     function do_hide(rights){
         var num = parseInt(rights);
         //var num = 10101;
@@ -2157,7 +1502,7 @@
             }
             num = Math.floor(num/10);
             //alert("num/10:"+ num);
-            if(num/10%10 == 0){
+            if(num%10 == 0){
                 alert("hide topics");
                 $("#topics").hide();
             }
@@ -2183,16 +1528,225 @@
         //alert(para_to_pass);
         var n3 = para_to_pass.lastIndexOf('#');
         var len_rights = para_to_pass.length - n3;
-        var name = para_to_pass.substr(0, n3);
+        name = para_to_pass.substr(0, n3);
         var rights = para_to_pass.substr(n3+1,len_rights);
         //alert(name + " " + rights);
         name_replace(name);
         do_hide(rights);
     }
+
     function myfun(){ 　　 
         alert("this window.onload"); 　　
     } 　　
     /*用window.onload调用myfun()*/　
+
+    function disagree(){
+        $.ajax({
+        type: "post",
+        url: "xxx",
+        data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "disagree"},
+        success: function(data){
+            alert("拒绝成功！")
+        },
+        error : function(data){
+            console.log("拒绝失败！");
+        }
+    });
+    }
+
+    function agree(){
+        $.ajax({
+        type: "post",
+        url: "xxx",
+        data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "agree"},
+        success: function(data){
+            alert("同意成功！")
+        },
+        error : function(data){
+            console.log("同意失败！");
+        }
+    });
+    }
+
+    function show_list(){
+        $("#demo-mail-list").show();
+        $("#page-button").show();
+        $("#areaform").hide();
+        $("#commform").hide();
+        $("#docforms").hide();
+        $("#infoforms").hide();
+        $("#mainforms").hide();
+        $("#medforms").hide();
+    }
+
+    function show_msg(id){
+        which_info=id;
+        $("#demo-mail-list").hide();
+        $("#page-button").hide();
+        $.ajax({
+            type: "post",
+            url: "xxx",
+            datatype: "json",
+            data:{"username" : name, "page" : page_num, "num" : id,  "form-type" : current_role},
+            success: function(data){
+              console.log(data);
+              if(current_role=="Area Admin application"){
+                $("#areaform").show();
+                $("#area-username-input").val(data.user);
+                $("#area-password-input").val(data.pwd);
+                $("#area-phone-input").val(data.phonenum);
+                $("#area-email-input").val(data.email);
+                $("#area-province-input").val(data.province);
+                $("#area-address-input").val(data.address);
+                $("#area-community-input").val(data.community-name);
+                $("#area-textarea-input").val(data.reason);
+                $("#area-Code-input").val(data.invite-code);
+                $("#area-time-input").val(data.time);
+              }
+              else if(current_role=="Commercial Admin application"){
+                $("#commform").show();
+                $("#comm-username-input").val(data.user);
+                $("#comm-password-input").val(data.pwd);
+                $("#comm-phone-input").val(data.phonenumber);
+                $("#comm-email-input").val(data.email);
+                $("#comm-province-input").val(data.province);
+                $("#comm-address-input").val(data.address);
+                $("#comm-commercial-input").val(data.bussiness-district);
+                $("#comm-textarea-input").val(data.reason);
+                $("#comm-Code-input").val(data.invite-code);
+                $("#comm-time-input").val(data.time);
+              }
+              else if(current_role=="Doctor application"){
+                $("#docforms").show();
+                $("#doc-username-input").val(data.user);
+                $("#doc-password-input").val(data.pwd);
+                $("#doc-phone-input").val(data.phonenumber);
+                $("#doc-email-input").val(data.email);
+                $("#doc-province-input").val(data.province);
+                $("#doc-address-input").val(data.address);
+                $("#doc-name-input").val(data.real-name);
+                $("#doc-no-input").val(data.certificate-no);
+                $("#doc-textarea-input").val(data.reason);
+                $("#doc-Code-input").val(data.invite-code);
+                $("#doc-time-input").val(data.time);
+              }
+              else if(current_role=="Info Admin application"){
+                $("#infoforms").show();
+                $("#info-username-input").val(data.user);
+                $("#info-password-input").val(data.pwd);
+                $("#info-phone-input").val(data.phonenumber);
+                $("#info-email-input").val(data.email);
+                $("#info-province-input").val(data.province);
+                $("#info-textarea-input").val(data.reason);
+                $("#info-Code-input").val(data.invite-code);
+                $("#info-time-input").val(data.time);
+              }
+              else if(current_role=="Main Admin application"){
+                $("#mainforms").show();
+                $("#amin-username-input").val(data.user);
+                $("#main-password-input").val(data.pwd);
+                $("#main-phone-input").val(data.phonenumber);
+                $("#main-email-input").val(data.email);
+                $("#main-province-input").val(data.province);
+                $("#main-address-input").val(data.address);
+                $("#main-textarea-input").val(data.reason);
+                $("#main-Code-input").val(data.invite-code);
+                $("#main-time-input").val(data.time);
+              }
+              else if(current_role=="Medical Admin application"){
+                $("#medforms").show();
+                $("#med-username-input").val(data.user);
+                $("#med-password-input").val(data.pwd);
+                $("#med-phone-input").val(data.phonenumber);
+                $("#med-email-input").val(data.email);
+                $("#med-province-input").val(data.province);
+                $("#med-address-input").val(data.address);
+                $("#med-textarea-input").val(data.reason);
+                $("#med-Code-input").val(data.invite-code);
+                $("#med-time-input").val(data.time);
+              }
+            },
+            error : function(data){
+              console.log("错误！");
+            }
+        });
+    }
+
+    $("#left-page").click(function() {
+        if(page_num>1){
+            page_num=page_num-1;
+            $("#displayed_message_num").text(page_num);
+            init_loading_info();
+        }
+    });
+
+    $("#right-page").click(function() {
+        if(page_num<total_page_num){
+            page_num=page_num+1;
+            $("#displayed_message_num").text(page_num);
+            init_loading_info();
+        }
+    });
+
+    function refresh_list(data){
+        $.each(data, function(i, item){
+            info_per_page=info_per_page+1;
+            var j=i+1
+            $("#"+j).show();
+            $("#username"+j).text(item.sender);
+            $("#title"+j).text(current_role);
+        });
+        while(info_per_page<10){
+            info_per_page=info_per_page+1;
+            $("#"+info_per_page).hide();
+        }
+        info_per_page=0;
+    }
+
+    function init_loading_info(){
+    $.ajax({
+        type: "post",
+        url: "xxx",
+        datatype: "json",
+        data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num},
+        success: function(data){
+            console.log(data);
+            refresh_list(data);
+        },
+        error : function(data){
+            console.log("错误！");
+        }
+    });
+    }
+
+
+    function choose_type(type){
+        page_num=1;
+        current_role=type;
+        $("#displayed_message_num").text(page_num);
+        $.ajax({
+        type: "post",
+        url: "xxx",
+        datatype: "text",
+        data:{"username":name, "function": "approval-forms", "form-type":current_role},
+        success: function(data){
+            console.log(data);
+            total_page_num=parseInt(data);
+            $("#message_num").text(total_page_num);
+            init_loading_info();
+        },
+        error : function(data){
+            console.log("错误！");
+        }
+    });
+    }
+
+    $("div[name='select-role']").click(function(){
+        current_role=$(this).text();
+        $("#box-title").text($(this).text());
+        choose_type($(this).text());
+    });
+
     　
     // 不要括号
     window.onload = function(){
@@ -2200,6 +1754,13 @@
         //do_hide("10000"); 
         //name_replace();
         Do();
+        current_role="Main Admin application"
+        choose_type("Main Admin application");
+        //$("#demo-mail-list").hide();
+        //$("#page-button").hide();
+        //$("#docforms").show();
+        //$("#area-username-input").val("hahah");
+        
     }
 
 </script>

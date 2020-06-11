@@ -7,7 +7,7 @@
     <title>Home | test</title>
 
 
-    <!--STYLESHEET-->
+   <!--STYLESHEET-->
     <!--=================================================-->
 
     <!--Open Sans Font [ OPTIONAL ]-->
@@ -49,7 +49,7 @@
     <!--Form Component [ SAMPLE ]-->
     <script src="js/demo/form-component.js"></script>
     <!--=================================================
-
+        
     REQUIRED
     You must include this in your project.
 
@@ -273,7 +273,7 @@
 					    <div class="col-lg-6">
 					        <div class="panel">
 					            <div class="panel-heading">
-					                <h3 class="panel-title">Other Application</h3>
+					                <h3 class="panel-title">Applay for tenant</h3>
 					            </div>
 					
 					
@@ -284,7 +284,7 @@
 					                <!--Static-->
 					                <div class="form-group">
 					                    <label class="col-md-3 control-label">Username</label>
-					                    <div class="col-md-9">
+                                        <div class="col-md-9">
 					                        <input type="text" id="demo-username-input" class="form-control" placeholder="Username" name="user">
 					                        <small class="help-block">Please enter username for verify</small>
 					                    </div>
@@ -374,33 +374,15 @@
 					                    </div>
 					                </div>
                                     
-                                    <!--Real Name-->
+                                    <!--Area-->
 					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-name-input">Real Name</label>
+					                    <label class="col-md-3 control-label" for="demo-commercial-input">Business district</label>
 					                    <div class="col-md-9">
-					                        <input name="real-name" type="text" id="demo-name-input" class="form-control" placeholder="Enter your Name">
-					                        <small class="help-block">Please enter your real name for doctor is something issue</small>
-					                    </div>
-					                </div>
-
-                                    <!--Other-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-other-input">Community</label>
-					                    <div class="col-md-9">
-					                        <input name="community" type="text" id="demo-other-input" class="form-control" placeholder="Other">
-					                        <small class="help-block">Please tell us the community</small>
-					                    </div>
-					                </div>
-
-					                <!--Textarea-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
-					                    <div class="col-md-9">
-					                        <textarea name="reason" id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+					                        <input name="business-district" type="text" id="demo-commercial-input" class="form-control" placeholder="Enter your business district name">
+					                        <small class="help-block">Please enter your business district name</small>
 					                    </div>
 					                </div>
                                     
-                                    <!--Code-->
 
 					                <div class="form-group pad-ver">
 					                    <label class="col-md-3 control-label">时长</label>
@@ -417,8 +399,7 @@
 					                        </div>
 					
 					                    </div>
-					                </div>
-
+                                    </div>
                                     <div class="panel-footer text-right">
                                         <button id="submit_btn" class="btn btn-success" type="submit">Submit</button>
                                     </div>
@@ -539,13 +520,13 @@
 						                    <li><a href='javascript:jump("apply-main-admin.html")'>Main Admin</a></li>
 											<li><a href='javascript:jump("apply-info-admin.html")'>Info Admin</a></li>
 											<li><a href='javascript:jump("apply-area-admin.html")'>Area Admin</a></li>
-											<li><a href='javascript:jump("apply-commercial-admin.html")'>Commercial Admin</a></li>
+											<li class="active-link"><a href='javascript:jump("apply-commercial-admin.html")'>Commercial Admin</a></li>
 											<li class="list-divider"></li>
 											<li><a href='javascript:jump("apply-doctor.html")'>Doctor</a></li>
 											<!--li><a href="#">Aside on the left side</a></li>
 											<li><a href="#">Dark version of aside</a></li>-->
 											<li class="list-divider"></li>
-											<li class="active-link"><a href='javascript:jump("apply-other.html")'>Other</a></li>
+											<li><a href='javascript:jump("apply-other.html")'>Other</a></li>
 											
 						                </ul>
                                     </li>
@@ -754,7 +735,7 @@
             }
             num = Math.floor(num/10);
             //alert("num/10:"+ num);
-            if(num/10%10 == 0){
+            if(num%10 == 0){
                 alert("hide topics");
                 $("#topics").hide();
             }
@@ -811,7 +792,6 @@
             type:"post",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(formObject),
-            datatype: "text",
             success:function(data){
                 alert("提交成功！");
             },
@@ -820,6 +800,7 @@
             }
         });
     });
+
 </script>
     
     

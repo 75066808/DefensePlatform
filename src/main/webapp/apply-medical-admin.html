@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | test</title>
 
-
-    <!--STYLESHEET-->
+<!--STYLESHEET-->
     <!--=================================================-->
 
     <!--Open Sans Font [ OPTIONAL ]-->
@@ -273,7 +272,7 @@
 					    <div class="col-lg-6">
 					        <div class="panel">
 					            <div class="panel-heading">
-					                <h3 class="panel-title">Other Application</h3>
+					                <h3 class="panel-title">Applay for Doctor Qualification</h3>
 					            </div>
 					
 					
@@ -284,7 +283,7 @@
 					                <!--Static-->
 					                <div class="form-group">
 					                    <label class="col-md-3 control-label">Username</label>
-					                    <div class="col-md-9">
+                                        <div class="col-md-9">
 					                        <input type="text" id="demo-username-input" class="form-control" placeholder="Username" name="user">
 					                        <small class="help-block">Please enter username for verify</small>
 					                    </div>
@@ -383,24 +382,24 @@
 					                    </div>
 					                </div>
 
-                                    <!--Other-->
+                                    <!--Certificate-->
 					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-other-input">Community</label>
+					                    <label class="col-md-3 control-label" for="demo-no-input">Certificate No</label>
 					                    <div class="col-md-9">
-					                        <input name="community" type="text" id="demo-other-input" class="form-control" placeholder="Other">
-					                        <small class="help-block">Please tell us the community</small>
+					                        <input name="certificate-no" type="text" id="demo-no-input" class="form-control" placeholder="Enter your certificate No">
+					                        <small class="help-block">Please enter your certificate No</small>
 					                    </div>
 					                </div>
 
-					                <!--Textarea-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
-					                    <div class="col-md-9">
-					                        <textarea name="reason" id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
-					                    </div>
-					                </div>
                                     
                                     <!--Code-->
+					                <div class="form-group">
+					                    <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
+					                    <div class="col-md-9">
+					                        <input name="invite-code" type="text" id="demo-Code-input" class="form-control" placeholder="Enter your Invite Code">
+					                        <small class="help-block">Please enter your invite code</small>
+					                    </div>
+					                </div>
 
 					                <div class="form-group pad-ver">
 					                    <label class="col-md-3 control-label">时长</label>
@@ -417,15 +416,15 @@
 					                        </div>
 					
 					                    </div>
-					                </div>
-
+                                    </div>
+                                    
                                     <div class="panel-footer text-right">
                                         <button id="submit_btn" class="btn btn-success" type="submit">Submit</button>
                                     </div>
+
 					            </form>
 					            <!--===================================================-->
 					            <!-- END BASIC FORM ELEMENTS -->
-					
                             </div>
 					    </div>
 					</div>
@@ -541,11 +540,11 @@
 											<li><a href='javascript:jump("apply-area-admin.html")'>Area Admin</a></li>
 											<li><a href='javascript:jump("apply-commercial-admin.html")'>Commercial Admin</a></li>
 											<li class="list-divider"></li>
-											<li><a href='javascript:jump("apply-doctor.html")'>Doctor</a></li>
+											<li class="active-link"><a href='javascript:jump("apply-doctor.html")'>Doctor</a></li>
 											<!--li><a href="#">Aside on the left side</a></li>
 											<li><a href="#">Dark version of aside</a></li>-->
 											<li class="list-divider"></li>
-											<li class="active-link"><a href='javascript:jump("apply-other.html")'>Other</a></li>
+											<li><a href='javascript:jump("apply-other.html")'>Other</a></li>
 											
 						                </ul>
                                     </li>
@@ -754,7 +753,7 @@
             }
             num = Math.floor(num/10);
             //alert("num/10:"+ num);
-            if(num/10%10 == 0){
+            if(num%10 == 0){
                 alert("hide topics");
                 $("#topics").hide();
             }
@@ -813,13 +812,17 @@
             data: JSON.stringify(formObject),
             datatype: "text",
             success:function(data){
-                alert("提交成功！");
+                if(data=="success")
+                    alert("提交成功！");
+                else
+                    alert("验证码错误");
             },
             error:function(data){
                 alert("错误！！");
             }
         });
     });
+
 </script>
     
     

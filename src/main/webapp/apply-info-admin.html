@@ -305,7 +305,7 @@
 					                <div class="form-group">
 					                    <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
 					                    <div class="col-md-9">
-					                        <input type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
+					                        <input name="phonenumber" type="text" id="demo-text-input" class="form-control" placeholder="Enter your phone number">
 					                        <small class="help-block">Please enter your phone number</small>
 					                    </div>
 					                </div>
@@ -314,7 +314,7 @@
 					                <div class="form-group">
 					                    <label class="col-md-3 control-label" for="demo-email-input">Email Input</label>
 					                    <div class="col-md-9">
-					                        <input type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
+					                        <input name="email" type="email" id="demo-email-input" class="form-control" placeholder="Enter your email">
 					                        <small class="help-block">Please enter your email</small>
 					                    </div>
 					                </div>
@@ -794,8 +794,12 @@
             type:"post",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(formObject),
+            datatype: "text",
             success:function(data){
-                alert("提交成功！");
+                if(data=="success")
+                    alert("提交成功！");
+                else
+                    alert("验证码错误");
             },
             error:function(data){
                 alert("错误！！");

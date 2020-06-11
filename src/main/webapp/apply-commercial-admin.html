@@ -810,8 +810,12 @@
             type:"post",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(formObject),
+            datatype: "text",
             success:function(data){
-                alert("提交成功！");
+                if(data=="success")
+                    alert("提交成功！");
+                else
+                    alert("验证码错误");
             },
             error:function(data){
                 alert("错误！！");
