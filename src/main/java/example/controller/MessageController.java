@@ -54,17 +54,17 @@ public class MessageController {
 
     @RequestMapping(value="/chat/find/content",  method=RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> findChatContent(String username, int page, int id) {
+    public Map<String, Object> findChatContent(String username, int page, int num) {
         System.out.println("Find chat content");
 
         System.out.println(username);
         System.out.println(page);
-        System.out.println(id);
+        System.out.println(num);
 
         Map<String, Object> map = new HashMap<>();
-        map.put("username", "zhang" + ((page - 1) * 10 + id));
-        map.put("title", "This is the title " + ((page - 1) * 10 + id));
-        map.put("main_text", "This is the text " + ((page - 1) * 10 + id));
+        map.put("sender", "zhang" + ((page - 1) * 10 + num - 1));
+        map.put("title", "This is the title " + ((page - 1) * 10 + num - 1));
+        map.put("main_text", "This is the text " + ((page - 1) * 10 + num - 1));
 
         return map;
     }
