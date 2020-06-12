@@ -682,14 +682,14 @@
     function init_table(){
         $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/report/find",
         data:{"username" : name, "function": "info-check"},
         dataType: "json",
         success: function(data){
             $("#today_total_people").text(data.today_total_people);
             $("#yesterday_total_people").text(data.yesterday_total_people);
             $("#today_reported").text(data.today_reported);
-            $("#yesterday_reported").text(data.yeserday_reported);
+            $("#yesterday_reported").text(data.yesterday_reported);
             $("#today_not_reported").text(data.today_not_reported);
             $("#yesterday_not_reported").text(data.yesterday_not_reported);
             $("#today_normal").text(data.today_normal);

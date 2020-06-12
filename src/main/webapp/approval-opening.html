@@ -909,7 +909,7 @@
     function disagree(){
         $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/opening/feedback",
         data:{"username" : name, "function": "approval-opening", "page" : page_num, "id" : which_info, "action" : "disagree"},
         success: function(data){
             alert("拒绝成功！")
@@ -923,7 +923,7 @@
     function agree(){
         $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/opening/feedback",
         data:{"username" : name, "function": "approval-opening", "page" : page_num, "id" : which_info, "action" : "agree"},
         success: function(data){
             alert("同意成功！")
@@ -941,15 +941,15 @@
         $("#otherforms").show();
         $.ajax({
             type: "post",
-            url: "xxx",
+            url: "/message/apply/opening/find/content",
             datatype: "json",
             data:{"username" : name, "page" : page_num, "num" : id},
             success: function(data){
               console.log(data);
                 $("#demo-username-input").val(data.user);
                 $("#demo-password-input").val(data.pwd);
-                $("#demo-commercial-input").val(data.bussiness-district);
-                $("#demo-shop-input").val(data.shop-name);
+                $("#demo-commercial-input").val(data.business_district);
+                $("#demo-shop-input").val(data.shop_name);
                 $("#demo-textarea-input").val(data.reason);
                 $("#demo-time-input").val(data.time);
             },
@@ -983,7 +983,7 @@
     function init_loading_info(){
     $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/opening/find/page",
         datatype: "json",
         data:{"username" : name, "function" : "approval-opening", "page" : page_num},
         success: function(data){
@@ -999,7 +999,7 @@
     function init_page_num(){
     $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/opening/find/num",
         datatype: "text",
         data:{"username" : name, "function" : "approval-opening"},
         success: function(data){

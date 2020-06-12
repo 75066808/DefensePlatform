@@ -1553,7 +1553,7 @@
     function disagree(){
         $.ajax({
         type: "post",
-        url: "/message/apply/feedback",
+        url: "/message/apply/role/feedback",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "disagree"},
         success: function(data){
             alert("拒绝成功！")
@@ -1567,7 +1567,7 @@
     function agree(){
         $.ajax({
         type: "post",
-        url: "/message/apply/feedback",
+        url: "/message/apply/role/feedback",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "agree"},
         success: function(data){
             alert("同意成功！")
@@ -1595,7 +1595,7 @@
         $("#page-button").hide();
         $.ajax({
             type: "post",
-            url: "/message/apply/find/content",
+            url: "/message/apply/role/find/content",
             datatype: "json",
             data:{"username" : name, "page" : page_num, "num" : id,  "form-type" : current_role},
             success: function(data){
@@ -1717,7 +1717,7 @@
     function init_loading_info(){
     $.ajax({
         type: "post",
-        url: "/message/apply/find/page",
+        url: "/message/apply/role/find/page",
         datatype: "json",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num},
         success: function(data){
@@ -1737,7 +1737,7 @@
         $("#displayed_message_num").text(page_num);
         $.ajax({
         type: "post",
-        url: "/message/apply/find/num",
+        url: "/message/apply/role/find/num",
         datatype: "text",
         data:{"username":name, "function": "approval-forms", "form-type":current_role},
         success: function(data){

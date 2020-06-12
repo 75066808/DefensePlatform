@@ -19,6 +19,7 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
+    // {target=to, sender=test_usr, title=title, main-text=text }
     @RequestMapping(value="/chat/send", method=RequestMethod.POST)
     @ResponseBody
     public void sendChat(@RequestBody Map<String, Object> chat) {
@@ -69,86 +70,132 @@ public class MessageController {
         return map;
     }
 
-    // {user=HLSSSS, pwd=123, roles=Main, invite-code=2222}
-    @RequestMapping(value="/invite/add", method=RequestMethod.POST)
+    // {user=HLSSSS, pwd=123, province=Anhui, address=china, real-name=yuruijing, age=99, symptom=fever, color=grean}
+    // {user=HLSSSS, pwd=123, province=Anhui, address=, real-name=, age=, symptom=confirm, color=yellow}
+    // {user=HLSSSS, pwd=123, province=Anhui, address=, real-name=, age=, color=orange}
+    @RequestMapping(value="/report/send", method=RequestMethod.POST)
     @ResponseBody
-    public void addInviteCode(@RequestBody Map<String, Object> invite) {
-        System.out.println("addInviteCode");
+    public void sendReport(@RequestBody Map<String, Object> report) {
+        System.out.println("sendReport");
+        System.out.println(report);
+    }
+
+    @RequestMapping(value="/report/find", method=RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> findReport(String username, String function) {
+        System.out.println("findReport");
+        System.out.println(username);
+        Map<String, Object> map = new HashMap<>();
+        map.put("today_total_people", 1);
+        map.put("yesterday_total_people", 2);
+        map.put("today_reported", 3);
+        map.put("yesterday_reported", 4);
+        map.put("today_not_reported", 5);
+        map.put("yesterday_not_reported", 6);
+        map.put("today_normal", 7);
+        map.put("yesterday_normal", 8);
+        map.put("today_unnormal", 9);
+        map.put("yesterday_unnormal", 10);
+        return map;
+    }
+
+    /*
+    {user=HLSSSS, pwd=123, roles=Main, invite-code=}
+    {user=HLSSSS, pwd=123, roles=Info, invite-code=}
+    {user=HLSSSS, pwd=123, roles=Area, invite-code=}
+    {user=HLSSSS, pwd=123, roles=Commercial, invite-code=}
+    {user=HLSSSS, pwd=123, roles=Doctor, invite-code=}
+    {user=HLSSSS, pwd=123, roles=Medical, invite-code=}
+    */
+    @RequestMapping(value="/invite/send", method=RequestMethod.POST)
+    @ResponseBody
+    public void sendInviteCode(@RequestBody Map<String, Object> invite) {
+        System.out.println("sendInviteCode");
         System.out.println(invite);
     }
 
     // {user=HLSSSS, pwd=123, phonenum=1392361111, email=75066808@qq.com, province=Fujian, address=china, community-name=fff, reason=reason, invite-code=2222, time=forever}
     // {user=HLSSSS, pwd=123, phonenum=, email=, province=Anhui, address=, community-name=, reason=, invite-code=, time=one-month}
-    @RequestMapping(value="/apply/community/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/community/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addCommunityAdminApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addCommunityAdminApply");
+    public String sendCommunityAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendCommunityAdminApply");
         System.out.println(apply);
         return "success";
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, email=75066808@qq.com, province=Anhui, address=china, business-district=bbb, reason=res, invite-code=2222, time=forever}
-    @RequestMapping(value="/apply/commercial/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/commercial/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addCommercialAdminApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addCommercialAdminApply");
+    public String sendCommercialAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendCommercialAdminApply");
         System.out.println(apply);
         return "success";
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=2222, email=75066808@qq.com, province=Anhui, address=china, real-name=yuruijing, certificate-no=123456, invite-code=2222, time=forever}
-    @RequestMapping(value="/apply/medical/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/medical/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addMedicalAdminApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addMedicalAdminApply");
+    public String sendMedicalAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendMedicalAdminApply");
         System.out.println(apply);
         return "success";
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, email=75066808@qq.com, province=Anhui, reason=res, invite-code=2222, time=forever}
-    @RequestMapping(value="/apply/information/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/information/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addInformationAdminApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addInformationAdminApply");
+    public String sendInformationAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendInformationAdminApply");
         System.out.println(apply);
         return "success";
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, email=75066808@qq.com, province=Anhui, address=china, reason=res, invite-code=2222, time=forever}
-    @RequestMapping(value="/apply/super/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/super/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addSuperAdminApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addSuperAdminApply");
+    public String sendSuperAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendSuperAdminApply");
         System.out.println(apply);
         return "success";
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, email=75066808@qq.com, province=Anhui, address=china, real-name=yuruijing, certificate-no=123456, reason=res, invite-code=2222, time=forever}
-    @RequestMapping(value="/apply/doctor/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/doctor/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addDoctorApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addDoctorApply");
+    public String sendDoctorApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendDoctorApply");
         System.out.println(apply);
         return "success";
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, email=75066808@qq.com, province=Anhui, address=china, real-name=yuruijing, community=cc, reason=res, time=forever}
-    @RequestMapping(value="/apply/citizen/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/citizen/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addCitizenApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addCitizenApply");
+    public String sendCitizenApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendCitizenApply");
         System.out.println(apply);
         return "success";
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, email=75066808@qq.com, province=Anhui, address=china, business-district=bbb, time=forever}
-    @RequestMapping(value="/apply/merchant/add", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/merchant/send", method=RequestMethod.POST)
     @ResponseBody
-    public String addMerchantApply(@RequestBody Map<String, Object> apply) {
-        System.out.println("addMerchantApply");
+    public String sendMerchantApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendMerchantApply");
         System.out.println(apply);
         return "success";
     }
+
+    // {user=HLSSSS, pwd=123, business-district=bbb, shop-name=ffff, reason=ccc, time=forever}
+    @RequestMapping(value="/apply/opening/send", method=RequestMethod.POST)
+    @ResponseBody
+    public String sendOpeningApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendOpeningApply");
+        System.out.println(apply);
+        return "success";
+    }
+
 
     /*type
         Main Admin application
@@ -158,19 +205,19 @@ public class MessageController {
         Area Admin application
         Doctor application
      */
-    @RequestMapping(value="/apply/find/num", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/role/find/num", method=RequestMethod.POST)
     @ResponseBody
-    public int findApplyNum(String username, String function, @RequestParam(value="form-type") String type) {
-        System.out.println("findApplyNum");
+    public int findRoleApplyNum(String username, String function, @RequestParam(value="form-type") String type) {
+        System.out.println("findRoleApplyNum");
         System.out.println(username);
         System.out.println(type);
         return 5;
     }
 
-    @RequestMapping(value="/apply/find/page", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/role/find/page", method=RequestMethod.POST)
     @ResponseBody
-    public List<Map<String, Object>> findApplyPage(String username, String function, @RequestParam(value="form-type") String type, int page) {
-        System.out.println("findApplyPage");
+    public List<Map<String, Object>> findRoleApplyPage(String username, String function, @RequestParam(value="form-type") String type, int page) {
+        System.out.println("findRoleApplyPage");
         System.out.println(username);
         System.out.println(type);
         System.out.println(page);
@@ -184,10 +231,10 @@ public class MessageController {
         return list;
     }
 
-    @RequestMapping(value="/apply/find/content", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/role/find/content", method=RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> findApplyContent(String username, int page, int num, @RequestParam(value="form-type") String type) {
-        System.out.println("findChatContent");
+    public Map<String, Object> findRoleApplyContent(String username, int page, int num, @RequestParam(value="form-type") String type) {
+        System.out.println("findRoleApplyContent");
 
         System.out.println(username);
         System.out.println(page);
@@ -274,11 +321,54 @@ public class MessageController {
         return map;
     }
 
-    // disagree agree
-    @RequestMapping(value="/apply/feedback", method=RequestMethod.POST)
+    @RequestMapping(value="/apply/opening/find/num", method=RequestMethod.POST)
     @ResponseBody
-    public void feedBackApply(String username, String function, @RequestParam(value="form-type") String type, int page, int id, String action) {
-        System.out.println("feedBackApply");
+    public int findOpeningApplyNum(String username, String function) {
+        System.out.println("findOpeningApplyNum");
+        System.out.println(username);
+        return 5;
+    }
+
+    @RequestMapping(value="/apply/opening/find/page", method=RequestMethod.POST)
+    @ResponseBody
+    public List<Map<String, Object>> findOpeningApplyPage(String username, String function, int page) {
+        System.out.println("findOpeningApplyPage");
+        System.out.println(username);
+        System.out.println(page);
+        List<Map<String, Object>> list = new LinkedList<>();
+
+        for (int i = 0;i < 10;i++) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("sender", "zhang" + ((page - 1) * 10 + i));
+            list.add(map);
+        }
+        return list;
+    }
+
+    @RequestMapping(value="/apply/opening/find/content", method=RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> findOpeningApplyContent(String username, int page, int num) {
+        System.out.println("findOpeningApplyContent");
+
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(num);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("user", "opening" + ((page - 1) * 10 + num - 1));
+        map.put("pwd", "123");
+        map.put("business_district", "bbb");
+        map.put("shop_name", "sss");
+        map.put("reason", "rrr");
+        map.put("time", "forever");
+        return map;
+    }
+
+    // disagree agree
+    @RequestMapping(value="/apply/role/feedback", method=RequestMethod.POST)
+    @ResponseBody
+    public void feedBackRoleApply(String username, String function, @RequestParam(value="form-type") String type, int page, int id, String action) {
+        System.out.println("feedBackRoleApply");
         System.out.println(username);
         System.out.println(type);
         System.out.println(page);
@@ -286,5 +376,15 @@ public class MessageController {
         System.out.println(action);
     }
 
+    // disagree agree
+    @RequestMapping(value="/apply/opening/feedback", method=RequestMethod.POST)
+    @ResponseBody
+    public void feedBackOpeningApply(String username, String function, int page, int id, String action) {
+        System.out.println("feedBackOpeningApply");
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(id);
+        System.out.println(action);
+    }
 
 }
