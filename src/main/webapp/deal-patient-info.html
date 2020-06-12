@@ -1214,7 +1214,7 @@
         $("#showforms").show();
         $.ajax({
             type: "post",
-            url: "xxx",
+            url: "/message/medical_help/distribute/find/content",
             datatype: "json",
             data:{"username" : name, "page" : page_num, "num" : id},
             success: function(data){
@@ -1228,7 +1228,7 @@
                 $("#demo-gender-input").val(data.gender);
                 $("#demo-age-input").val(data.age);
                 $("#demo-department-input").val(data.department);
-                $("#demo-textarea-input").val(data.symptoms);
+                $("#demo-textarea-input").val(data.symptom);
             },
             error : function(data){
               console.log("错误！");
@@ -1248,7 +1248,7 @@
             var j=i+1;
             $("#"+j).show();
             $("#username"+j).text(item.sender);
-            $("#title"+j).text(item.derpartment);
+            $("#title"+j).text(item.department);
         });
         while(info_per_page<10){
             info_per_page=info_per_page+1;
@@ -1260,7 +1260,7 @@
     function init_loading_info(){
     $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/medical_help/distribute/find/page",
         datatype: "json",
         data:{"username" : name, "function" : "deal-patient-info", "page" : page_num},
         success: function(data){
@@ -1276,7 +1276,7 @@
     function init_page_num(){
     $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/medical_help/distribute/find/num",
         datatype: "text",
         data:{"username" : name, "function" : "deal-patient-info"},
         success: function(data){
