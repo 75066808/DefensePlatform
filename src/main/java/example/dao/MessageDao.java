@@ -12,7 +12,157 @@ public class MessageDao {
 
 
 
-    public Blogs findBlogs(int blogs_id) {
+    /* public Blogs findBlogs(int blogs_id) {
+         Connection con;
+         String driver = "com.mysql.jdbc.Driver";
+         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+         String seruser = "root";
+         String serpassword = "password";
+         Scanner in=new Scanner(System.in);
+         String sql;
+         ResultSet rs = null;
+         Blogs temp = null;
+         try {
+             // 加载驱动程序
+             Class.forName(driver);
+             // 1.getConnection()方法，连接MySQL数据库！！
+             con = DriverManager.getConnection(url, seruser, serpassword);
+             if (!con.isClosed())
+                 System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+             // 2.创建statement类对象，用来执行SQL语句！！
+             Statement statement = con.createStatement();
+             // 要执行的SQL语句
+
+             sql = "select * from blogs where id = " + blogs_id;
+             rs = statement.executeQuery(sql);
+             statement.executeUpdate(sql);
+             if(rs.next()) temp = new Blogs(rs.getString("title"),rs.getString("content"),rs.getInt("blogs_id"));
+             rs.close();
+             con.close();
+         }
+         catch (ClassNotFoundException e) {
+             // 数据库驱动类异常处理
+             System.out.println("Sorry,can`t find the Driver!");
+             e.printStackTrace();
+         }
+         catch (SQLException e) {
+             // 数据库连接失败异常处理
+             e.printStackTrace();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         finally {
+             System.out.println("完毕！");
+         }
+         return temp;
+     }
+
+     public List<Blogs> findBlogs(String part_content,String part_title,int user_id) {
+         Connection con;
+         String driver = "com.mysql.jdbc.Driver";
+         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+         String seruser = "root";
+         String serpassword = "password";
+         Scanner in=new Scanner(System.in);
+         String sql;
+         ResultSet rs = null;
+         int mes_count = 0;
+         List<Blogs> temp = null;
+         try {
+             // 加载驱动程序
+             Class.forName(driver);
+             // 1.getConnection()方法，连接MySQL数据库！！
+             con = DriverManager.getConnection(url, seruser, serpassword);
+             if (!con.isClosed())
+                 System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+             // 2.创建statement类对象，用来执行SQL语句！！
+             Statement statement = con.createStatement();
+             // 要执行的SQL语句
+
+             sql = "select * from blogs ";
+             sql += "where ";
+             if(part_content!=null) {
+                 if(mes_count != 0){
+                     sql += "and ";
+                 }
+                 sql += "content like %" + part_content +"%";
+             }
+             rs = statement.executeQuery(sql);
+             statement.executeUpdate(sql);
+             rs.close();
+             con.close();
+         }
+         catch (ClassNotFoundException e) {
+             // 数据库驱动类异常处理
+             System.out.println("Sorry,can`t find the Driver!");
+             e.printStackTrace();
+         }
+         catch (SQLException e) {
+             // 数据库连接失败异常处理
+             e.printStackTrace();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         finally {
+             System.out.println("完毕！");
+         }
+         return temp;
+     }
+     public List<Message> findMessages(String to, String type) {
+         return null;
+     }
+
+     public List<Message> findMessages(String from, String to, String type) {
+         return null;
+     }
+
+     public void addblogs(Blogs blog) { // lid is known
+         Connection con;
+         String driver = "com.mysql.jdbc.Driver";
+         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+         String seruser = "root";
+         String serpassword = "password";
+         Scanner in=new Scanner(System.in);
+         String sql;
+         ResultSet rs = null;
+         try {
+             // 加载驱动程序
+             Class.forName(driver);
+             // 1.getConnection()方法，连接MySQL数据库！！
+             con = DriverManager.getConnection(url, seruser, serpassword);
+             if (!con.isClosed())
+                 System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+             // 2.创建statement类对象，用来执行SQL语句！！
+             Statement statement = con.createStatement();
+             // 要执行的SQL语句
+
+             sql = "insert into blogs (title,content,user_id) values ('" + blog.title +"','"+ blog.content +"'," + blog.user_id +")";
+             statement.executeUpdate(sql);
+             con.close();
+         }
+         catch (ClassNotFoundException e) {
+             // 数据库驱动类异常处理
+             System.out.println("Sorry,can`t find the Driver!");
+             e.printStackTrace();
+         }
+         catch (SQLException e) {
+             // 数据库连接失败异常处理
+             e.printStackTrace();
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         finally {
+             System.out.println("完毕！");
+         }
+     }
+ */
+    public invite_code find_invite_code(String code){
+        return null;
+    };
+    public void add_apply_doctor(apply_doctor apply_doctor) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -21,7 +171,6 @@ public class MessageDao {
         Scanner in=new Scanner(System.in);
         String sql;
         ResultSet rs = null;
-        Blogs temp = null;
         try {
             // 加载驱动程序
             Class.forName(driver);
@@ -34,12 +183,97 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "select * from blogs where id = " + blogs_id;
+            sql = "insert into apply_doctor (username,password,phone_number,email,province,address,real_name,certificate,reason,invite_code,checked) values ('" + apply_doctor.username +"','"+ apply_doctor.password +"','" + apply_doctor.phone_number +"','" + apply_doctor.email +"','" + apply_doctor.province+"','" + apply_doctor.address+"','" + apply_doctor.real_name+"','" + apply_doctor.certificate +"','" + apply_doctor.reason+"','" + apply_doctor.invite_code + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+    public void delete_apply_doctor(int doctor_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_doctor where doctor_id = " + doctor_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<apply_doctor> show_apply_doctor() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        apply_doctor temp;
+        List<apply_doctor> list = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from apply_doctor ";
             rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new apply_doctor(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
+                list.add(temp);
+            }
             statement.executeUpdate(sql);
-            if(rs.next()) temp = new Blogs(rs.getString("title"),rs.getString("content"),rs.getInt("blogs_id"));
-            rs.close();
             con.close();
+            return list;
         }
         catch (ClassNotFoundException e) {
             // 数据库驱动类异常处理
@@ -55,19 +289,10 @@ public class MessageDao {
         finally {
             System.out.println("完毕！");
         }
-        return temp;
-    }
-
-
-    public List<Message> findMessages(String to, String type) {
         return null;
     }
 
-    public List<Message> findMessages(String from, String to, String type) {
-        return null;
-    }
-
-    public void addblogs(Blogs blog) { // lid is known
+    public void add_medical_help(medical_help medical_help) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -88,7 +313,7 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into blogs (title,content,user_id) values ('" + blog.title +"','"+ blog.content +"'," + blog.user_id +")";
+            sql = "insert into apply_doctor (username,password,phone_number,province,address,real_name,sex,age,symotoms,checked) values ('" + medical_help.username +"','"+ medical_help.password +"','" + medical_help.phone_number +"','" + medical_help.province +"','" + medical_help.address+"','" + medical_help.real_name+"'," + medical_help.sex + "," + medical_help.age +",'" + medical_help.symotoms + "'," +"0"+")";
             statement.executeUpdate(sql);
             con.close();
         }
@@ -108,6 +333,793 @@ public class MessageDao {
         }
     }
 
+    public void delete_medical_help(int medical_help_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from medical_help where medical_help_id = " + medical_help_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<medical_help> show_medical_help() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        medical_help temp;
+        List<medical_help> list = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from medical_help ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new medical_help(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getString(10),rs.getInt(12));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+    public void add_apply_community(apply_community apply_community) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into apply_community (username,password,phone_number,email,province,address,business_district,reason,invite_code,duration,checked) values ('" + apply_community.username +"','"+ apply_community.password +"','" + apply_community.phone_number +"','" + apply_community.email +"','" + apply_community.province+"','" + apply_community.address+"','" + apply_community.community+"','" + apply_community.reason +"','" + apply_community.invite_code+"','" + apply_community.duration + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void delete_apply_community(int apply_community_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_community where apply_community_id = " + apply_community_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<apply_community> show_apply_community() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        apply_community temp;
+        List<apply_community> list = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from medical_help ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new apply_community(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(12),rs.getInt(13));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+    public void add_apply_commerical(apply_commerical apply_commerical) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into apply_commerical (username,password,phone_number,email,province,address,business_district,reason,invite_code,duration,checked) values ('" + apply_commerical.username +"','"+ apply_commerical.password +"','" + apply_commerical.phone_number +"','" + apply_commerical.email +"','" + apply_commerical.province+"','" + apply_commerical.address+"','" + apply_commerical.business_district+"','" + apply_commerical.reason +"','" + apply_commerical.invite_code+"','" + apply_commerical.duration + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void delete_apply_commerical(int apply_commerical_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_commerical where apply_commerical_id = " + apply_commerical_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<apply_commerical> show_apply_commerical() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        apply_commerical temp;
+        List<apply_commerical> list = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from medical_help ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new apply_commerical(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+    public void add_apply_info(Apply_info apply_info) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into apply_info (username,password,phone_number,email,province,reason,invite_code,duration,checked) values ('" + apply_info.username +"','"+ apply_info.password +"','" + apply_info.phone_number +"','" + apply_info.email +"','" + apply_info.province+"','" + apply_info.reason+"','" + apply_info.invite_code+"','" + apply_info.duration + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<Apply_info> show_Apply_info() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        Apply_info temp;
+        List<Apply_info> list = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from apply_info ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new Apply_info(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+    public void delete_apply_info(int apply_info_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_info where apply_info_id = " + apply_info_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void add_apply_main(Apply_main apply_main) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into apply_main (username,password,phone_number,email,province,address,reason,invite_code,duration,checked) values ('" + apply_main.username +"','"+ apply_main.password +"','" + apply_main.phone_number +"','" + apply_main.email +"','" + apply_main.province+"','" + apply_main.reason+"','" + apply_main.invite_code+"','" + apply_main.duration + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void delete_apply_main(int apply_main_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_main where apply_main_id = " + apply_main_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<Apply_main> show_Apply_main(){
+        return null;
+    };
+
+
+    public void add_apply_citizen(Apply_citizen apply_citizen) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into apply_citizen (username,password,phone_number,email,province,address,realname,community,reason,duration,checked) values ('" + apply_citizen.username +"','"+ apply_citizen.password +"','" + apply_citizen.phone_number +"','" + apply_citizen.email +"','" + apply_citizen.province+"','" + apply_citizen.address+"','" + apply_citizen.real_name+"','" + apply_citizen.community +"','" + apply_citizen.reason +"','" + apply_citizen.duration + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void delete_apply_citizen(int apply_citizen_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_citizen where apply_citizen_id = " + apply_citizen_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<Apply_citizen> show_apply_citizen(){
+        return null;
+    };
+
+
+    public void add_apply_business(Apply_business apply_business) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into apply_business (username,password,phone_number,email,province,address,business_district,duration,checked) values ('" + apply_business.username +"','"+ apply_business.password +"','" + apply_business.phone_number +"','" + apply_business.email +"','" + apply_business.province+"','" + apply_business.address+"','" + apply_business.business_district+"','" + apply_business.duration + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void delete_apply_business(int apply_business_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_business where apply_business_id = " + apply_business_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<Apply_business> show_apply_business(){
+        return null;
+    };
+
+    public void addchat (Chat chat) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        Inquiry temp = null;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into chat (from_id,to_id,content,title) values ("+","+chat.from_name+","+chat.to_name+",'"+chat.content+"','"+chat.title+ "')";
+            statement.executeUpdate(sql);
+
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+/*
     public void addcomments(String content, int user_id, int blogs_id) {   //lid is unknown
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
@@ -483,48 +1495,7 @@ public class MessageDao {
         }
         return temp;
     }
-    public void addchat (Chat chat) { // lid is known
-        Connection con;
-        String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
-        String seruser = "root";
-        String serpassword = "password";
-        Scanner in=new Scanner(System.in);
-        String sql;
-        Inquiry temp = null;
-        ResultSet rs = null;
-        try {
-            // 加载驱动程序
-            Class.forName(driver);
-            // 1.getConnection()方法，连接MySQL数据库！！
-            con = DriverManager.getConnection(url, seruser, serpassword);
-            if (!con.isClosed())
-                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
 
-            // 2.创建statement类对象，用来执行SQL语句！！
-            Statement statement = con.createStatement();
-            // 要执行的SQL语句
-
-            sql = "insert into chat (from_id,to_id,content,time) values ("+","+chat.from_id+","+chat.time+",'"+chat.content+"','"+chat.time+ "')";
-            statement.executeUpdate(sql);
-
-            con.close();
-        }
-        catch (ClassNotFoundException e) {
-            // 数据库驱动类异常处理
-            System.out.println("Sorry,can`t find the Driver!");
-            e.printStackTrace();
-        }
-        catch (SQLException e) {
-            // 数据库连接失败异常处理
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            System.out.println("完毕！");
-        }
-    }
     public void addopening(Openingapp openingapp) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
@@ -647,5 +1618,5 @@ public class MessageDao {
         } finally {
             System.out.println("完毕！");
         }
-    }
+    }*/
 }

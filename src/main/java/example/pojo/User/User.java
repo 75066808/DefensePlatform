@@ -3,26 +3,17 @@ package example.pojo.User;
 public class User {
     public int id;
     public String username;
-    public String address;
-    public int age;
-    public int type;
-    public int supervisor;
-    public int vise_type;
+    public String password;
+    public String real_name;
 
     public User(int id,
                 String username,
-                String address,
-                int age,
-                int type,
-                int supervisor,
-                int vise_type) {
+                String password,
+                String real_name){
 
         this.id = id;
         this.username = username;
-        this.address = address;
-        this.age = age;
-        this.type = type;
-        this.supervisor = supervisor;
-        this.vise_type = vise_type;
+        this.password = password;
+        this.real_name = real_name;
     }
 }
