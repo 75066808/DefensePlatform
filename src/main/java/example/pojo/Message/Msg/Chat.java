@@ -1,22 +1,22 @@
 package example.pojo.Message.Msg;
 
 public class Chat {
-    public int from_id;
-    public int to_id;
+    public int from_name;
+    public int to_name;
     public String content;
-    public String time;//datetime型，八字节
+    public String title;//datetime型，八字节
 
     public Chat(
-            int from_id,
-            int to_id,
+            int from_name,
+            int to_name,
             String content,
-            String time//datetime型，八字节
+            String title
 
     ) {
-        this.from_id = from_id;
-        this.to_id = to_id;
+        this.from_name = from_name;
+        this.to_name = to_name;
         this.content = content;
-        this.time = time;
+        this.title = title;
     }
 
 }
