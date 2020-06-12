@@ -1129,16 +1129,26 @@
                                                     <input name="province" type="text" id="med-address-input" class="form-control" placeholder="Enter your address">
                                                     <small class="help-block">Please enter your address</small>
                                                 </div>
-                                            </div>
-                            
-                                            <!--Textarea-->
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="demo-textarea-input">Your Reason</label>
+                                            </div>                           
+                                            
+                                              <!--real-name-->
+                                              <div class="form-group">
+                                                <label class="col-md-3 control-label" for="demo-address-input">Real name</label>
                                                 <div class="col-md-9">
-                                                    <textarea name="reason" id="med-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                                    <input name="realname" type="text" id="med-realname-input" class="form-control" placeholder="Enter your real name">
+                                                    <small class="help-block">Please enter your realname</small>
                                                 </div>
                                             </div>
-                                            
+
+                                            <!--certificate-no-->
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="demo-address-input">Certificate No</label>
+                                                <div class="col-md-9">
+                                                    <input name="Certificate-no" type="text" id="med-certificate-input" class="form-control" placeholder="Enter your certificat number">
+                                                    <small class="help-block">Please enter your certificat number</small>
+                                                </div>
+                                            </div>
+
                                             <!--Code-->
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="demo-Code-input">Invite Code</label>
@@ -1543,7 +1553,7 @@
     function disagree(){
         $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/feedback",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "disagree"},
         success: function(data){
             alert("拒绝成功！")
@@ -1557,7 +1567,7 @@
     function agree(){
         $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/feedback",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "agree"},
         success: function(data){
             alert("同意成功！")
@@ -1585,7 +1595,7 @@
         $("#page-button").hide();
         $.ajax({
             type: "post",
-            url: "xxx",
+            url: "/message/apply/find/content",
             datatype: "json",
             data:{"username" : name, "page" : page_num, "num" : id,  "form-type" : current_role},
             success: function(data){
@@ -1594,13 +1604,13 @@
                 $("#areaform").show();
                 $("#area-username-input").val(data.user);
                 $("#area-password-input").val(data.pwd);
-                $("#area-phone-input").val(data.phonenum);
+                $("#area-phone-input").val(data.phonenumber);
                 $("#area-email-input").val(data.email);
                 $("#area-province-input").val(data.province);
                 $("#area-address-input").val(data.address);
-                $("#area-community-input").val(data.community-name);
+                $("#area-community-input").val(data.community_name);
                 $("#area-textarea-input").val(data.reason);
-                $("#area-Code-input").val(data.invite-code);
+                $("#area-Code-input").val(data.invite_code);
                 $("#area-time-input").val(data.time);
               }
               else if(current_role=="Commercial Admin application"){
@@ -1611,9 +1621,9 @@
                 $("#comm-email-input").val(data.email);
                 $("#comm-province-input").val(data.province);
                 $("#comm-address-input").val(data.address);
-                $("#comm-commercial-input").val(data.bussiness-district);
+                $("#comm-commercial-input").val(data.business_district);
                 $("#comm-textarea-input").val(data.reason);
-                $("#comm-Code-input").val(data.invite-code);
+                $("#comm-Code-input").val(data.invite_code);
                 $("#comm-time-input").val(data.time);
               }
               else if(current_role=="Doctor application"){
@@ -1624,10 +1634,10 @@
                 $("#doc-email-input").val(data.email);
                 $("#doc-province-input").val(data.province);
                 $("#doc-address-input").val(data.address);
-                $("#doc-name-input").val(data.real-name);
-                $("#doc-no-input").val(data.certificate-no);
+                $("#doc-name-input").val(data.real_name);
+                $("#doc-no-input").val(data.certificate_no);
                 $("#doc-textarea-input").val(data.reason);
-                $("#doc-Code-input").val(data.invite-code);
+                $("#doc-Code-input").val(data.invite_code);
                 $("#doc-time-input").val(data.time);
               }
               else if(current_role=="Info Admin application"){
@@ -1638,7 +1648,7 @@
                 $("#info-email-input").val(data.email);
                 $("#info-province-input").val(data.province);
                 $("#info-textarea-input").val(data.reason);
-                $("#info-Code-input").val(data.invite-code);
+                $("#info-Code-input").val(data.invite_code);
                 $("#info-time-input").val(data.time);
               }
               else if(current_role=="Main Admin application"){
@@ -1650,7 +1660,7 @@
                 $("#main-province-input").val(data.province);
                 $("#main-address-input").val(data.address);
                 $("#main-textarea-input").val(data.reason);
-                $("#main-Code-input").val(data.invite-code);
+                $("#main-Code-input").val(data.invite_code);
                 $("#main-time-input").val(data.time);
               }
               else if(current_role=="Medical Admin application"){
@@ -1661,8 +1671,9 @@
                 $("#med-email-input").val(data.email);
                 $("#med-province-input").val(data.province);
                 $("#med-address-input").val(data.address);
-                $("#med-textarea-input").val(data.reason);
-                $("#med-Code-input").val(data.invite-code);
+                $("#med-certificate-input").val(data.certificate_no);
+                $("#med-realname-input").val(data.real_name);
+                $("#med-Code-input").val(data.invite_code);
                 $("#med-time-input").val(data.time);
               }
             },
@@ -1706,7 +1717,7 @@
     function init_loading_info(){
     $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/find/page",
         datatype: "json",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num},
         success: function(data){
@@ -1726,7 +1737,7 @@
         $("#displayed_message_num").text(page_num);
         $.ajax({
         type: "post",
-        url: "xxx",
+        url: "/message/apply/find/num",
         datatype: "text",
         data:{"username":name, "function": "approval-forms", "form-type":current_role},
         success: function(data){

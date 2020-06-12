@@ -334,7 +334,7 @@
 					            <!--===================================================-->
 					            <!-- END BASIC FORM ELEMENTS -->
                                 <div class="panel-footer text-right">
-                                    <button class="btn btn-success" type="submit">Submit</button>
+                                    <button id="submit_btn" class="btn btn-success" type="submit">Submit</button>
                                 </div>
 					
                             </div>
@@ -718,7 +718,7 @@
         });
 
         $.ajax({
-            url:"###",
+            url:"/message/invite/add",
             type:"post",
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(formObject),
