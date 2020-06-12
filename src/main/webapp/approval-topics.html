@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home | test</title>
+    <title>Approval | Topics</title>
 
 
     <!--STYLESHEET-->
@@ -34,26 +34,7 @@
     <script src="js/nifty.min.js"></script>
 
     
-    <!--=================================================
-
-    REQUIRED
-    You must include this in your project.
-
-    RECOMMENDED
-    This category must be included but you may modify which plugins or components which should be included in your project.
-
-    OPTIONAL
-    Optional plugins. You may choose whether to include it in your project or not.
-
-    DEMONSTRATION
-    This is to be removed, used for demonstration purposes only. This category must not be included in your project.
-
-    SAMPLE
-    Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
-
-    Detailed information and more samples can be found in the document.
-
-    =================================================-->
+   
         
 
 </head>
@@ -72,7 +53,7 @@
                 <!--================================-->
                 <div class="navbar-header">
                      <a href="home.html" class="navbar-brand">
-                        <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+                        <img src="img/logo.png" alt="Logo" class="brand-icon">
                         <div class="brand-title">
                             <span class="brand-text">ZJUSE</span>
                         </div>
@@ -179,7 +160,7 @@
                                     <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
                                     <i class="demo-pli-male ic-user"></i>
                                 </span>
-                                <div id="name_up" class="username hidden-xs">FUCKING NOOB</div>
+                                <div id="name_up" class="username hidden-xs">SE Group</div>
                             </a>
   
                         </li>
@@ -217,8 +198,7 @@
                 <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                 <div id="page-title">
                     <h1 class="page-header text-overflow">
-                        This is your HOME</br>
-                        --Collapsed Navigation
+                        This is your HOME
                     </h1>
 
                     <!--Searchbox-->
@@ -521,7 +501,7 @@
                                             <span class="pull-right dropdown-toggle">
                                                 <i class="dropdown-caret"></i>
                                             </span>
-                                            <p id="name_left" class="mnp-name">FUCKING NOOB</p>
+                                            <p id="name_left" class="mnp-name">SE Group</p>
                                             <span class="mnp-desc">software.engineer@zju.edu.cn</span>
                                         </a>
                                     </div>
@@ -789,11 +769,27 @@
         var num = parseInt(rights);
         //var num = 10101;
         //alert("num:"+ num);
-        if(num%1000 == 0){
+        if(num%10000000 == 0){
             $("#no_rights").show();
         }
         if(num%10 == 0){
+            $("#up_code").hide();
+        }
+        num = Math.floor(num/10);
+        if(num%10 == 0){
             $("#doc_to_p").hide();
+        }
+        num = Math.floor(num/10);
+        if(num%10 == 0){
+            $("#p_info").hide();
+        }
+        num = Math.floor(num/10);
+        if(num%10 == 0){
+            $("#info_check").hide();
+        }
+        num = Math.floor(num/10);
+        if(num%10 == 0){
+            $("#sub-open").hide();
         }
         num = Math.floor(num/10);
         //alert("num/10:"+ num);
@@ -810,9 +806,9 @@
             }
             num = Math.floor(num/10);
             //alert("num/10:"+ num);
-            if(num/10%10 == 0){
-                alert("hide topics");
-                $("#topics").hide();
+            if(num%10 == 0){
+                //alert("hide topics");
+                $("#openapp").hide();
             }
             num = Math.floor(num/10);
         }
