@@ -40,7 +40,7 @@ public class UserDao {
             sql = "select * from users where id = " + user_id;
             rs = statement.executeQuery(sql);
             if(rs.next()){
-                res = new User(rs.getInt("id"),rs.getString("name"),rs.getString("address"),rs.getInt("age"),rs.getInt("type"),0,0);
+                res = new User(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getString("real_name"));
             }
             con.close();
         }
@@ -62,7 +62,7 @@ public class UserDao {
         return res;
     }
 
-    public List<User> findUsers(String adminName, String regionType) {
+    public List<User> findUsers(String username) {
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -85,10 +85,10 @@ public class UserDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "select * from users where " + regionType + " = " +adminName;
+            sql = "select * from users where username" + " = " +username;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new User(rs.getInt("id"),rs.getString("name"),rs.getString("address"),rs.getInt("age"),rs.getInt("type"),0,0);
+                temp = new User(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getString("real_name"));
                 list.add(temp);
             }
             con.close();
@@ -159,7 +159,7 @@ public class UserDao {
         return null;
     }
 
-    public void addUser(User user, String password) {
+    public int addUser(User user) {
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -180,8 +180,13 @@ public class UserDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into users (name,age,address,type,password) values ('" + user.username +"',"+ user.age +",'" + user.address + "'," + user.type+","+"'"+password+"')";
+            sql = "insert into users (username,password,real_name) values ('" + user.username +"',"+ user.password +",'" + user.real_name +"')";
             statement.executeUpdate(sql);
+            sql = "SELECT LAST_INSERT_ID()";
+            rs = statement.executeQuery(sql);
+            if (rs.next()){
+                return  rs.getInt("LAST_INSERT_ID()");
+            }
             con.close();
         }
         catch (ClassNotFoundException e) {
@@ -198,42 +203,43 @@ public class UserDao {
         finally {
             System.out.println("完毕！");
         }
+        return 0;
     }
-/*
-    public void addCitizen(String username, Citizen citizen) {
+    /*
+        public void addCitizen(String username, Citizen citizen) {
 
-    }
+        }
 
-    public void addDoctor(String username, Doctor doctor) {
+        public void addDoctor(String username, Doctor doctor) {
 
-    }
+        }
 
-    public void addMerchant(String username, Merchant merchant) {
+        public void addMerchant(String username, Merchant merchant) {
 
-    }
-
-
-    public void addSuperAdmin(String adminName, SuperAdmin superAdmin) {
-
-    }
-
-    public void addInformationAdmin(String adminName, InformationAdmin informationAdmin) {
-
-    }
-
-    public void addCommunityAdmin(String adminName, CommunityAdmin communityAdmin) {
-
-    }
+        }
 
 
-    public void addMedicalAdmin(String adminName, MedicalAdmin medicalAdmin) {
+        public void addSuperAdmin(String adminName, SuperAdmin superAdmin) {
 
-    }
+        }
 
-    public void addBusinessAdmin(String adminName, BusinessAdmin businessAdmin) {
+        public void addInformationAdmin(String adminName, InformationAdmin informationAdmin) {
 
-    }
-*/
+        }
+
+        public void addCommunityAdmin(String adminName, CommunityAdmin communityAdmin) {
+
+        }
+
+
+        public void addMedicalAdmin(String adminName, MedicalAdmin medicalAdmin) {
+
+        }
+
+        public void addBusinessAdmin(String adminName, BusinessAdmin businessAdmin) {
+
+        }
+    */
     public void modifyPassword(int user_id, String password) {
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
