@@ -518,170 +518,327 @@
                 <!--===================================================-->
                 <div id="page-content">
                     
-					<div class="row">
+                    <div id="info_list" class="panel">
+                        <div id="demo-email-list" class="panel-body">
+                            <div>
+                                <div class=" pad-all bord-btm">
+                                    <h1 class="page-header text-overflow pad-btm">Your Patient Info</h1>                      
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-7">
+            
+                                </div>
+                                <hr class="hr-sm visible-xs">
+                                <div class="col-sm-5 clearfix">
+                                    <div class="pull-right">
+            
+                                        <!--翻页按钮-->
+                                        <span class="text-muted">
+                                            <strong id="displayed_message_num"></strong>
+                                            of
+                                            <strong id="message_num"></strong>
+                                        </span>
+                                        <div class="btn-group btn-group">
+                                            <button class="btn btn-sm btn-default" type="button" id="left-page">
+                                                <i class="demo-psi-arrow-left" id="left_arrow"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-default" type="button" id="right-page">
+                                                <i class="demo-psi-arrow-right" id="right_arrow"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="hr-sm">
+            
+                            <!--Mail list group-->
+                            <ul id="demo-mail-list" class="mail-list">
+					
+                                <!--Mail list item-->
+                                <li id="1" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username1" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title1" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+            
+                                <!--Mail list item-->
+                                <li id="2" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username2" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title2" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                
+                                <!--Mail list item-->
+                                <li id="3" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username3" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title3" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                <!--Mail list item-->
+                                <li id="4" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username4" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title4" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                <!--Mail list item-->
+                                <li id="5" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username5" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title5" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                <!--Mail list item-->
+                                <li id="6" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username6" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title6" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                <!--Mail list item-->
+                                <li id="7" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username7" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title7" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                <!--Mail list item-->
+                                <li id="8" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username8" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title8" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                <!--Mail list item-->
+                                <li id="9" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username9" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title9" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                <!--Mail list item-->
+                                <li id="10" class="mail-starred mail-list-unread" onclick="show_msg(this.id)">
+                                   
+                                    <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                    <div class="mail-from"><a id="username10" href="#"></a></div>
+                                    <div class="mail-time">
+                                        <span href="javascript:void(0);"  class="label label-danger">
+                                        查看
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mail-subject">
+                                        <a id="title10" href="javascript:void(0);"></a>
+                                    </div>
+                                </li>
+                                
+                               
+                            </ul>
+                        </div>
+                        
+            
+                        
+                        
+                    </div>
+                    <div class="col-md-3">
+
+                    </div> 
+                    <div id="showforms" class="row" hidden>
                         <div class="col-lg-3">
 
                         </div>
-					    <div class="col-lg-6">
-					        <div class="panel">
-					            <div class="panel-heading">
-					                <h3 class="panel-title">Medical Help</h3>
-					            </div>
-					
-					
-					            <!-- BASIC FORM ELEMENTS -->
-					            <!--===================================================-->
-					            <form class="panel-body form-horizontal form-padding" id="info-form">
-					
-					                <!--Static-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label">Username</label>
-					                    <div class="col-md-9">
-					                        <input type="text" id="demo-username-input" class="form-control" placeholder="Username" name="user">
-					                        <small class="help-block">Please enter username for verify</small>
-					                    </div>
-					                </div>
+                        <div class="col-lg-6">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Forms</h3>
+                                </div>
+                    
+                    
+                                <!-- BASIC FORM ELEMENTS -->
+                                <!--===================================================-->
+                                <form class="panel-body form-horizontal form-padding" id="info-form">
+            
+                                    <!--Static-->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Username</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="demo-username-input" class="form-control" placeholder="Username" name="user">
+                                            <small class="help-block">Please enter username for verify</small>
+                                        </div>
+                                    </div>
                                     
                                     <!--Password-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-password-input">Password</label>
-					                    <div class="col-md-9">
-					                        <input type="password" id="demo-password-input" class="form-control" placeholder="Password" name="pwd">
-					                        <small class="help-block">Please enter password for verify</small>
-					                    </div>
-					                </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-password-input">Password</label>
+                                        <div class="col-md-9">
+                                            <input type="password" id="demo-password-input" class="form-control" placeholder="Password" name="pwd">
+                                            <small class="help-block">Please enter password for verify</small>
+                                        </div>
+                                    </div>
                                     
-					                <!--Text Input-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
-					                    <div class="col-md-9">
-					                        <input name="phonenumber" type="text" id="demo-phone-input" class="form-control" placeholder="Enter your phone number">
-					                        <small class="help-block">Please enter your phone number</small>
-					                    </div>
-					                </div>
-					
-					
-					                <div class="panel-body">
-                                        <label class="col-md-3 control-label text-main text-bold mar-no" >Select Province</label>
-					                    <div class="col-md-9">
-					                        
-                                            <!-- Default choosen -->
-                                            <!--===================================================-->
-                                            <select name="province" data-placeholder="Choose Province " id="demo-chosen-select" tabindex="2">
-                                                <option value="Anhui">安徽省</option>
-                                                <option value="Fujian">福建省</option>
-                                                <option value="Gansu">甘肃省</option>
-                                                <option value="Guangdong">广东省</option>
-                                                <option value="Guizhou">贵州省</option>
-                                                <option value="Hainan">海南省</option>
-                                                <option value="Hebei">河北省</option>
-                                                <option value="Henan">河南省</option>
-                                                <option value="Heilongjiang">黑龙江省</option>
-                                                <option value="Hubei">湖北省</option>
-                                                <option value="Hunan">湖南省</option>
-                                                <option value="Jilin">吉林省</option>
-                                                <option value="Jiangsu">江苏省</option>
-                                                <option value="Jiangxi">江西省</option>
-                                                <option value="Liaoning">辽宁省</option>
-                                                <option value="Qinghai">青海省</option>
-                                                <option value="Shandong">山东省</option>
-                                                <option value="Shanxi">山西省</option>
-                                                <option value="Shanx">陕西省</option>
-                                                <option value="Sichuan">四川省</option>
-                                                <option value="Taiwan">台湾省</option>
-                                                <option value="Yunnan">云南省</option>
-                                                <option value="Zhejiang">浙江省</option>
-                                                <option value="Beijing">北京市</option>
-                                                <option value="Tianjin">天津市</option>
-                                                <option value="Shanghai">上海市</option>
-                                                <option value="Chongqing">重庆市</option>
-                                                <option value="Neimeng">内蒙古</option>
-                                                <option value="Guangxi">广西</option>
-                                                <option value="Xizang">西藏</option>
-                                                <option value="Ningxia">宁夏</option>
-                                                <option value="Xinjiang">新疆</option>
-                                                <option value="Hong Kong">香港</option>
-                                                <option value="Aomen">澳门</option>
-                                                
-                                            </select>
-					                    </div>
-
+                                    <!--Text Input-->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-text-input">Phone Number Input</label>
+                                        <div class="col-md-9">
+                                            <input name="phonenumber" type="text" id="demo-phone-input" class="form-control" placeholder="Enter your phone number">
+                                            <small class="help-block">Please enter your phone number</small>
+                                        </div>
+                                    </div>
+                    
+                    
+                                    <div class="panel-body">
+                                        <label class="col-md-3 control-label" for="demo-text-input">Province Input</label>
+                                        <div class="col-md-9">
+                                            <input name="province" type="text" id="demo-province-input" class="form-control" placeholder="Enter your phone number">
+                                            <small class="help-block">Please enter your province</small>
+                                        </div>
                                         <!--===================================================-->
                                     </div>
                     
                                     <!--Address-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-address-input">Address</label>
-					                    <div class="col-md-9">
-					                        <input name="address" type="text" id="demo-address-input" class="form-control" placeholder="Enter your address">
-					                        <small class="help-block">Please enter your address</small>
-					                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-address-input">Address</label>
+                                        <div class="col-md-9">
+                                            <input name="address" type="text" id="demo-address-input" class="form-control" placeholder="Enter your address">
+                                            <small class="help-block">Please enter your address</small>
+                                        </div>
                                     </div>
                                     
                                     <!--Real Name-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-name-input">Real Name</label>
-					                    <div class="col-md-9">
-					                        <input name="realname" type="text" id="demo-name-input" class="form-control" placeholder="Enter your Name">
-					                        <small class="help-block">Please enter your real name for doctor is something issue</small>
-					                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-name-input">Real Name</label>
+                                        <div class="col-md-9">
+                                            <input name="realname" type="text" id="demo-realname-input" class="form-control" placeholder="Enter your Name">
+                                            <small class="help-block">Please enter your real name for doctor is something issue</small>
+                                        </div>
                                     </div>
                                     
                                     <div class="form-group pad-ver">
-					                    <label class="col-md-3 control-label">性别</label>
-					                    <div class="col-md-9">
-					
-					                        <!-- Radio Buttons -->
-					                        <div class="radio">
-					                            <input name="gender" value="male" id="demo-form-radio" class="magic-radio" type="radio" checked>
-					                            <label for="demo-form-radio">男</label>
-					                        </div>
-					                        <div class="radio">
-					                            <input name="gender" value="female" id="demo-form-radio-2" class="magic-radio" type="radio" >
-					                            <label for="demo-form-radio-2">女</label>
-					                        </div>
-					
-					                    </div>
-					                </div>
+                                        <label class="col-md-3 control-label" for="demo-text-input">Gender input</label>
+                                        <div class="col-md-9">
+                                            <input name="gender" type="text" id="demo-gender-input" class="form-control" placeholder="Enter your gender">
+                                            <small class="help-block">Please enter your gender</small>
+                                        </div>
+                                    </div>
 
                                     <!--Age-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-age-input">Age</label>
-					                    <div class="col-md-9">
-					                        <input name="age" type="text" id="demo-commercial-input" class="form-control" placeholder="Enter your age">
-					                        <small class="help-block">Please enter your age</small>
-					                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-age-input">Age</label>
+                                        <div class="col-md-9">
+                                            <input name="age" type="text" id="demo-age-input" class="form-control" placeholder="Enter your age">
+                                            <small class="help-block">Please enter your age</small>
+                                        </div>
                                     </div>
                                     
                                      <!--Real Name-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-name-input">挂号科室</label>
-					                    <div class="col-md-9">
-					                        <input name="department" type="text" id="demo-department-input" class="form-control" placeholder="输入挂号科室">
-					                        <small class="help-block">Please enter your department/small>
-					                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-name-input">挂号科室</label>
+                                        <div class="col-md-9">
+                                            <input name="department" type="text" id="demo-department-input" class="form-control" placeholder="输入挂号科室">
+                                            <small class="help-block">Please enter your department/small>
+                                        </div>
                                     </div>
 
-					                <!--Textarea-->
-					                <div class="form-group">
-					                    <label class="col-md-3 control-label" for="demo-textarea-input">Your Symptoms</label>
-					                    <div class="col-md-9">
-					                        <textarea name="symptom" id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
-					                    </div>
-					                </div>
-                                    
-                                    <div class="panel-footer text-right">
-                                        <button id="submit_btn" class="btn btn-success" type="submit">Submit</button>
+                                    <!--Textarea-->
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="demo-textarea-input">Your Symptoms</label>
+                                        <div class="col-md-9">
+                                            <textarea name="symptom" id="demo-textarea-input" rows="9" class="form-control" placeholder="Your content here.."></textarea>
+                                        </div>
                                     </div>
-					            </form>
-					            <!--===================================================-->
-					            <!-- END BASIC FORM ELEMENTS -->
-                                
-					
+
+
+                                </form>
+                                <!--===================================================-->
+                                <!-- close 按钮 -->
+                                <div class="panel-footer text-right">
+                                    
+                                    <label class="col-md-3 control-label"></label>
+                                    <div class="panel-footer text-right">
+                                        <button class="btn btn-danger btn-rounded" onclick="show_list()">Close</button>
+                                    </div>
+                                </div>
+                    
                             </div>
-					    </div>
-					</div>
-					
+                        </div>
+                    </div>
+
 					
                 </div>
                 <!--===================================================-->
@@ -981,6 +1138,12 @@
 
 <script type="text/javascript">
     var para_to_pass="USER1%10000";
+    var name=""
+    var page_num=1;
+    var info_per_page=0;
+    var total_page_num=1;
+    var which_info=0;
+
     function do_hide(rights){
         var num = parseInt(rights);
         //var num = 10101;
@@ -1006,7 +1169,7 @@
             }
             num = Math.floor(num/10);
             //alert("num/10:"+ num);
-            if(num/10%10 == 0){
+            if(num%10 == 0){
                 alert("hide topics");
                 $("#topics").hide();
             }
@@ -1044,33 +1207,115 @@
     /*用window.onload调用myfun()*/　
     　
     // 不要括号
+    function show_msg(id){
+        which_info=id;
+        $("#demo-mail-list").hide();
+        $("#page-button").hide();
+        $("#showforms").show();
+        $.ajax({
+            type: "post",
+            url: "xxx",
+            datatype: "json",
+            data:{"username" : name, "page" : page_num, "num" : id},
+            success: function(data){
+                console.log(data);
+                $("#demo-username-input").val(data.user);
+                $("#demo-password-input").val(data.pwd);
+                $("#demo-phone-input").val(data.phonenumber);
+                $("#demo-province-input").val(data.province);
+                $("#demo-address-input").val(data.address);
+                $("#demo-realname-input").val(data.realname);
+                $("#demo-gender-input").val(data.gender);
+                $("#demo-age-input").val(data.age);
+                $("#demo-department-input").val(data.department);
+                $("#demo-textarea-input").val(data.symptoms);
+            },
+            error : function(data){
+              console.log("错误！");
+            }
+        });
+    }
+
+    function show_list(){
+        $("#demo-mail-list").show();
+        $("#page-button").show();
+        $("#showforms").hide();
+    }
+
+    function refresh_list(data){
+        $.each(data, function(i, item){
+            info_per_page=info_per_page+1;
+            var j=i+1;
+            $("#"+j).show();
+            $("#username"+j).text(item.sender);
+            $("#title"+j).text(item.derpartment);
+        });
+        while(info_per_page<10){
+            info_per_page=info_per_page+1;
+            $("#"+info_per_page).hide();
+        }
+        info_per_page=0;
+    }
+    
+    function init_loading_info(){
+    $.ajax({
+        type: "post",
+        url: "xxx",
+        datatype: "json",
+        data:{"username" : name, "function" : "deal-patient-info", "page" : page_num},
+        success: function(data){
+            console.log(data);
+            refresh_list(data);
+        },
+        error : function(data){
+            console.log("错误！");
+        }
+    });
+    }
+
+    function init_page_num(){
+    $.ajax({
+        type: "post",
+        url: "xxx",
+        datatype: "text",
+        data:{"username" : name, "function" : "deal-patient-info"},
+        success: function(data){
+            console.log(data);
+            total_page_num=parseInt(data);
+            $("#message_num").text(total_page_num);
+            init_loading_info();
+        },
+        error : function(data){
+            console.log("错误！");
+        }
+    });
+    }
+
+    $("#left-page").click(function() {
+        if(page_num>1){
+            page_num=page_num-1;
+            $("#displayed_message_num").text(page_num);
+            init_loading_info();
+        }
+    });
+
+    $("#right-page").click(function() {
+        if(page_num<total_page_num){
+            page_num=page_num+1;
+            $("#displayed_message_num").text(page_num);
+            init_loading_info();
+        }
+    });
+
     window.onload = function(){
         //myfun();
         //do_hide("10000"); 
         //name_replace();
         Do();
+        init_page_num();
+        $("#displayed_message_num").text(page_num);
+        $("#message_num").text(total_page_num);
     }
-
-    $("#submit_btn").click(function() {
-        var formObject = {};
-        var formArray =$("#info-form").serializeArray();
-        $.each(formArray,function(i,item){
-            formObject[item.name] = item.value;
-        });
-
-        $.ajax({
-            url:"###",
-            type:"post",
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(formObject),
-            success:function(data){
-                alert("提交成功！");
-            },
-            error:function(data){
-                alert("错误！！");
-            }
-        });
-    });
 
 </script>
     
