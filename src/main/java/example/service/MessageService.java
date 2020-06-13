@@ -69,7 +69,7 @@ public class MessageService {
         String code = apply.invite_code;
         invite_code check = messageDao.find_invite_code(code);
         //TO DO:...
-        if(check.type == 0){
+        if(check.type == 2){
             messageDao.add_apply_community(apply);
             return true;
         }
@@ -79,7 +79,7 @@ public class MessageService {
     public boolean sendCommercialAdminApply(apply_commerical apply) {
         String code = apply.invite_code;
         invite_code check = messageDao.find_invite_code(code);
-        if(check.type == 0){
+        if(check.type == 3){
             messageDao.add_apply_commerical(apply);
             return true;
         }
@@ -89,7 +89,7 @@ public class MessageService {
     public boolean sendMedicalAdminApply(Apply_medical_admin apply) {
         String code = apply.invite_code;
         invite_code check = messageDao.find_invite_code(code);
-        if(check.type == 0){
+        if(check.type == 5){
             messageDao.add_apply_medical_admin(apply);
             return true;
         }
@@ -99,7 +99,7 @@ public class MessageService {
     public boolean sendInformationAdminApply(Apply_info apply) {
         String code = apply.invite_code;
         invite_code check = messageDao.find_invite_code(code);
-        if(check.type == 0){
+        if(check.type == 1){
             messageDao.add_apply_info(apply);
             return true;
         }
@@ -119,7 +119,7 @@ public class MessageService {
     public boolean sendDoctorApply(apply_doctor apply) {
         String code = apply.invite_code;
         invite_code check = messageDao.find_invite_code(code);
-        if(check.type == 0){
+        if(check.type == 4){
             messageDao.add_apply_doctor(apply);
             return true;
         }
@@ -356,7 +356,7 @@ public class MessageService {
 
     public int findOpeningApplyNum(String username) {
         String district = isBusiness(username);
-        if (district ==  null)
+        if (district == null)
             return 0;
         openingApplyList = findOpeningApply(district);
         return openingApplyList.size()/10 + 1;
