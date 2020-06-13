@@ -8,12 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import example.pojo.Message.Msg.*;
 import example.pojo.User.Admin.BusinessAdmin;
+import example.pojo.User.Admin.CommunityAdmin;
 import example.pojo.User.Admin.SuperAdmin;
 import example.pojo.User.Ordinary.Business_man;
 import example.pojo.User.Ordinary.Citizen;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class MessageService {
@@ -121,7 +126,7 @@ public class MessageService {
             if(tmp.username.equals(username))
                 return false;
         }
-        Citizen newcitizen = new Citizen(apply.username, apply.password, apply.phone_number, 
+        Citizen newcitizen = new Citizen(0, apply.username, apply.password, apply.phone_number, 
         apply.email, apply.province, apply.address, apply.real_name, apply.community, apply.reason, apply.duration);
 
         userDao.add_citizen(newcitizen);
@@ -137,7 +142,7 @@ public class MessageService {
             if(tmp.username.equals(username))
                 return false;
         }
-        Business_man newmerchant = new Business_man(username, apply.password, apply.phone_number, apply.email, 
+        Business_man newmerchant = new Business_man(0, username, apply.password, apply.phone_number, apply.email, 
         apply.province, apply.address, apply.business_district, apply.duration)
 
         userDao.add_business_man(newmerchant);
@@ -320,24 +325,146 @@ public class MessageService {
         return applylist.get((page - 1) * 10 + num - 1);
     }
 
-    public int findOpeningApplyNum(String username, String function) {
-        System.out.println("findOpeningApplyNum");
-        System.out.println(username);
-        return 5;
+    public int findOpeningApplyNum(String username) {
+        String district = isBusiness(username);
+        if (district ==  null)
+            return 0;
+
+        List<Apply_opening> applylist = findOpeningApply(district);
+        return applylist.size()/10 + 1;
+
     }
 
+    public List<Apply_opening> findOpeningApplyPage(String username, int page) {
+        String district = isBusiness(username);
+        if (district ==  null)
+            return null;
+
+        List<Apply_opening> applylist = findOpeningApply(district);
+        List<Apply_opening> newlist = new ArrayList<Apply_opening>();
+        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
+            newlist.add(applylist.get(i));
+        }
+        return newlist;
+    }
+
+    public Apply_opening findOpeningApplyContent(String username, int page, int num) {
+        String district = isBusiness(username);
+        if (district ==  null)
+            return null;
+
+        List<Apply_opening> applylist = findOpeningApply(district);
+        return applylist.get((page - 1) * 10 + num - 1);
+    }
+
+    public void sendReport(submission report) {
+        report.sub_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).substring(0, 10);
+        messageDao.add_submission(report);
+        // a message to community admin if innormal
+    }
+
+
+    public Map<String, Object> findReport(String username) {
+        String community = isCommunity(username);
+        Map<String, Object> map = new HashMap<>();
+        if(community == null)
+            return map;
+        List<submission> sublist = messageDao.show_submission();
+        submission tmp;
+        String ctime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).substring(0, 10);
+        int cyear = Integer.valueOf(ctime.substring(0, 4));
+        int cmonth = Integer.valueOf(ctime.substring(5, 7));
+        int cday = Integer.valueOf(ctime.substring(8, 10));
+
+        List<String> total_people = totalCommunity(community);
+        int t_reported = 0,  y_reported = 0;
+        int t_normal = 0, y_normal = 0;
+
+        for (int i = 0; i < sublist.size(); i++){
+            tmp = sublist.get(i);
+            String time = tmp.sub_date;
+            int year = Integer.valueOf(time.substring(0, 4));
+            int month = Integer.valueOf(time.substring(5, 7));
+            int day = Integer.valueOf(time.substring(8, 10));
+            if(cyear == year && cmonth == month && cday == day && total_people.contains(tmp.username)){
+
+
+            }
+            //Further improvent: yesterday calculation
+            else if(cyear == year && cmonth == month && cday == day && total_people.contains(tmp.username)){
+                
+
+            }
+        }
+        map.put("today_total_people", total_people.size());
+        map.put("yesterday_total_people", total_people.size());
+        map.put("today_reported", t_reported);
+        map.put("yesterday_reported", y_reported);
+        map.put("today_not_reported", total_people.size() - t_reported);
+        map.put("yesterday_not_reported", total_people.size() - y_reported);
+        map.put("today_unnormal", t_reported - t_normal);
+        map.put("yesterday_unnormal", y_reported - y_normal);
+        map.put("today_normal", t_normal);
+        map.put("yesterday_normal", y_normal);
+        return map;
+    }
+    
+    //Improvement: return a list of district
     String isBusiness(String username){
         List<BusinessAdmin> adminlist = userDao.show_business_admin();
-        SuperAdmin tmp = null;
+        BusinessAdmin tmp = null;
         int i = 0;
+        String district = null;
         for (; i < adminlist.size(); i++){
             tmp = adminlist.get(i);
-            if(tmp.username.equals(username))
+            if(tmp.username.equals(username)){
+                district = tmp.business_district;
                 break;
+            }
         }
-        if(i == adminlist.size())
-            return false;
-        else return true;
+        return district;
+    }
+
+    String isCommunity(String username){
+        List<CommunityAdmin> adminlist = userDao.show_community_admin();
+        CommunityAdmin tmp = null;
+        int i = 0;
+        String community = null;
+        for (; i < adminlist.size(); i++){
+            tmp = adminlist.get(i);
+            if(tmp.username.equals(username)){
+                community = tmp.community;
+                break;
+            }
+        }
+        return community;
+    }
+
+    List<String> totalCommunity(String community){
+        List<Citizen> ctzlist = userDao.show_citizen();
+        List<String> newlist = new ArrayList<String>();
+        Citizen tmp = null;
+        int num = 0;
+        for (int i = 0; i < ctzlist.size(); i++){
+            tmp = ctzlist.get(i);
+            if(tmp.community.equals(community)){
+                newlist.add(tmp.username);
+            }
+        }
+        return newlist;
+    }
+
+    List<Apply_opening> findOpeningApply(String district){
+        List<Apply_opening> applylist = messageDao.show_apply_opening();
+        List<Apply_opening> newlist = new ArrayList<Apply_opening>();
+        Apply_opening tmp = null;
+        for (int i = 0; i < applylist.size(); i++){
+            tmp = applylist.get(i);
+            if(tmp.business_district.equals(district)){
+                newlist.add(applylist.get(i));
+            }
+        }
+        return newlist;
     }
 
 
