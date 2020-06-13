@@ -6,7 +6,7 @@ public class Message {
 
     public String type;
     public Object message;
-
+/*
     public Message(Blogs blogs) {
         this.type = "blogs";
         this.message = blogs;
@@ -25,5 +25,5 @@ public class Message {
     public Message(Inquiry inquiry) {
         this.type = "inquiry";
         this.message = inquiry;
-    }
+    }*/
 }
