@@ -11,6 +11,7 @@ public class Apply_opening {
     public String password;
     public String business_district;
     public String shop_name;
+    public String reason;
     public int duration;
     public int checked;
 
@@ -21,6 +22,7 @@ public class Apply_opening {
             String password,
             String business_district,
             String shop_name,
+            String reason,
             int duration,
             int checked
     ) {
@@ -29,6 +31,7 @@ public class Apply_opening {
         this.password = password;
         this.business_district = business_district;
         this.shop_name = shop_name;
+        this.reason = reason;
         this.duration = duration;
         this.checked = checked;
     }

@@ -16,6 +16,7 @@ public class Apply_medical_admin {
     public String real_name;
     public String certificate;
     public String invite_code;
+    public int duration;
     public int checked;
 
 
@@ -30,6 +31,7 @@ public class Apply_medical_admin {
             String real_name,
             String certificate,
             String invite_code,
+            int duration,
             int checked
     ) {
         this.medical_admin_id = medical_admin_id;
@@ -42,6 +44,7 @@ public class Apply_medical_admin {
         this.real_name = real_name;
         this.certificate = certificate;
         this.invite_code = invite_code;
+        this.duration = duration;
         this.checked = checked;
     }
 
