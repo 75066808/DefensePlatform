@@ -11,6 +11,7 @@ public class Apply_opening {
     public String password;
     public String business_district;
     public String shop_name;
+    public String reason;
     public int duration;
     public int checked;
 
@@ -21,6 +22,7 @@ public class Apply_opening {
             String password,
             String business_district,
             String shop_name,
+            String reason,
             int duration,
             int checked
     ) {
@@ -29,11 +31,12 @@ public class Apply_opening {
         this.password = password;
         this.business_district = business_district;
         this.shop_name = shop_name;
+        this.reason = reason;
         this.duration = duration;
         this.checked = checked;
     }
 
-    /*
+
     // {user=HLSSSS, pwd=123, business-district=bbb, shop-name=ffff, reason=ccc, time=forever}
     public static Apply_opening convertMapToClass(Map<String, Object> map) {
         return new Apply_opening(
@@ -42,7 +45,7 @@ public class Apply_opening {
                 (String)map.get("pwd"),
                 (String)map.get("business-district"),
                 (String)map.get("shop-name"),
-                (String)map.get("reason"),
+                // (String)map.get("reason"),
                 Converter.durationMap.get((String)map.get("time")),
                 0
         );
@@ -58,5 +61,5 @@ public class Apply_opening {
         map.put("time", Converter.durationReverseMap.get(apply.duration));
         return map;
     }
-    */
+
 }

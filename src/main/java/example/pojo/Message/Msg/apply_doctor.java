@@ -65,7 +65,7 @@ public class apply_doctor {
                 (String)map.get("certificate-no"),
                 (String)map.get("reason"),
                 (String)map.get("invite-code"),
-                //Converter.durationMap.get((String)map.get("time")),
+                Converter.durationMap.get((String)map.get("time")),
                 0
         );
     }
@@ -82,7 +82,7 @@ public class apply_doctor {
         map.put("certificate_no", apply.certificate);
         map.put("reason", apply.reason);
         map.put("invite_code", apply.invite_code);
-        // map.put("time", Converter.durationReverseMap.get(apply.duration));
+        map.put("time", Converter.durationReverseMap.get(apply.duration));
         return map;
     }
 }

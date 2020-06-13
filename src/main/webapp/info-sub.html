@@ -805,8 +805,15 @@
     $("#submit_btn").click(function() {
         var formObject = {};
         var formArray =$("#info-form").serializeArray();
+        var symp_number=0;
         $.each(formArray,function(i,item){
-            formObject[item.name] = item.value;
+            if(item.name=="symptom"){
+                formObject[item.name+symp_number] = item.value;
+                symp_number=symp_number+1;
+            }
+            else{
+                formObject[item.name] = item.value;
+            }
         });
 
         $.ajax({
@@ -822,6 +829,7 @@
             }
         });
     });
+
 </script>
     
     

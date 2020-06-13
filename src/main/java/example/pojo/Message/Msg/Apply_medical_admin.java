@@ -16,6 +16,7 @@ public class Apply_medical_admin {
     public String real_name;
     public String certificate;
     public String invite_code;
+    public int duration;
     public int checked;
 
 
@@ -30,6 +31,7 @@ public class Apply_medical_admin {
             String real_name,
             String certificate,
             String invite_code,
+            int duration,
             int checked
     ) {
         this.medical_admin_id = medical_admin_id;
@@ -42,10 +44,11 @@ public class Apply_medical_admin {
         this.real_name = real_name;
         this.certificate = certificate;
         this.invite_code = invite_code;
+        this.duration = duration;
         this.checked = checked;
     }
 
-    /*
+
     // {user=HLSSSS, pwd=123, phonenumber=2222, email=75066808@qq.com, province=Anhui, address=china, real-name=yuruijing, certificate-no=123456, invite-code=2222, time=forever}
     public static Apply_medical_admin convertMapToClass(Map<String, Object> map) {
         return new Apply_medical_admin(
@@ -59,7 +62,7 @@ public class Apply_medical_admin {
                 (String)map.get("real-name"),
                 (String)map.get("certificate-no"),
                 (String)map.get("invite-code"),
-                Converter.durationMap.get((String)map.get("time")),
+                //Converter.durationMap.get((String)map.get("time")),
                 0
         );
     }
@@ -72,10 +75,10 @@ public class Apply_medical_admin {
         map.put("email", apply.email);
         map.put("province", apply.province);
         map.put("address", apply.address);
-        map.put("business_district", apply.business_district);
-        map.put("reason", apply.reason);
+        map.put("real-name", apply.real_name);
+        map.put("certificate_no", apply.certificate);
         map.put("invite_code", apply.invite_code);
-        map.put("time", Converter.durationReverseMap.get(apply.duration));
+        map.put("time", "forever");
         return map;
-    }*/
+    }
 }
