@@ -1649,8 +1649,136 @@ public class MessageDao {
         return null;
     };
 
+    public void add_submission(submission submission) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
 
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
 
+            sql = "insert into submission (submission_id, username, password, province, address, real_name, situation, color, checked) values ('" + submission.username +"','"+ submission.password +"','" + submission.province +"','" + submission.address+"','" + submission.real_name+"'," + submission.situation + "," + submission.color +","  +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void delete_submission(int submission_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from submission where submission_id = " + submission_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<submission> show_submission(){
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        submission temp;
+        List<submission> list = new ArrayList<submission>();
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from submission ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new submission(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    };
 /*
     public void addcomments(String content, int user_id, int blogs_id) {   //lid is unknown
         Connection con;
