@@ -1,14 +1,14 @@
 package example.pojo.Message.Msg;
 
 public class Chat {
-    public int from_name;
-    public int to_name;
+    public String from_name;
+    public String to_name;
     public String content;
     public String title;//datetime型，八字节
 
     public Chat(
-            int from_name,
-            int to_name,
+            String from_name,
+            String to_name,
             String content,
             String title
 

@@ -8,7 +8,7 @@ public class Apply_opening {
     public String province;
     public String address;
     public String business_district;
-    public String duration;
+    public int duration;
     public int checked;
 
 
@@ -20,7 +20,7 @@ public class Apply_opening {
             String province,
             String address,
             String business_district,
-            String duration,
+            int duration,
             int checked
     ) {
         this.username = username;

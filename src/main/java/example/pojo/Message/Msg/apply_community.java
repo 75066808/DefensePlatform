@@ -10,7 +10,7 @@ public class apply_community {
     public String community;
     public String reason;
     public String invite_code;
-    public String duration;
+    public int duration;
     public int checked;
 
 
@@ -24,7 +24,7 @@ public class apply_community {
             String community,
             String reason,
             String invite_code,
-            String duration,
+            int duration,
             int checked
     ) {
         this.username = username;
