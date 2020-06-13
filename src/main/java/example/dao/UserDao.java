@@ -366,7 +366,7 @@ public class UserDao {
         }
     }
 
-    List<BusinessAdmin> show_businessadmin() { // lid is known
+    public List<BusinessAdmin> show_businessadmin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -415,7 +415,7 @@ public class UserDao {
         return null;
     }
 
-    List<Business_man> show_business_man(){
+    public List<Business_man> show_business_man(){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -546,7 +546,7 @@ public class UserDao {
         }
     }
 
-    List<Citizen> show_citizen() { // lid is known
+    public List<Citizen> show_citizen() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -595,7 +595,7 @@ public class UserDao {
         return null;
     }
 
-    List<CommunityAdmin> show_communityadmin() { // lid is known
+    public List<CommunityAdmin> show_communityadmin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -726,7 +726,7 @@ public class UserDao {
         }
     }
 
-    List<Doctor> show_doctor() { // lid is known
+    public List<Doctor> show_doctor() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -857,7 +857,7 @@ public class UserDao {
         }
     }
 
-    List<MedicalAdmin> show_medical_admin() { // lid is known
+    public List<MedicalAdmin> show_medical_admin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -990,7 +990,7 @@ public class UserDao {
         }
     }
 
-    List<InformationAdmin> show_informationadmin() { // lid is known
+    public List<InformationAdmin> show_informationadmin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1163,7 +1163,7 @@ public class UserDao {
         }
     }
 
-    List<SuperAdmin> show_superadmin() { // lid is known
+    public List<SuperAdmin> show_superadmin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
