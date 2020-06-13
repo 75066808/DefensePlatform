@@ -26,7 +26,7 @@ public class LoginController {
         System.out.println("--- call login ---");
         System.out.println("username:" + username);
         System.out.println("password:" + password);
-        return username + "#1111111";
+        return username + "#" + password;
     }
 
 
