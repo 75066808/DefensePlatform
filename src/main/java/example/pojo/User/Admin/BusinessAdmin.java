@@ -1,6 +1,7 @@
 package example.pojo.User.Admin;
 
 public class BusinessAdmin {
+    public int apply_commerical_id;
     public String username;
     public String password;
     public String phone_number;
@@ -14,6 +15,7 @@ public class BusinessAdmin {
 
 
     public BusinessAdmin(
+            int apply_commerical_id,
             String username,
             String password,
             String phone_number,
@@ -25,6 +27,7 @@ public class BusinessAdmin {
             String invite_code,
             int duration
     ) {
+        this.apply_commerical_id = apply_commerical_id;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;

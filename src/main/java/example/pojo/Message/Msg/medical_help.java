@@ -1,6 +1,7 @@
 package example.pojo.Message.Msg;
 
 public class medical_help {
+    public int medical_help_id;
     public String username;
     public String password;
     public String phone_number;
@@ -15,6 +16,7 @@ public class medical_help {
 
 
     public medical_help(
+            int medical_help_id,
             String username,
             String password,
             String phone_number,
@@ -27,6 +29,7 @@ public class medical_help {
             String symotoms,
             int checked
     ) {
+        this.medical_help_id = medical_help_id;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;
