@@ -391,7 +391,7 @@ public class UserDao {
             sql = "select * from business_admin where business_district = "+business_district;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new BusinessAdmin(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
+                temp = new BusinessAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -440,7 +440,7 @@ public class UserDao {
             sql = "select * from business_man where business_district = "+business_district;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Business_man(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
+                temp = new Business_man(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -571,7 +571,7 @@ public class UserDao {
             sql = "select * from Citizen where community = " + community;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Citizen(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
+                temp = new Citizen(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -620,7 +620,7 @@ public class UserDao {
             sql = "select * from communityadmin where community = " + community;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new CommunityAdmin(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
+                temp = new CommunityAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -751,7 +751,7 @@ public class UserDao {
             sql = "select * from doctor ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Doctor(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));
+                temp = new Doctor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
