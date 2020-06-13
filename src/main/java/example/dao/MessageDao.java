@@ -1719,7 +1719,7 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into submission (submission_id, username, password, province, address, real_name, situation, color, checked) values ('" + submission.username +"','"+ submission.password +"','" + submission.province +"','" + submission.address+"','" + submission.real_name+"'," + submission.situation + "," + submission.color +","  +"0"+")";
+            sql = "insert into submission (submission_id, username, password, province, address, real_name, situation, color, sub_date, checked) values ('" + submission.username +"','"+ submission.password +"','" + submission.province +"','" + submission.address+"','" + submission.real_name+"'," + submission.situation + "," + submission.color +",'"+submission.sub_date + "',"  +"0"+")";
             statement.executeUpdate(sql);
             con.close();
         }
