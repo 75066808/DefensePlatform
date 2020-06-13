@@ -45,19 +45,19 @@ public class Apply_opening {
                 (String)map.get("pwd"),
                 (String)map.get("business-district"),
                 (String)map.get("shop-name"),
-                // (String)map.get("reason"),
+                (String)map.get("reason"),
                 Converter.durationMap.get((String)map.get("time")),
                 0
         );
     }
 
-    public static Map<String, Object> convertClassToMap(Apply_business apply) {
+    public static Map<String, Object> convertClassToMap(Apply_opening apply) {
         Map<String, Object> map = new HashMap<>();
         map.put("user", apply.username);
         map.put("pwd", apply.password);
         map.put("business_district", apply.business_district);
         map.put("shop_name", apply.business_district);
-        map.put("reason", apply.business_district);
+        map.put("reason", apply.reason);
         map.put("time", Converter.durationReverseMap.get(apply.duration));
         return map;
     }

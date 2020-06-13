@@ -62,7 +62,7 @@ public class Apply_medical_admin {
                 (String)map.get("real-name"),
                 (String)map.get("certificate-no"),
                 (String)map.get("invite-code"),
-                //Converter.durationMap.get((String)map.get("time")),
+                Converter.durationMap.get((String)map.get("time")),
                 0
         );
     }
@@ -78,7 +78,7 @@ public class Apply_medical_admin {
         map.put("real-name", apply.real_name);
         map.put("certificate_no", apply.certificate);
         map.put("invite_code", apply.invite_code);
-        map.put("time", "forever");
+        map.put("time", Converter.durationReverseMap.get(apply.duration));
         return map;
     }
 }

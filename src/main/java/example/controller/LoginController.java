@@ -19,42 +19,27 @@ public class LoginController {
         return "logintest";
     }
 
-    @RequestMapping(value="login.do", method=RequestMethod.POST)
+    @RequestMapping(value="login", method=RequestMethod.POST)
     @ResponseBody
     public String login(String username, String password) {
         System.out.println("--- in login controller ---");
         System.out.println("--- call login ---");
         System.out.println("username:" + username);
         System.out.println("password:" + password);
-        return loginService.login(username, password);
+        return username + "#1111111";
     }
 
-    @RequestMapping(value="/logout.do", method=RequestMethod.POST)
-    @ResponseBody
-    public boolean logout(String username){
-        System.out.println("--- in login controller ---");
-        System.out.println("--- call logout ---");
-        System.out.println("username:" + username);
-        return loginService.logout(username);
-    }
 
-    @RequestMapping(value="/register.do", method=RequestMethod.POST)
+    @RequestMapping(value="register", method=RequestMethod.POST)
     @ResponseBody
-    public boolean register(User user, String password) {
+    public boolean register(String username, String password, String realname) {
         System.out.println("--- in login controller ---");
         System.out.println("--- call register ---");
-        System.out.println("user" + user);
-        System.out.println("password:" + password);
-        return loginService.register(user, password);
-    }
-
-    @RequestMapping(value="/password.do", method=RequestMethod.POST)
-    @ResponseBody
-    public boolean modifyPassword(String username, String password) {
-        System.out.println("--- in login controller ---");
-        System.out.println("--- call modifyPassword ---");
         System.out.println("username:" + username);
         System.out.println("password:" + password);
-        return loginService.modifyPassword(username, password);
+        System.out.println("realname:" + realname);
+        return true;
     }
+
+
 }

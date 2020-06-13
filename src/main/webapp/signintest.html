@@ -72,14 +72,15 @@ function submit(){
     }
 	$.ajax({
 		type:"post",
-		url:"rigister.do",
-        dataType:"json",  
+		url:"register",
+        dataType:"text",  
         data:{"username":$("#username").val(),"password":$("#password").val(),"realname":$("#realname").val()},
 		error:function(data){
 			alert("请求失败，网络异常")
 		},
 		success:function(data){
-			if(true==data.result){
+            console.log(data);
+			if("true"==data){
                 alert("注册成功，正在返回登陆界面")
                 setTimeout(function(){
 					window.location.href = 'logintest.html';
