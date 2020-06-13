@@ -366,7 +366,8 @@ public class UserDao {
         }
     }
 
-    public List<BusinessAdmin> show_businessadmin(String business_district) { // lid is known
+    public List<BusinessAdmin> show_businessadmin() { // lid is known
+
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -388,7 +389,7 @@ public class UserDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from business_admin where business_district = "+business_district;
+            sql = "select * from business_admin= ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new BusinessAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
@@ -415,7 +416,8 @@ public class UserDao {
         return null;
     }
 
-    public List<Business_man> show_business_man(String business_district){
+
+    public List<Business_man> show_business_man(){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -437,7 +439,7 @@ public class UserDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from business_man where business_district = "+business_district;
+            sql = "select * from business_man ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new Business_man(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
@@ -596,7 +598,8 @@ public class UserDao {
     }
 
 
-    public List<CommunityAdmin> show_communityadmin(String community) { // lid is known
+    public List<CommunityAdmin> show_communityadmin() { // lid is known
+
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -883,7 +886,7 @@ public class UserDao {
             sql = "select * from apply_doctor ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new MedicalAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+                temp = new MedicalAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
