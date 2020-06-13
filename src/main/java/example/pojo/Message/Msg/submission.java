@@ -8,6 +8,7 @@ public class submission {
     public String real_name;
     public int situation;
     public int color;
+    public String sub_date;
     public int checked;
 
 
@@ -19,6 +20,7 @@ public class submission {
             String real_name,
             int situation,
             int color,
+            String sub_date,
             int checked
     ) {
         this.username = username;
@@ -28,6 +30,7 @@ public class submission {
         this.real_name = real_name;
         this.situation = situation;
         this.color = color;
+        this.sub_date = sub_date;
         this.checked = checked;
     }
 
