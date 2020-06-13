@@ -270,7 +270,7 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into Apply_medical_admin (username, password, phone_number, email, province, address, real_name, certificate, invite_code, checked) values ('" + apply_medical_admin.username +"','"+ apply_medical_admin.password +"','" + apply_medical_admin.phone_number +"','" + apply_medical_admin.email +"','" + apply_medical_admin.province+"','" + apply_medical_admin.address+"','" + apply_medical_admin.real_name+"','" + apply_medical_admin.certificate +"','" + apply_medical_admin.invite_code + "'," +"0"+")";
+            sql = "insert into Apply_medical_admin (username, password, phone_number, email, province, address, real_name, certificate, invite_code, duration ,checked) values ('" + apply_medical_admin.username +"','"+ apply_medical_admin.password +"','" + apply_medical_admin.phone_number +"','" + apply_medical_admin.email +"','" + apply_medical_admin.province+"','" + apply_medical_admin.address+"','" + apply_medical_admin.real_name+"','" + apply_medical_admin.certificate +"','" + apply_medical_admin.invite_code + "'," +"0"+")";
             statement.executeUpdate(sql);
             con.close();
         }
@@ -356,7 +356,7 @@ public class MessageDao {
             sql = "select * from apply_doctor ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Apply_medical_admin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
+                temp = new Apply_medical_admin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -488,7 +488,7 @@ public class MessageDao {
             sql = "select * from apply_doctor ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new apply_doctor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
+                temp = new apply_doctor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12),rs.getInt(13));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1056,7 +1056,7 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into apply_opening (username,password,business_distract,email,shop_name,duration,checked) values ('" + apply_opening.username +"','"+ apply_opening.password+"','" + apply_opening.business_district +"','" + apply_opening.email +"','" + apply_opening.shop_name+"','" +  apply_opening.duration + "'," +"0"+")";
+            sql = "insert into apply_opening (username,password,business_distract,shop_name,duration,checked) values ('" + apply_opening.username +"','"+ apply_opening.password+"','" + apply_opening.business_district +"','" + apply_opening.shop_name+"','" +  apply_opening.duration + "'," +"0"+")";
             statement.executeUpdate(sql);
             con.close();
         }
@@ -1142,7 +1142,7 @@ public class MessageDao {
             sql = "select * from medical_help ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Apply_opening(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8));
+                temp = new Apply_opening(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7));
                 list.add(temp);
             }
             statement.executeUpdate(sql);

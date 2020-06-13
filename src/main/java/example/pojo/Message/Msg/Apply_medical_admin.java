@@ -29,7 +29,6 @@ public class Apply_medical_admin {
             String address,
             String real_name,
             String certificate,
-            String reason,
             String invite_code,
             int checked
     ) {

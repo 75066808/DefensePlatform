@@ -10,7 +10,7 @@ public class MedicalAdmin {
     public String real_name;
     public String certificate;
     public String invite_code;
-
+    public int duration;
 
     public MedicalAdmin(
             int medical_admin_id,
@@ -22,7 +22,8 @@ public class MedicalAdmin {
             String address,
             String real_name,
             String certificate,
-            String invite_code
+            String invite_code,
+            int duration
     ) {
         this.medical_admin_id = medical_admin_id;
         this.username = username;
@@ -34,5 +35,6 @@ public class MedicalAdmin {
         this.real_name = real_name;
         this.certificate = certificate;
         this.invite_code = invite_code;
+        this.duration = duration;
     }
 }

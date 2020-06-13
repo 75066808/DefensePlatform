@@ -17,6 +17,7 @@ public class apply_doctor {
     public String certificate;
     public String reason;
     public String invite_code;
+    public int duration;
     public int checked;
 
 
@@ -32,6 +33,7 @@ public class apply_doctor {
             String certificate,
             String reason,
             String invite_code,
+            int duration,
             int checked
     ) {
         this.doctor_id = doctor_id;
@@ -45,6 +47,7 @@ public class apply_doctor {
         this.certificate = certificate;
         this.reason = reason;
         this.invite_code = invite_code;
+        this.duration = duration;
         this.checked = checked;
     }
 
