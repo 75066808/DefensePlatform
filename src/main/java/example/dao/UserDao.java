@@ -304,7 +304,7 @@ public class UserDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into business_man (username,password,phone_number,email,province,address,business_district,duration,checked) values ('" + business_man.username +"','"+ business_man.password +"','" + business_man.phone_number +"','" + business_man.email +"','" + business_man.province+"','" + business_man.address+"','" + business_man.business_district+"','" + business_man.duration +"')";
+            sql = "insert into business_man (username,password,phone_number,email,province,address,business_district,duration,checked) values ('" + business_man.username +"','"+ business_man.password +"','" + business_man.phone_number +"','" + business_man.email +"','" + business_man.province+"','" + business_man.address+"','" + business_man.business_district+"','" + business_man.duration +"',1)";
             statement.executeUpdate(sql);
             con.close();
         }
@@ -366,7 +366,7 @@ public class UserDao {
         }
     }
 
-    List<BusinessAdmin> find_businessadmin(String business_district) { // lid is known
+    List<BusinessAdmin> show_businessadmin(String business_district) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -391,7 +391,7 @@ public class UserDao {
             sql = "select * from business_admin where business_district = "+business_district;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new BusinessAdmin(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
+                temp = new BusinessAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -415,7 +415,7 @@ public class UserDao {
         return null;
     }
 
-    List<Business_man> find_business_man(String business_district){
+    List<Business_man> show_business_man(String business_district){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -440,7 +440,7 @@ public class UserDao {
             sql = "select * from business_man where business_district = "+business_district;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Business_man(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
+                temp = new Business_man(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -546,7 +546,7 @@ public class UserDao {
         }
     }
 
-    List<Citizen> find_citizen(String community) { // lid is known
+    List<Citizen> show_citizen() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -568,10 +568,10 @@ public class UserDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from Citizen where community = " + community;
+            sql = "select * from Citizen" ;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Citizen(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
+                temp = new Citizen(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -595,6 +595,7 @@ public class UserDao {
         return null;
     }
 
+
     public List<CommunityAdmin> show_communityadmin(String community) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
@@ -617,10 +618,10 @@ public class UserDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from communityadmin where community = " + community;
+            sql = "select * from communityadmin ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new CommunityAdmin(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
+                temp = new CommunityAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -751,7 +752,7 @@ public class UserDao {
             sql = "select * from doctor ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Doctor(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));
+                temp = new Doctor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -796,7 +797,7 @@ public class UserDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into medicaladmin (username, password, phone_number, email, province, address, real_name, certificate, invite_code) values ('" + medicaladmin.username +"','"+ medicaladmin.password +"','" + medicaladmin.phone_number +"','" + medicaladmin.email +"','" + medicaladmin.province+"','" + medicaladmin.address+"','" + medicaladmin.real_name+"','" + medicaladmin.certificate +"','" + medicaladmin.invite_code + "')";
+            sql = "insert into medical_admin (username, password, phone_number, email, province, address, real_name, certificate, invite_code) values ('" + medicaladmin.username +"','"+ medicaladmin.password +"','" + medicaladmin.phone_number +"','" + medicaladmin.email +"','" + medicaladmin.province+"','" + medicaladmin.address+"','" + medicaladmin.real_name+"','" + medicaladmin.certificate +"','" + medicaladmin.invite_code + "')";
             statement.executeUpdate(sql);
             con.close();
         }
@@ -837,7 +838,7 @@ public class UserDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "delete from medicaladmin where medical_admin_id = " + medical_admin_id;
+            sql = "delete from medical_admin where medical_admin_id = " + medical_admin_id;
             statement.executeUpdate(sql);
             con.close();
         }
@@ -856,6 +857,57 @@ public class UserDao {
             System.out.println("完毕！");
         }
     }
+
+    List<MedicalAdmin> show_medical_admin() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        MedicalAdmin temp;
+        List<MedicalAdmin> list = new ArrayList<MedicalAdmin>();
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from apply_doctor ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new MedicalAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+
 
     public void add_informationadmin(InformationAdmin informationadmin) { // lid is known
         Connection con;
@@ -879,6 +931,138 @@ public class UserDao {
             // 要执行的SQL语句
 
             sql = "insert into informationadmin (username,password,phone_number,email,province,reason,invite_code,duration) values ('" + informationadmin.username +"','"+ informationadmin.password +"','" + informationadmin.phone_number +"','" + informationadmin.email +"','" + informationadmin.province+"','" + informationadmin.reason+"','" + informationadmin.invite_code+"','" + informationadmin.duration + "')";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void informationadmin(int informationadmin_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from informationadmin where informationadmin_id = " + informationadmin_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<InformationAdmin> show_informationadmin() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        InformationAdmin temp;
+        List<InformationAdmin> list = new ArrayList<InformationAdmin>();
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from informationadmin ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new InformationAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+
+    public void delete_informationadmin(int informationadmin_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from informationadmin where informationadmin_id = " + informationadmin_id;
             statement.executeUpdate(sql);
             con.close();
         }
@@ -937,6 +1121,96 @@ public class UserDao {
         finally {
             System.out.println("完毕！");
         }
+    }
+
+    public void delete_superadmin(int superadmin_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from superadmin where superadmin_id = " + superadmin_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<SuperAdmin> show_superadmin() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        SuperAdmin temp;
+        List<SuperAdmin> list = new ArrayList<SuperAdmin>();
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from informationadmin ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new SuperAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
     }
 }
 
