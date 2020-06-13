@@ -10,7 +10,6 @@ public class Doctor {
     public String certificate;
     public String reason;
     public String invite_code;
-    public int checked;
 
 
     public Doctor(
@@ -23,8 +22,7 @@ public class Doctor {
             String real_name,
             String certificate,
             String reason,
-            String invite_code,
-            int checked
+            String invite_code
     ) {
         this.username = username;
         this.password = password;
@@ -36,6 +34,5 @@ public class Doctor {
         this.certificate = certificate;
         this.reason = reason;
         this.invite_code = invite_code;
-        this.checked = checked;
     }
 }
