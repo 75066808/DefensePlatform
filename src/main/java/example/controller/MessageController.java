@@ -1,5 +1,6 @@
 package example.controller;
 import example.pojo.Message.Message;
+import example.pojo.Message.Msg.Chat;
 import example.pojo.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,25 +24,20 @@ public class MessageController {
     @RequestMapping(value="/chat/send", method=RequestMethod.POST)
     @ResponseBody
     public void sendChat(@RequestBody Map<String, Object> chat) {
-        System.out.println("sendChat");
-        System.out.println(chat);
+        messageService.sendChat(Chat.convertMapToClass(chat));
     }
 
 
     @RequestMapping(value="/chat/find/num", method=RequestMethod.POST)
     @ResponseBody
     public int findChatNum(String username, String function) {
-        System.out.println("findChatNum");
-        System.out.println(username);
-        return 5;
+        return messageService.findChatNum(username);
     }
 
     @RequestMapping(value="/chat/find/page", method=RequestMethod.POST)
     @ResponseBody
     public List<Map<String, Object>> findChatPage(String username, String function, int page) {
-        System.out.println("findChatPage");
-        System.out.println(username);
-        System.out.println(page);
+        List<Chat> chat = messageService.findChatPage(username, page);
 
         List<Map<String, Object>> list = new LinkedList<>();
         for (int i = 0;i < 10;i++) {

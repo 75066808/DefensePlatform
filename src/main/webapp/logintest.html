@@ -62,7 +62,7 @@ function login(){
 	}
 	$.ajax({
 		type:"post",
-		url:"login",
+		url:"/login",
         dataType:"text",  
         data:{"username":$("#username").val(),"password":$("#password").val()},
 		error:function(data){
