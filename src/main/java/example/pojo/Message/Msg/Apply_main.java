@@ -9,7 +9,7 @@ public class Apply_main {
     public String address;
     public String reason;
     public String invite_code;
-    public String duration;
+    public int duration;
     public int checked;
 
 
@@ -22,7 +22,7 @@ public class Apply_main {
             String address,
             String reason,
             String invite_code,
-            String duration,
+            int duration,
             int checked
     ) {
         this.username = username;

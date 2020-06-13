@@ -9,6 +9,7 @@ public class medical_help {
     public String real_name;
     public int sex;
     public int age;
+    public String department;
     public String symotoms;
     public int checked;
 
@@ -22,6 +23,7 @@ public class medical_help {
             String real_name,
             int sex,
             int age,
+            String department,
             String symotoms,
             int checked
     ) {
@@ -33,6 +35,7 @@ public class medical_help {
         this.real_name = real_name;
         this.sex = sex;
         this.age = age;
+        this.department = department;
         this.symotoms = symotoms;
         this.checked = checked;
     }

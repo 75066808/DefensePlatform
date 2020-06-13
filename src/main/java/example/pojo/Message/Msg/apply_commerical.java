@@ -10,7 +10,7 @@ public class apply_commerical {
     public String business_district;
     public String reason;
     public String invite_code;
-    public String duration;
+    public int duration;
     public int checked;
 
 
@@ -24,7 +24,7 @@ public class apply_commerical {
             String business_district,
             String reason,
             String invite_code,
-            String duration,
+            int duration,
             int checked
     ) {
         this.username = username;

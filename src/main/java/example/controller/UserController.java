@@ -1,8 +1,8 @@
 package example.controller;
 import example.pojo.User.Admin.*;
+import example.pojo.User.Ordinary.Business_man;
 import example.pojo.User.Ordinary.Citizen;
 import example.pojo.User.Ordinary.Doctor;
-import example.pojo.User.Ordinary.Merchant;
 import example.pojo.User.User;
 import example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ public class UserController {
 
     @RequestMapping(value = "/merchant/{name}", method=RequestMethod.POST)
     @ResponseBody
-    public boolean setMerchant(@PathVariable("name") String username, Merchant merchant) {
+    public boolean setMerchant(@PathVariable("name") String username, Business_man merchant) {
         return userService.setMerchant(username, merchant);
     }
 
