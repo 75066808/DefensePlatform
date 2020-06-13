@@ -4,7 +4,7 @@ import example.dao.UserDao;
 import example.pojo.User.Admin.*;
 import example.pojo.User.Ordinary.Citizen;
 import example.pojo.User.Ordinary.Doctor;
-import example.pojo.User.Ordinary.Merchant;
+import example.pojo.User.Ordinary.Business_man;
 import example.pojo.User.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ public class UserService {
         return true;
     }
 
-    public boolean setMerchant(String username, Merchant merchant) {
+    public boolean setMerchant(String username, Business_man merchant) {
         //userDao.addMerchant(username, merchant);
         return true;
     }
