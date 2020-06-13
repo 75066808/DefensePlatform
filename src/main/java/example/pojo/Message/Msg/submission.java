@@ -12,6 +12,7 @@ public class submission {
     public String province;
     public String address;
     public String real_name;
+    public int age;
     public int situation;
     public int color;
     public String sub_date;
@@ -25,6 +26,7 @@ public class submission {
             String province,
             String address,
             String real_name,
+            int age,
             int situation,
             int color,
             String sub_date,
@@ -36,6 +38,7 @@ public class submission {
         this.province = province;
         this.address = address;
         this.real_name = real_name;
+        this.age = age;
         this.situation = situation;
         this.color = color;
         this.sub_date = sub_date;

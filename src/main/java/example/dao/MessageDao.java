@@ -1854,7 +1854,7 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into submission (submission_id, username, password, province, address, real_name, situation, color, sub_date, checked) values ('" + submission.username +"','"+ submission.password +"','" + submission.province +"','" + submission.address+"','" + submission.real_name+"'," + submission.situation + "," + submission.color +",'"+submission.sub_date + "',"  +"0"+")";
+            sql = "insert into submission (submission_id, username, password, province, address, real_name, age, situation, color, sub_date, checked) values ('" + submission.username +"','"+ submission.password +"','" + submission.province +"','" + submission.address+"','" + submission.real_name+"'," + submission.age + "," + submission.situation + "," + submission.color +",'"+submission.sub_date + "',"  +"0"+")";
             statement.executeUpdate(sql);
             con.close();
         }
@@ -1940,7 +1940,7 @@ public class MessageDao {
             sql = "select * from submission ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new submission(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10));
+                temp = new submission(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
