@@ -10,7 +10,6 @@ public class InformationAdmin {
     public String reason;
     public String invite_code;
     public int duration;
-    public int checked;
 
 
     public InformationAdmin(
@@ -22,8 +21,7 @@ public class InformationAdmin {
             String province,
             String reason,
             String invite_code,
-            int duration,
-            int checked
+            int duration
     ) {
         this.informationadmin_id = informationadmin_id;
         this.username = username;
@@ -34,7 +32,6 @@ public class InformationAdmin {
         this.reason = reason;
         this.invite_code = invite_code;
         this.duration = duration;
-        this.checked = checked;
     }
 
 }

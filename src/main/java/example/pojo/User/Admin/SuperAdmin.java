@@ -11,7 +11,6 @@ public class SuperAdmin {
     public String reason;
     public String invite_code;
     public int duration;
-    public int checked;
 
 
     public SuperAdmin(
@@ -24,8 +23,7 @@ public class SuperAdmin {
             String address,
             String reason,
             String invite_code,
-            int duration,
-            int checked
+            int duration
     ) {
         this.superadmin_id = superadmin_id;
         this.username = username;
@@ -37,7 +35,6 @@ public class SuperAdmin {
         this.reason = reason;
         this.invite_code = invite_code;
         this.duration = duration;
-        this.checked = checked;
     }
 
 }

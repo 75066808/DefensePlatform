@@ -1,0 +1,329 @@
+create table apply_doctor(
+doctor_id int not null auto_increment,
+username varchar(40) not null unique,
+password varchar(40) not null,
+phone_number varchar(40) not null,
+email varchar(255) not null,
+province varchar(10) not null,
+address varchar(255) not null,
+real_name varchar(31) not null,
+certificate varchar(64) not null,
+reason text not null,
+invite_code varchar(40),
+checked int,
+primary key(doctor_id)
+)character set = utf8;
+
+
+CREATE TABLE `apply_commerical` (
+  `apply_commerical_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `business_district` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32),
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_commerical_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table medical_help(
+medical_help_id int not null auto_increment,
+username varchar(40) not null unique,
+password varchar(40) not null,
+phone_number varchar(40) not null,
+province varchar(10) not null,
+address varchar(255) not null,
+real_name varchar(31) not null,
+sex int not null,
+age int not null,
+department varchar(40) not null,
+symotoms text not null,
+checked int not null,
+primary key(medical_help_id)
+)character set = utf8;
+
+
+CREATE TABLE `apply_community` (
+  `apply_community_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `community` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32) NOT NULL,
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_community_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ CREATE TABLE `chat` (
+  `chat_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `from_name` varchar(40) NOT NULL,
+  `to_name`varchar(40) NOT NULL,
+  `content` text,
+  `title` tinytext NOT NULL,
+  PRIMARY KEY (`chat_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `users` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL UNIQUE,
+  `password` varchar(40) NOT NULL,
+  `real_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `apply_info` (
+  `apply_info_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32) NOT NULL,
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_info_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `apply_main` (
+  `apply_main_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32) NOT NULL,
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_main_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `apply_business` (
+  `apply_business_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `business_district` varchar(255) NOT NULL,
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_business_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE `apply_opening` (
+  `apply_opening_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `business_distract` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `shop_name` varchar(255) NOT NULL,
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_opening_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table medical_help_d(
+medical_help_id int not null auto_increment,
+username varchar(40) not null unique,
+doctorname  varchar(40) not null,
+password varchar(40) not null,
+phone_number varchar(40) not null,
+province varchar(10) not null,
+address varchar(255) not null,
+real_name varchar(31) not null,
+sex int not null,
+age int not null,
+department varchar(40) not null,
+symotoms text not null,
+checked int not null,
+primary key(medical_help_id)
+)character set = utf8;
+
+ CREATE TABLE `apply_business` (
+  `apply_business_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `business_district` varchar(255) NOT NULL,
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_business_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `apply_citizen` (
+  `apply_citizen_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `real_name` varchar(40) NOT NULL,
+  `community` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `duration` int NOT NULL,
+  `checked` int NOT NULL,
+  PRIMARY KEY (`apply_citizen_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `business_admin` (
+  `apply_commerical_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `business_district` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32),
+  `duration` int NOT NULL,
+  PRIMARY KEY (`apply_commerical_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `citizen` (
+  `citizen_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `real_name` varchar(40) NOT NULL,
+  `community` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `duration` int NOT NULL,
+  PRIMARY KEY (`citizen_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table doctor(
+doctor_id int not null auto_increment,
+username varchar(40) not null unique,
+password varchar(40) not null,
+phone_number varchar(40) not null,
+email varchar(255) not null,
+province varchar(10) not null,
+address varchar(255) not null,
+real_name varchar(31) not null,
+certificate varchar(64) not null,
+reason text not null,
+invite_code varchar(40),
+primary key(doctor_id)
+)character set = utf8;
+
+create table apply_medical_admin(
+medical_admin_id int not null auto_increment,
+username varchar(40) not null unique,
+password varchar(40) not null,
+phone_number varchar(40) not null,
+email varchar(255) not null,
+province varchar(10) not null,
+address varchar(255) not null,
+real_name varchar(31) not null,
+certificate varchar(64) not null,
+invite_code varchar(40),
+checked int,
+primary key(medical_admin_id)
+)character set = utf8;
+
+create table submission(
+submission_id int not null auto_increment,
+username varchar(40) not null unique,
+password varchar(40) not null,
+province varchar(10) not null,
+address varchar(255) not null,
+real_name varchar(31) not null,
+situation int not null,
+color int not null,
+sub_date date not null,
+checked int not null,
+primary key(submission_id)
+)character set = utf8;
+
+CREATE TABLE `communityadmin` (
+  `communityadmin_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `community` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32) NOT NULL,
+  `duration` int NOT NULL,
+  PRIMARY KEY (`communityadmin_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table medical_admin(
+medical_admin_id int not null auto_increment,
+username varchar(40) not null unique,
+password varchar(40) not null,
+phone_number varchar(40) not null,
+email varchar(255) not null,
+province varchar(10) not null,
+address varchar(255) not null,
+real_name varchar(31) not null,
+certificate varchar(64) not null,
+invite_code varchar(40),
+primary key(medical_admin_id)
+)character set = utf8;
+
+CREATE TABLE `informationadmin` (
+  `informationadmin_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32) NOT NULL,
+  `duration` int NOT NULL,
+  PRIMARY KEY (`informationadmin_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `superadmin` (
+  `superadmin_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(40) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `phone_number` varchar(40) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `province` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `invite_code` varchar(32) NOT NULL,
+  `duration` int NOT NULL,
+  PRIMARY KEY (`superadmin_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
