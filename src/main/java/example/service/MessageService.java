@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import example.pojo.Message.Msg.*;
 import example.pojo.User.Admin.BusinessAdmin;
 import example.pojo.User.Admin.CommunityAdmin;
+import example.pojo.User.Admin.MedicalAdmin;
 import example.pojo.User.Admin.SuperAdmin;
 import example.pojo.User.Ordinary.Business_man;
 import example.pojo.User.Ordinary.Citizen;
+import example.pojo.User.Ordinary.Doctor;
 
 import java.util.List;
 import java.util.Map;
@@ -143,7 +145,7 @@ public class MessageService {
                 return false;
         }
         Business_man newmerchant = new Business_man(0, username, apply.password, apply.phone_number, apply.email, 
-        apply.province, apply.address, apply.business_district, apply.duration)
+        apply.province, apply.address, apply.business_district, apply.duration);
 
         userDao.add_business_man(newmerchant);
         return true;
@@ -237,7 +239,7 @@ public class MessageService {
         if(!isSuper(username))
             return null;
             
-        List<Apply_info> applylist = messageDao.show_Apply_community();
+        List<Apply_info> applylist = messageDao.show_Apply_info();
         return applylist.get((page - 1) * 10 + num - 1);
     }
 
@@ -361,6 +363,35 @@ public class MessageService {
         report.sub_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).substring(0, 10);
         messageDao.add_submission(report);
         // a message to community admin if innormal
+        if(report.situation == 0){
+            String username = report.username;
+            List<Citizen> ctzlist = userDao.show_citizen();
+            String cmu = null;
+            for(int i = 0; i < ctzlist.size(); i++){
+                if(ctzlist.get(i).username.equals(username)){
+                    cmu = ctzlist.get(i).community;
+                    break;
+                }
+            }
+
+            List<CommunityAdmin> adminlist = userDao.show_communityadmin();
+            CommunityAdmin tmp = null;
+            String admin = null;
+            int i = 0;
+            for (; i < adminlist.size(); i++){
+                tmp = adminlist.get(i);
+                if(tmp.community.equals(cmu)){
+                    admin = tmp.username;
+                    break;
+                }
+            }
+            if(admin != null){
+                String content = "Situation: " + report.situation + "\n" + "Color: " + report.color;
+                Chat msg = new Chat(0, "system", admin, content, "Abnormal Information: " + username);
+                sendChat(msg);
+            }
+            
+        }
     }
 
 
@@ -387,13 +418,15 @@ public class MessageService {
             int month = Integer.valueOf(time.substring(5, 7));
             int day = Integer.valueOf(time.substring(8, 10));
             if(cyear == year && cmonth == month && cday == day && total_people.contains(tmp.username)){
-
-
+                t_reported++;
+                if(tmp.situation == 0)
+                    t_normal++;
             }
             //Further improvent: yesterday calculation
-            else if(cyear == year && cmonth == month && cday == day && total_people.contains(tmp.username)){
-                
-
+            else if(cyear == year && cmonth == month && cday == day + 1 && total_people.contains(tmp.username)){
+                y_reported++;
+                if(tmp.situation == 0)
+                    y_normal++;
             }
         }
         map.put("today_total_people", total_people.size());
@@ -408,10 +441,71 @@ public class MessageService {
         map.put("yesterday_normal", y_normal);
         return map;
     }
+
+    public void sendMedicalHelp(medical_help help) {
+        messageDao.add_medical_help(help);
+    }
+
+    public int findMedicalHelpNum(String username) {
+        if(!isMedical(username))
+            return 0;
+        List<medical_help> helplist = messageDao.show_medical_help();
+        return helplist.size()/10 + 1;
+        
+    }
+
+    public List<medical_help> findMedicalHelpPage(String username, int page) {
+        if(!isMedical(username))
+            return null;
+        List<medical_help> helplist = messageDao.show_medical_help();
+        List<medical_help> newlist = new ArrayList<medical_help>();
+        for (int i = (page - 1) * 10; i < helplist.size() && i < page * 10; i++){
+            newlist.add(helplist.get(i));
+        }
+        return newlist;
+    }
+
+    public medical_help findMedicalHelpContent(String username, int page, int num) {
+        if(!isMedical(username))
+            return null;
+        List<medical_help> helplist = messageDao.show_medical_help();
+        return helplist.get((page - 1) * 10 + num - 1);
+    }
+
+    public void sendDistributeMedicalHelp(medical_help_d help) {
+        System.out.println("sendDistributeMedicalHelp");
+        System.out.println(help);
+    }
+
+    public int findDistributeMedicalHelpNum(String username) {
+        if(!isDoctor(username))
+            return 0;
+        List<medical_help_d> helplist = messageDao.show_medical_help_d();
+        return helplist.size()/10 + 1;
+        
+    }
+
+    public List<medical_help_d> findDistributeMedicalHelpPage(String username, int page) {
+        if(!isDoctor(username))
+            return null;
+        List<medical_help_d> helplist = messageDao.show_medical_help_d();
+        List<medical_help_d> newlist = new ArrayList<medical_help_d>();
+        for (int i = (page - 1) * 10; i < helplist.size() && i < page * 10; i++){
+            newlist.add(helplist.get(i));
+        }
+        return newlist;
+    }
+
+    public medical_help_d findDistributeMedicalHelpContent(String username, int page, int num) {
+        if(!isDoctor(username))
+            return null;
+        List<medical_help_d> helplist = messageDao.show_medical_help_d();
+        return helplist.get((page - 1) * 10 + num - 1);
+    }
     
     //Improvement: return a list of district
     String isBusiness(String username){
-        List<BusinessAdmin> adminlist = userDao.show_business_admin();
+        List<BusinessAdmin> adminlist = userDao.show_businessadmin();
         BusinessAdmin tmp = null;
         int i = 0;
         String district = null;
@@ -426,7 +520,7 @@ public class MessageService {
     }
 
     String isCommunity(String username){
-        List<CommunityAdmin> adminlist = userDao.show_community_admin();
+        List<CommunityAdmin> adminlist = userDao.show_communityadmin();
         CommunityAdmin tmp = null;
         int i = 0;
         String community = null;
@@ -438,6 +532,32 @@ public class MessageService {
             }
         }
         return community;
+    }
+
+    Boolean isMedical(String username){
+        List<MedicalAdmin> adminlist = userDao.show_medical_admin();
+        MedicalAdmin tmp = null;
+        int i = 0;
+        for (; i < adminlist.size(); i++){
+            tmp = adminlist.get(i);
+            if(tmp.username.equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    Boolean isDoctor(String username){
+        List<Doctor> doclist = userDao.show_doctor();
+        Doctor tmp = null;
+        int i = 0;
+        for (; i < doclist.size(); i++){
+            tmp = doclist.get(i);
+            if(tmp.username.equals(username)){
+                return true;
+            }
+        }
+        return false;
     }
 
     List<String> totalCommunity(String community){

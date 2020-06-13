@@ -1117,7 +1117,7 @@ public class MessageDao {
         }
     }
 
-    List<Apply_opening> show_apply_opening() { // lid is known
+    public List<Apply_opening> show_apply_opening() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1248,7 +1248,7 @@ public class MessageDao {
         }
     }
 
-    List<Apply_info> show_Apply_info() { // lid is known
+    public List<Apply_info> show_Apply_info() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";

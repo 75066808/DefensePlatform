@@ -366,7 +366,7 @@ public class UserDao {
         }
     }
 
-    List<BusinessAdmin> show_businessadmin(String business_district) { // lid is known
+    public List<BusinessAdmin> show_businessadmin(String business_district) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -415,7 +415,7 @@ public class UserDao {
         return null;
     }
 
-    List<Business_man> show_business_man(String business_district){
+    public List<Business_man> show_business_man(String business_district){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -546,7 +546,7 @@ public class UserDao {
         }
     }
 
-    List<Citizen> show_citizen() { // lid is known
+    public List<Citizen> show_citizen() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -858,7 +858,7 @@ public class UserDao {
         }
     }
 
-    List<MedicalAdmin> show_medical_admin() { // lid is known
+    public List<MedicalAdmin> show_medical_admin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -991,7 +991,7 @@ public class UserDao {
         }
     }
 
-    List<InformationAdmin> show_informationadmin() { // lid is known
+    public List<InformationAdmin> show_informationadmin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1164,7 +1164,7 @@ public class UserDao {
         }
     }
 
-    List<SuperAdmin> show_superadmin() { // lid is known
+    public List<SuperAdmin> show_superadmin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
