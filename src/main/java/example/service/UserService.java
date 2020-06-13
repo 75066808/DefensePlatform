@@ -18,55 +18,46 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public User findUser(String username) {
-        //return userDao.findUser(username);
-        return null;
-    }
-
-    public List<User> findUsers(String adminName, String regionType) {
-        return null;//userDao.findUsers(adminName, regionType);
-    }
-
 
     public boolean setCitizen(String username, Citizen citizen) {
-        //userDao.addCitizen(username, citizen);
+        userDao.add_citizen(citizen);
         return true;
     }
 
     public boolean setDoctor(String username, Doctor doctor) {
-        //userDao.addDoctor(username, doctor);
+        userDao.add_Doctor(doctor);
         return true;
     }
 
     public boolean setMerchant(String username, Business_man merchant) {
-        //userDao.addMerchant(username, merchant);
+        userDao.add_business_man(merchant);
         return true;
     }
 
 
     public boolean setSuperAdmin(String adminName, SuperAdmin superAdmin) {
-        //userDao.addSuperAdmin(adminName, superAdmin);
+        userDao.add_superadmin(superAdmin);
         return true;
     }
 
     public boolean setInformationAdmin(String adminName, InformationAdmin informationAdmin) {
-        //userDao.addInformationAdmin(adminName, informationAdmin);
+        userDao.add_informationadmin(informationAdmin);
         return true;
     }
 
     public boolean setCommunityAdmin(String adminName, CommunityAdmin communityAdmin) {
-        //userDao.addCommunityAdmin(adminName, communityAdmin);
+        userDao.add_communityadmin(communityAdmin);
         return true;
     }
 
 
     public boolean setMedicalAdmin(String adminName, MedicalAdmin medicalAdmin) {
-        //userDao.addMedicalAdmin(adminName, medicalAdmin);
+        userDao.add_medicaladmin(medicalAdmin);
         return true;
     }
 
     public boolean setBusinessAdmin(String adminName, BusinessAdmin businessAdmin) {
-        //userDao.addBusinessAdmin(adminName, businessAdmin);
+        userDao.add_businessadmin(businessAdmin);
         return true;
     }
 }

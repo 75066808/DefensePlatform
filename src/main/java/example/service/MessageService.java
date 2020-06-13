@@ -31,17 +31,25 @@ public class MessageService {
     @Autowired
     private UserDao userDao;
 
+    private List<Chat> chatlist;
+    private List<Apply_main> mainApplyList;
+    private List<apply_commerical> commercialApplyList;
+    private List<Apply_info> infoApplyList;
+    private List<Apply_medical_admin> medicalApplyList;
+    private List<apply_community> communityApplyList;
+    private List<apply_doctor> docApplyList;
+    private List<Apply_opening> openingApplyList;
+
     public void sendChat(Chat chat) {
         messageDao.addchat(chat);
     }
 
     public int findChatNum(String username) {
-        List<Chat> chatlist = messageDao.show_chat_to(username);
+        chatlist = messageDao.show_chat_to(username);
         return chatlist.size()/10 + 1;
     }
 
     public List<Chat> findChatPage(String username, int page) {
-        List<Chat> chatlist = messageDao.show_chat_to(username);
         List<Chat> newlist = new ArrayList<Chat>();
         for (int i = (page - 1) * 10; i < chatlist.size() && i < page * 10; i++){
             newlist.add(chatlist.get(i));
@@ -50,7 +58,6 @@ public class MessageService {
     }
 
     public Chat findChatContent(String username, int page, int num) {
-        List<Chat> chatlist = messageDao.show_chat_to(username);
         return chatlist.get((page - 1) * 10 + num - 1);
     }
 
@@ -160,20 +167,18 @@ public class MessageService {
         if(!isSuper(username))
             return 0;
             
-        List<Apply_main> applylist = messageDao.show_apply_main();
+        mainApplyList = messageDao.show_apply_main();
         //check user na
-        return applylist.size()/10 + 1;
+        return mainApplyList.size()/10 + 1;
     }
 
     public List<Apply_main> findMainApplyPage(String username, int page) {
         if(!isSuper(username))
             return null;
             
-        List<Apply_main> applylist = messageDao.show_apply_main();
-        //check user na
         List<Apply_main> newlist = new ArrayList<Apply_main>();
-        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
-            newlist.add(applylist.get(i));
+        for (int i = (page - 1) * 10; i < mainApplyList.size() && i < page * 10; i++){
+            newlist.add(mainApplyList.get(i));
         }
         return newlist;
     }
@@ -181,28 +186,31 @@ public class MessageService {
     public Apply_main findMainApplyContent(String username, int page, int num) {
         if(!isSuper(username))
             return null;
-            
-        List<Apply_main> applylist = messageDao.show_apply_main();
-        //check user na
-        return applylist.get((page - 1) * 10 + num - 1);
+        return mainApplyList.get((page - 1) * 10 + num - 1);
+    }
+
+    String delMainApply(String username, int page, int num) {
+        if(!isSuper(username))
+            return "error";
+        String name = mainApplyList.get((page - 1) * 10 + num - 1).username;
+        messageDao.delete_apply_main(mainApplyList.get((page - 1) * 10 + num - 1).apply_main_id);
+        return name;
     }
 
     public int findCommercialApplyNum(String username) {
         if(!isSuper(username))
             return 0;
             
-        List<apply_commerical> applylist = messageDao.show_apply_commerical();
-        return applylist.size()/10 + 1;
+        commercialApplyList = messageDao.show_apply_commerical();
+        return commercialApplyList.size()/10 + 1;
     }
 
     public List<apply_commerical> findCommercialApplyPage(String username, int page) {
         if(!isSuper(username))
             return null;
-            
-        List<apply_commerical> applylist = messageDao.show_apply_commerical();
         List<apply_commerical> newlist = new ArrayList<apply_commerical>();
-        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
-            newlist.add(applylist.get(i));
+        for (int i = (page - 1) * 10; i < commercialApplyList.size() && i < page * 10; i++){
+            newlist.add(commercialApplyList.get(i));
         }
         return newlist;
     }
@@ -210,27 +218,31 @@ public class MessageService {
     public apply_commerical findCommercialApplyContent(String username, int page, int num) {
         if(!isSuper(username))
             return null;
-            
-        List<apply_commerical> applylist = messageDao.show_apply_commerical();
-        return applylist.get((page - 1) * 10 + num - 1);
+        return commercialApplyList.get((page - 1) * 10 + num - 1);
+    }
+
+    String delCommercialApply(String username, int page, int num) {
+        if(!isSuper(username))
+            return "error";
+        String name = commercialApplyList.get((page - 1) * 10 + num - 1).username;
+        messageDao.delete_apply_commerical(commercialApplyList.get((page - 1) * 10 + num - 1).apply_commerical_id);
+        return name;
     }
 
     public int findInfoApplyNum(String username) {
         if(!isSuper(username))
             return 0;
             
-        List<Apply_info> applylist = messageDao.show_Apply_info();
-        return applylist.size()/10 + 1;
+        infoApplyList = messageDao.show_Apply_info();
+        return infoApplyList.size()/10 + 1;
     }
 
     public List<Apply_info> findInfoApplyPage(String username, int page) {
         if(!isSuper(username))
             return null;
-            
-        List<Apply_info> applylist = messageDao.show_Apply_info();
         List<Apply_info> newlist = new ArrayList<Apply_info>();
-        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
-            newlist.add(applylist.get(i));
+        for (int i = (page - 1) * 10; i < infoApplyList.size() && i < page * 10; i++){
+            newlist.add(infoApplyList.get(i));
         }
         return newlist;
     }
@@ -238,27 +250,30 @@ public class MessageService {
     public Apply_info findInfoApplyContent(String username, int page, int num) {
         if(!isSuper(username))
             return null;
-            
-        List<Apply_info> applylist = messageDao.show_Apply_info();
-        return applylist.get((page - 1) * 10 + num - 1);
+        return infoApplyList.get((page - 1) * 10 + num - 1);
+    }
+
+    String delInfoApply(String username, int page, int num) {
+        if(!isSuper(username))
+            return "error";
+        String name = infoApplyList.get((page - 1) * 10 + num - 1).username;
+        messageDao.delete_apply_info(infoApplyList.get((page - 1) * 10 + num - 1).apply_info_id);
+        return name;
     }
 
     public int findMedicalApplyNum(String username) {
         if(!isSuper(username))
             return 0;
-            
-        List<Apply_medical_admin> applylist = messageDao.show_apply_medical_admin();
-        return applylist.size()/10 + 1;
+        medicalApplyList = messageDao.show_apply_medical_admin();
+        return medicalApplyList.size()/10 + 1;
     }
 
     public List<Apply_medical_admin> findMedicalApplyPage(String username, int page) {
         if(!isSuper(username))
             return null;
-            
-        List<Apply_medical_admin> applylist = messageDao.show_apply_medical_admin();
         List<Apply_medical_admin> newlist = new ArrayList<Apply_medical_admin>();
-        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
-            newlist.add(applylist.get(i));
+        for (int i = (page - 1) * 10; i < medicalApplyList.size() && i < page * 10; i++){
+            newlist.add(medicalApplyList.get(i));
         }
         return newlist;
     }
@@ -266,27 +281,30 @@ public class MessageService {
     public Apply_medical_admin findMedicalApplyContent(String username, int page, int num) {
         if(!isSuper(username))
             return null;
-            
-        List<Apply_medical_admin> applylist = messageDao.show_apply_medical_admin();
-        return applylist.get((page - 1) * 10 + num - 1);
+        return medicalApplyList.get((page - 1) * 10 + num - 1);
+    }
+
+    String delMedicalApply(String username, int page, int num) {
+        if(!isSuper(username))
+            return "error";
+        String name = medicalApplyList.get((page - 1) * 10 + num - 1).username;
+        messageDao.delete_apply_medical_admin(medicalApplyList.get((page - 1) * 10 + num - 1).medical_admin_id);
+        return name;
     }
 
     public int findCommunityApplyNum(String username) {
         if(!isSuper(username))
             return 0;
-            
-        List<apply_community> applylist = messageDao.show_apply_community();
-        return applylist.size()/10 + 1;
+        communityApplyList = messageDao.show_apply_community();
+        return communityApplyList.size()/10 + 1;
     }
 
     public List<apply_community> findCommunityApplyPage(String username, int page) {
         if(!isSuper(username))
             return null;
-            
-        List<apply_community> applylist = messageDao.show_apply_community();
         List<apply_community> newlist = new ArrayList<apply_community>();
-        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
-            newlist.add(applylist.get(i));
+        for (int i = (page - 1) * 10; i < communityApplyList.size() && i < page * 10; i++){
+            newlist.add(communityApplyList.get(i));
         }
         return newlist;
     }
@@ -294,27 +312,30 @@ public class MessageService {
     public apply_community findCommunityApplyContent(String username, int page, int num) {
         if(!isSuper(username))
             return null;
-            
-        List<apply_community> applylist = messageDao.show_apply_community();
-        return applylist.get((page - 1) * 10 + num - 1);
+        return communityApplyList.get((page - 1) * 10 + num - 1);
+    }
+
+    String delCommunityApply(String username, int page, int num) {
+        if(!isSuper(username))
+            return "error";
+        String name = communityApplyList.get((page - 1) * 10 + num - 1).username;
+        messageDao.delete_apply_community(communityApplyList.get((page - 1) * 10 + num - 1).apply_community_id);
+        return name;
     }
 
     public int findDoctorApplyNum(String username) {
         if(!isSuper(username))
             return 0;
-            
-        List<apply_doctor> applylist = messageDao.show_apply_doctor();
-        return applylist.size()/10 + 1;
+        docApplyList = messageDao.show_apply_doctor();
+        return docApplyList.size()/10 + 1;
     }
 
     public List<apply_doctor> findDoctorApplyPage(String username, int page) {
         if(!isSuper(username))
             return null;
-            
-        List<apply_doctor> applylist = messageDao.show_apply_doctor();
         List<apply_doctor> newlist = new ArrayList<apply_doctor>();
-        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
-            newlist.add(applylist.get(i));
+        for (int i = (page - 1) * 10; i < docApplyList.size() && i < page * 10; i++){
+            newlist.add(docApplyList.get(i));
         }
         return newlist;
     }
@@ -322,18 +343,23 @@ public class MessageService {
     public apply_doctor findDoctorApplyContent(String username, int page, int num) {
         if(!isSuper(username))
             return null;
-            
-        List<apply_doctor> applylist = messageDao.show_apply_doctor();
-        return applylist.get((page - 1) * 10 + num - 1);
+        return docApplyList.get((page - 1) * 10 + num - 1);
+    }
+
+    String delDoctorApplyContent(String username, int page, int num) {
+        if(!isSuper(username))
+            return "error";
+        String name = docApplyList.get((page - 1) * 10 + num - 1).username;
+        messageDao.delete_apply_doctor(docApplyList.get((page - 1) * 10 + num - 1).doctor_id);
+        return name;
     }
 
     public int findOpeningApplyNum(String username) {
         String district = isBusiness(username);
         if (district ==  null)
             return 0;
-
-        List<Apply_opening> applylist = findOpeningApply(district);
-        return applylist.size()/10 + 1;
+        openingApplyList = findOpeningApply(district);
+        return openingApplyList.size()/10 + 1;
 
     }
 
@@ -341,11 +367,9 @@ public class MessageService {
         String district = isBusiness(username);
         if (district ==  null)
             return null;
-
-        List<Apply_opening> applylist = findOpeningApply(district);
         List<Apply_opening> newlist = new ArrayList<Apply_opening>();
-        for (int i = (page - 1) * 10; i < applylist.size() && i < page * 10; i++){
-            newlist.add(applylist.get(i));
+        for (int i = (page - 1) * 10; i < openingApplyList.size() && i < page * 10; i++){
+            newlist.add(openingApplyList.get(i));
         }
         return newlist;
     }
@@ -354,9 +378,59 @@ public class MessageService {
         String district = isBusiness(username);
         if (district ==  null)
             return null;
+        return openingApplyList.get((page - 1) * 10 + num - 1);
+    }
 
-        List<Apply_opening> applylist = findOpeningApply(district);
-        return applylist.get((page - 1) * 10 + num - 1);
+    String delOpeningApply(String username, int page, int num) {
+        String district = isBusiness(username);
+        if (district ==  null)
+            return "error";
+        String name = openingApplyList.get((page - 1) * 10 + num - 1).username;
+        messageDao.delete_apply_opening(openingApplyList.get((page - 1) * 10 + num - 1).apply_opening_id);
+        return name;
+    }
+
+    public void feedBackRoleApply(String username, String function, int type, int page, int id, String action) {
+        
+        String name;
+        switch(type){
+            case 0:{
+                name = delMainApply(username, page, id);
+                Chat msg = new Chat(0, "system", name, action, "Main admin application result");
+                sendChat(msg);
+            }
+            case 1:{
+                name = delInfoApply(username, page, id);
+                Chat msg = new Chat(0, "system", name, action, "Information admin application result");
+                sendChat(msg);
+            }
+            case 2:{
+                name = delCommunityApply(username, page, id);
+                Chat msg = new Chat(0, "system", name, action, "Community admin application result");
+                sendChat(msg);
+            }
+            case 3:{
+                name = delCommercialApply(username, page, id);
+                Chat msg = new Chat(0, "system", name, action, "Commercial admin application result");
+                sendChat(msg);
+            }
+            case 4:{
+                name = delDoctorApplyContent(username, page, id);
+                Chat msg = new Chat(0, "system", name, action, "Doctorapplication result");
+                sendChat(msg);
+            }
+            case 5:{
+                name = delMedicalApply(username, page, id);
+                Chat msg = new Chat(0, "system", name, action, "Medical admin application result");
+                sendChat(msg);
+            }
+        }
+    }
+
+    public void feedBackOpeningApply(String username, String function, int page, int id, String action) {
+        String name = delOpeningApply(username, page, id);
+        Chat msg = new Chat(0, "system", name, action, "Opening application result");
+        sendChat(msg);
     }
 
     public void sendReport(submission report) {
