@@ -38,28 +38,29 @@ public class Apply_opening {
 
 
     // {user=HLSSSS, pwd=123, business-district=bbb, shop-name=ffff, reason=ccc, time=forever}
-    public static Apply_opening convertMapToClass(Map<String, Object> map) {
-        return new Apply_opening(
-                0,
-                (String)map.get("user"),
-                (String)map.get("pwd"),
-                (String)map.get("business-district"),
-                (String)map.get("shop-name"),
-                (String)map.get("reason"),
-                Converter.durationMap.get((String)map.get("time")),
-                0
-        );
+    public Apply_opening(Map<String, Object> map) {
+        this.username = (String)map.get("user");
+        this.password = (String)map.get("pwd");
+        this.business_district = (String)map.get("business-district");
+        this.shop_name = (String)map.get("shop-name");
+        this.reason = (String)map.get("reason");
+        this.duration = Converter.durationMap.get((String)map.get("time"));
     }
 
-    public static Map<String, Object> convertClassToMap(Apply_opening apply) {
+    public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put("user", apply.username);
-        map.put("pwd", apply.password);
-        map.put("business_district", apply.business_district);
-        map.put("shop_name", apply.business_district);
-        map.put("reason", apply.reason);
-        map.put("time", Converter.durationReverseMap.get(apply.duration));
+        map.put("user", this.username);
+        map.put("pwd", this.password);
+        map.put("business_district", this.business_district);
+        map.put("shop_name", this.business_district);
+        map.put("reason", this.reason);
+        map.put("time", Converter.durationReverseMap.get(this.duration));
         return map;
     }
 
+    public Map<String, Object> toMapPart() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("sender", this.username);
+        return map;
+    }
 }

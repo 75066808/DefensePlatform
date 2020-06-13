@@ -49,19 +49,15 @@ public class submission {
     // {user=HLSSSS, pwd=123, province=Anhui, address=, real-name=, age=, symptom=confirm, color=yellow}
     // {user=HLSSSS, pwd=123, province=Anhui, address=, real-name=, age=, color=orange}
 
-    public static submission convertMapToClass(Map<String, Object> map) {
-        return new submission(
-                0,
-                (String)map.get("user"),
-                (String)map.get("pwd"),
-                (String)map.get("province"),
-                (String)map.get("address"),
-                (String)map.get("real-name"),
-                map.containsKey("symptom0") ? 1 : 0,
-                Converter.colorMap.get((String)map.get("color")),
-                "",
-                0
-        );
+    public submission(Map<String, Object> map) {
+        this.username = (String)map.get("user");
+        this.password = (String)map.get("pwd");
+        this.province = (String)map.get("province");
+        this.address = (String)map.get("address");
+        this.real_name = (String)map.get("real-name");
+        this.age = Integer.parseInt((String)map.get("age"));
+        this.situation = map.containsKey("symptom0") ? 1 : 0;
+        this.color = Converter.colorMap.get((String)map.get("color"));
     }
 
 

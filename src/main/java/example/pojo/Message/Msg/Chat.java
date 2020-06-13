@@ -27,22 +27,26 @@ public class Chat {
 
 
     // {target=to, sender=test_usr, title=title, main-text=text }
-    public static Chat convertMapToClass(Map<String, Object> map) {
-        return new Chat(
-                0,
-                (String)map.get("sender"),
-                (String)map.get("target"),
-                (String)map.get("main-text"),
-                (String)map.get("title")
-        );
+    public Chat(Map<String, Object> map) {
+        this.from_name = (String)map.get("sender");
+        this.to_name = (String)map.get("target");
+        this.content = (String)map.get("main-text");
+        this.title = (String)map.get("title");
     }
 
-    public static Map<String, Object> convertClassToMap(Chat chat) {
+    public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put("sender", chat.from_name);
-        map.put("target", chat.to_name);
-        map.put("main-text", chat.content);
-        map.put("title", chat.title);
+        map.put("sender", this.from_name);
+        map.put("target", this.to_name);
+        map.put("main_text", this.content);
+        map.put("title", this.title);
+        return map;
+    }
+
+    public Map<String, Object> toMapPart() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("sender", this.from_name);
+        map.put("title", this.title);
         return map;
     }
 

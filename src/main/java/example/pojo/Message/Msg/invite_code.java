@@ -27,11 +27,9 @@ public class invite_code {
     {user=HLSSSS, pwd=123, roles=Medical, invite-code=}
     */
 
-    public static invite_code convertMapToClass(Map<String, Object> map) {
-        return new invite_code(
-                (String)map.get("invite-code"),
-                Converter.applyTypeMap.get((String)map.get("roles"))
-        );
+    public invite_code(Map<String, Object> map) {
+        this.code = (String)map.get("invite-code");
+        this.type = Converter.applyTypeMap.get((String)map.get("roles"));
     }
 
 }

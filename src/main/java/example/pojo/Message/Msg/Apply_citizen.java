@@ -49,35 +49,37 @@ public class Apply_citizen {
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, email=75066808@qq.com, province=Anhui, address=china, real-name=yuruijing, community=cc, reason=res, time=forever}
-    public static Apply_citizen convertMapToClass(Map<String, Object> map) {
-        return new Apply_citizen(
-                0,
-                (String)map.get("user"),
-                (String)map.get("pwd"),
-                (String)map.get("phonenumber"),
-                (String)map.get("email"),
-                (String)map.get("province"),
-                (String)map.get("address"),
-                (String)map.get("real-name"),
-                (String)map.get("community"),
-                (String)map.get("reason"),
-                Converter.durationMap.get((String)map.get("time")),
-                0
-        );
+    public Apply_citizen(Map<String, Object> map) {
+        this.username = (String)map.get("user");
+        this.password = (String)map.get("pwd");
+        this.phone_number = (String)map.get("phonenumber");
+        this.email = (String)map.get("email");
+        this.province = (String)map.get("province");
+        this.address = (String)map.get("address");
+        this.real_name = (String)map.get("real-name");
+        this.community = (String)map.get("community");
+        this.reason = (String)map.get("reason");
+        this.duration = Converter.durationMap.get((String)map.get("time"));
     }
 
-    public static Map<String, Object> convertClassToMap(Apply_citizen apply) {
+    public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put("user", apply.username);
-        map.put("pwd", apply.password);
-        map.put("phonenumber", apply.phone_number);
-        map.put("email", apply.email);
-        map.put("province", apply.province);
-        map.put("address", apply.address);
-        map.put("real_name", apply.real_name);
-        map.put("community", apply.community);
-        map.put("reason", apply.reason);
-        map.put("time", Converter.durationReverseMap.get(apply.duration));
+        map.put("user", this.username);
+        map.put("pwd", this.password);
+        map.put("phonenumber", this.phone_number);
+        map.put("email", this.email);
+        map.put("province", this.province);
+        map.put("address", this.address);
+        map.put("real_name", this.real_name);
+        map.put("community", this.community);
+        map.put("reason", this.reason);
+        map.put("time", Converter.durationReverseMap.get(this.duration));
+        return map;
+    }
+
+    public Map<String, Object> toMapPart() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("sender", this.username);
         return map;
     }
 }

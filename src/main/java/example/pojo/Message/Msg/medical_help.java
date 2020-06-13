@@ -49,35 +49,39 @@ public class medical_help {
     }
 
     // {user=HLSSSS, pwd=123, phonenumber=22222, province=Anhui, address=china, realname=urara, gender=male, age=99, department=1212, symptom=s}
-    public static medical_help convertMapToClass(Map<String, Object> map) {
-        return new medical_help(
-                0,
-                (String)map.get("user"),
-                (String)map.get("pwd"),
-                (String)map.get("phonenumber"),
-                (String)map.get("province"),
-                (String)map.get("address"),
-                (String)map.get("realname"),
-                Converter.genderMap.get((String)map.get("gender")),
-                Integer.parseInt((String)map.get("age")),
-                (String)map.get("department"),
-                (String)map.get("symptom"),
-                0
-        );
+    public medical_help(Map<String, Object> map) {
+        this.username = (String)map.get("user");
+        this.password = (String)map.get("pwd");
+        this.phone_number = (String)map.get("phonenumber");
+        this.province = (String)map.get("province");
+        this.address = (String)map.get("address");
+        this.real_name = (String)map.get("realname");
+        this.sex = Converter.genderMap.get((String)map.get("gender"));
+        this.age = Integer.parseInt((String)map.get("age"));
+        this.department = (String)map.get("department");
+        this.symotoms = (String)map.get("symptom");
     }
 
-    public static Map<String, Object> convertClassToMap(medical_help help) {
+    public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put("user", help.username);
-        map.put("pwd", help.password);
-        map.put("phonenumber", help.phone_number);
-        map.put("province", help.province);
-        map.put("address", help.address);
-        map.put("realname", help.real_name);
-        map.put("gender", Converter.genderReverseMap.get(help.sex));
-        map.put("age", String.valueOf(help.age));
-        map.put("department", help.department);
-        map.put("symptom", help.symotoms);
+        map.put("user", this.username);
+        map.put("pwd", this.password);
+        map.put("phonenumber", this.phone_number);
+        map.put("province", this.province);
+        map.put("address", this.address);
+        map.put("realname", this.real_name);
+        map.put("gender", Converter.genderReverseMap.get(this.sex));
+        map.put("age", String.valueOf(this.age));
+        map.put("department", this.department);
+        map.put("symptom", this.symotoms);
         return map;
     }
+
+    public Map<String, Object> toMapPart() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("sender", this.username);
+        map.put("department", this.department);
+        return map;
+    }
+
 }
