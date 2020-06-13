@@ -7,6 +7,7 @@ import example.pojo.Message.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import example.pojo.Message.Msg.*;
+import example.pojo.User.Ordinary.Citizen;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -47,31 +48,83 @@ public class MessageService {
         messageDao.add_invite_code(invite);
     }
 
-    public void sendCommunityAdminApply(apply_community apply) {
-        messageDao.add_apply_community(apply);
+    public boolean sendCommunityAdminApply(apply_community apply) {
+        String code = apply.invite_code;
+        invite_code check = messageDao.find_invite_code(code);
+        //TO DO:...
+        if(check.type == 0){
+            messageDao.add_apply_community(apply);
+            return true;
+        }
+        return false;
     }
 
-    public void sendCommercialAdminApply(apply_commerical apply) {
-        messageDao.add_apply_commerical(apply);
+    public boolean sendCommercialAdminApply(apply_commerical apply) {
+        String code = apply.invite_code;
+        invite_code check = messageDao.find_invite_code(code);
+        if(check.type == 0){
+            messageDao.add_apply_commerical(apply);
+            return true;
+        }
+        return false;
     }
 
-    public void sendMedicalAdminApply(Apply_medical_admin apply) {
-        messageDao.add_apply_medical_admin(apply);
+    public boolean sendMedicalAdminApply(Apply_medical_admin apply) {
+        String code = apply.invite_code;
+        invite_code check = messageDao.find_invite_code(code);
+        if(check.type == 0){
+            messageDao.add_apply_medical_admin(apply);
+            return true;
+        }
+        return false;
     }
 
-    public void sendInformationAdminApply(Apply_info apply) {
-        messageDao.add_apply_info(apply);
+    public boolean sendInformationAdminApply(Apply_info apply) {
+        String code = apply.invite_code;
+        invite_code check = messageDao.find_invite_code(code);
+        if(check.type == 0){
+            messageDao.add_apply_info(apply);
+            return true;
+        }
+        return false;
     }
 
-    public void sendDoctorApply(apply_doctor apply) {
-        messageDao.add_apply_doctor(apply);
+    public boolean sendSuperAdminApply(Apply_main apply) {
+        String code = apply.invite_code;
+        invite_code check = messageDao.find_invite_code(code);
+        if(check.type == 0){
+            messageDao.add_apply_main(apply);
+            return true;
+        }
+        return false;
     }
 
-    public void sendCitizenApply(Apply_citizen apply) {
-        messageDao.add_apply_citizen(apply);
+    public boolean sendDoctorApply(apply_doctor apply) {
+        String code = apply.invite_code;
+        invite_code check = messageDao.find_invite_code(code);
+        if(check.type == 0){
+            messageDao.add_apply_doctor(apply);
+            return true;
+        }
+        return false;
     }
 
-    public void sendMerchatApply(Apply_business apply) {
+    public boolean sendCitizenApply(Apply_citizen apply) {
+        List<Citizen> citizenlist = userDao.show_citizen();
+        String username = apply.username;
+        Citizen tmp = null;
+        for (int i = 0; i < citizenlist.size(); i++){
+            tmp = citizenlist.get(i);
+            if(tmp.username.equals(username))
+                return false;
+        }
+        Citizen newcitizen = new Citizen(apply.username, apply.password, apply.phone_number, 
+        apply.email, apply.province, apply.address, apply.real_name, apply.community, apply.reason, apply.duration);
+        
+        userDao.add_citizen(newcitizen);
+    }
+
+    public boolean sendMerchatApply(Apply_business apply) {
         messageDao.add_apply_business(apply);
     }
 
@@ -82,7 +135,7 @@ public class MessageService {
     public int findRoleApplyNum(String username, String type) {
         if(type.equals("Main Admin application")){
             List<Apply_main> applylist = messageDao.show_apply_main();
-            //check user name
+            //check user na
             return chatlist.size()/10 + 1;
         }
         else if(type.equals("Commercial Admin application")){

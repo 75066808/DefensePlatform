@@ -412,7 +412,7 @@ public class MessageDao {
         }
     }
 
-    List<apply_doctor> show_apply_doctor() { // lid is known
+    public List<apply_doctor> show_apply_doctor() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -543,7 +543,7 @@ public class MessageDao {
         }
     }
 
-    List<medical_help> show_medical_help() { // lid is known
+    public List<medical_help> show_medical_help() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -673,7 +673,7 @@ public class MessageDao {
         }
     }
 
-    List<medical_help_d> show_medical_help_d() { // lid is known
+    public List<medical_help_d> show_medical_help_d() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -803,7 +803,7 @@ public class MessageDao {
         }
     }
 
-    List<apply_community> show_apply_community() { // lid is known
+    public List<apply_community> show_apply_community() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -934,7 +934,7 @@ public class MessageDao {
         }
     }
 
-    List<apply_commerical> show_apply_commerical() { // lid is known
+    public List<apply_commerical> show_apply_commerical() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1024,7 +1024,7 @@ public class MessageDao {
         }
     }
 
-    List<Apply_info> show_Apply_info() { // lid is known
+    public List<Apply_info> show_Apply_info() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1196,7 +1196,7 @@ public class MessageDao {
         }
     }
 
-    List<Apply_main> show_apply_main() { // lid is known
+    public List<Apply_main> show_apply_main() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1328,7 +1328,7 @@ public class MessageDao {
         }
     }
 
-    List<Apply_citizen> show_apply_citizen() { // lid is known
+    public List<Apply_citizen> show_apply_citizen() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1460,7 +1460,7 @@ public class MessageDao {
         }
     }
 
-    List<Apply_business> show_apply_business(){
+    public List<Apply_business> show_apply_business(){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1551,7 +1551,7 @@ public class MessageDao {
             System.out.println("完毕！");
         }
     }
-    List<Chat> show_chat_to(String username){
+    public List<Chat> show_chat_to(String username){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1600,7 +1600,7 @@ public class MessageDao {
         return null;
     };
 
-    List<medical_help_d> show_doctor_medical(String doctorname){
+    public List<medical_help_d> show_doctor_medical(String doctorname){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -1731,7 +1731,7 @@ public class MessageDao {
         }
     }
 
-    List<submission> show_submission(){
+    public List<submission> show_submission(){
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
