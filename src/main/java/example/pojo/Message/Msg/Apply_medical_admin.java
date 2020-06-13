@@ -1,6 +1,7 @@
 package example.pojo.Message.Msg;
 
 public class Apply_medical_admin {
+    public int medical_admin_id;
     public String username;
     public String password;
     public String phone_number;
@@ -14,6 +15,7 @@ public class Apply_medical_admin {
 
 
     public  Apply_medical_admin(
+            int medical_admin_id,
             String username,
             String password,
             String phone_number,
@@ -26,6 +28,7 @@ public class Apply_medical_admin {
             String invite_code,
             int checked
     ) {
+        this.medical_admin_id = medical_admin_id;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;

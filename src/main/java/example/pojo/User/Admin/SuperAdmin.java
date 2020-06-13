@@ -1,6 +1,7 @@
 package example.pojo.User.Admin;
 
 public class SuperAdmin {
+    public int superadmin_id;
     public String username;
     public String password;
     public String phone_number;
@@ -14,6 +15,7 @@ public class SuperAdmin {
 
 
     public SuperAdmin(
+            int superadmin_id,
             String username,
             String password,
             String phone_number,
@@ -25,6 +27,7 @@ public class SuperAdmin {
             int duration,
             int checked
     ) {
+        this.superadmin_id = superadmin_id;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;

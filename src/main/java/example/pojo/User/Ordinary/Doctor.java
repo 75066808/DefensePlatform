@@ -1,5 +1,6 @@
 package example.pojo.User.Ordinary;
 public class Doctor {
+    public int doctor_id;
     public String username;
     public String password;
     public String phone_number;
@@ -13,6 +14,7 @@ public class Doctor {
 
 
     public Doctor(
+            int doctor_id,
             String username,
             String password,
             String phone_number,
@@ -24,6 +26,7 @@ public class Doctor {
             String reason,
             String invite_code
     ) {
+        this.doctor_id = doctor_id;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;

@@ -1,6 +1,7 @@
 package example.pojo.User.Ordinary;
 
 public class Business_man {
+    public int business_id;
     public String username;
     public String password;
     public String phone_number;
@@ -12,6 +13,7 @@ public class Business_man {
 
 
     public Business_man(
+            int business_id,
             String username,
             String password,
             String phone_number,
@@ -21,6 +23,7 @@ public class Business_man {
             String business_district,
             int duration
     ) {
+        this.business_id = business_id;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;

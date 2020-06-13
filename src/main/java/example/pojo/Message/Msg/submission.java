@@ -1,6 +1,7 @@
 package example.pojo.Message.Msg;
 
 public class submission {
+    public int submission_id;
     public String username;
     public String password;
     public String province;
@@ -13,6 +14,7 @@ public class submission {
 
 
     public submission(
+            int submission_id,
             String username,
             String password,
             String province,
@@ -23,6 +25,7 @@ public class submission {
             String sub_date,
             int checked
     ) {
+        this.submission_id = submission_id;
         this.username = username;
         this.password = password;
         this.province = province;

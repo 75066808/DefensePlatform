@@ -356,7 +356,7 @@ public class MessageDao {
             sql = "select * from apply_doctor ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Apply_medical_admin(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
+                temp = new Apply_medical_admin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -379,6 +379,8 @@ public class MessageDao {
         }
         return null;
     }
+
+
 
     public void add_apply_doctor(apply_doctor apply_doctor) { // lid is known
         Connection con;
@@ -486,7 +488,7 @@ public class MessageDao {
             sql = "select * from apply_doctor ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new apply_doctor(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
+                temp = new apply_doctor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -617,7 +619,7 @@ public class MessageDao {
             sql = "select * from medical_help ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new medical_help(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getString(10),rs.getString(11),rs.getInt(12));
+                temp = new medical_help(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getString(10),rs.getString(11),rs.getInt(12));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -747,7 +749,7 @@ public class MessageDao {
             sql = "select * from medical_help_d ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new medical_help_d(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getInt(13));
+                temp = new medical_help_d(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getInt(13));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -877,7 +879,7 @@ public class MessageDao {
             sql = "select * from apply_community ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new apply_community(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
+                temp = new apply_community(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1008,7 +1010,139 @@ public class MessageDao {
             sql = "select * from medical_help ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new apply_commerical(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
+                temp = new apply_commerical(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+
+    public void add_apply_opening(Apply_opening apply_opening) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "insert into apply_opening (username,password,business_distract,email,shop_name,duration,checked) values ('" + apply_opening.username +"','"+ apply_opening.password+"','" + apply_opening.business_district +"','" + apply_opening.email +"','" + apply_opening.shop_name+"','" +  apply_opening.duration + "'," +"0"+")";
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    public void delete_apply_opening(int apply_opening_id) { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+
+            sql = "delete from apply_opening where apply_opening_id = " + apply_opening_id;
+            statement.executeUpdate(sql);
+            con.close();
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+    }
+
+    List<Apply_opening> show_apply_opening() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        Apply_opening temp;
+        List<Apply_opening> list = new ArrayList<Apply_opening>();
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from medical_help ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new Apply_opening(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1073,55 +1207,6 @@ public class MessageDao {
         }
     }
 
-    List<Apply_info> show_Apply_info() { // lid is known
-        Connection con;
-        String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
-        String seruser = "root";
-        String serpassword = "password";
-        Scanner in=new Scanner(System.in);
-        String sql;
-        ResultSet rs = null;
-        Apply_info temp;
-        List<Apply_info> list = new ArrayList<Apply_info>();
-        try {
-            // 加载驱动程序
-            Class.forName(driver);
-            // 1.getConnection()方法，连接MySQL数据库！！
-            con = DriverManager.getConnection(url, seruser, serpassword);
-            if (!con.isClosed())
-                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
-
-            // 2.创建statement类对象，用来执行SQL语句！！
-            Statement statement = con.createStatement();
-            // 要执行的SQL语句
-            sql = "select * from apply_info ";
-            rs = statement.executeQuery(sql);
-            while (rs.next()){
-                temp = new Apply_info(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
-                list.add(temp);
-            }
-            statement.executeUpdate(sql);
-            con.close();
-            return list;
-        }
-        catch (ClassNotFoundException e) {
-            // 数据库驱动类异常处理
-            System.out.println("Sorry,can`t find the Driver!");
-            e.printStackTrace();
-        }
-        catch (SQLException e) {
-            // 数据库连接失败异常处理
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            System.out.println("完毕！");
-        }
-        return null;
-    }
-
     public void delete_apply_info(int apply_info_id) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
@@ -1162,6 +1247,57 @@ public class MessageDao {
             System.out.println("完毕！");
         }
     }
+
+    List<Apply_info> show_Apply_info() { // lid is known
+        Connection con;
+        String driver = "com.mysql.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
+        String seruser = "root";
+        String serpassword = "password";
+        Scanner in=new Scanner(System.in);
+        String sql;
+        ResultSet rs = null;
+        Apply_info temp;
+        List<Apply_info> list = new ArrayList<Apply_info>();
+        try {
+            // 加载驱动程序
+            Class.forName(driver);
+            // 1.getConnection()方法，连接MySQL数据库！！
+            con = DriverManager.getConnection(url, seruser, serpassword);
+            if (!con.isClosed())
+                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+
+            // 2.创建statement类对象，用来执行SQL语句！！
+            Statement statement = con.createStatement();
+            // 要执行的SQL语句
+            sql = "select * from apply_info ";
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                temp = new Apply_info(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
+                list.add(temp);
+            }
+            statement.executeUpdate(sql);
+            con.close();
+            return list;
+        }
+        catch (ClassNotFoundException e) {
+            // 数据库驱动类异常处理
+            System.out.println("Sorry,can`t find the Driver!");
+            e.printStackTrace();
+        }
+        catch (SQLException e) {
+            // 数据库连接失败异常处理
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("完毕！");
+        }
+        return null;
+    }
+
+
 
     public void add_apply_main(Apply_main apply_main) { // lid is known
         Connection con;
@@ -1270,7 +1406,7 @@ public class MessageDao {
             sql = "select * from apply_main ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Apply_main(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11));
+                temp = new Apply_main(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1402,7 +1538,7 @@ public class MessageDao {
             sql = "select * from apply_citizen ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Apply_citizen(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
+                temp = new Apply_citizen(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1534,7 +1670,7 @@ public class MessageDao {
             sql = "select * from apply_business ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Apply_business(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
+                temp = new Apply_business(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1566,7 +1702,6 @@ public class MessageDao {
         String serpassword = "password";
         Scanner in=new Scanner(System.in);
         String sql;
-        Inquiry temp = null;
         ResultSet rs = null;
         try {
             // 加载驱动程序
@@ -1625,7 +1760,7 @@ public class MessageDao {
             sql = "select * from chat where to_name = " +username;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new Chat(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(4));
+                temp = new Chat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(4));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1674,7 +1809,7 @@ public class MessageDao {
             sql = "select * from medical_help_d where doctorname = " +doctorname;
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new medical_help_d(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getInt(13));
+                temp = new medical_help_d(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getInt(13));
                 list.add(temp);
             }
             statement.executeUpdate(sql);
@@ -1805,7 +1940,7 @@ public class MessageDao {
             sql = "select * from submission ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new submission(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10));
+                temp = new submission(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getString(9),rs.getInt(10));
                 list.add(temp);
             }
             statement.executeUpdate(sql);

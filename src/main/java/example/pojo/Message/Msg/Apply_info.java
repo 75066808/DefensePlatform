@@ -1,6 +1,7 @@
 package example.pojo.Message.Msg;
 
 public class Apply_info {
+    public int apply_info_id;
     public String username;
     public String password;
     public String phone_number;
@@ -13,6 +14,7 @@ public class Apply_info {
 
 
     public Apply_info(
+            int apply_info_id,
             String username,
             String password,
             String phone_number,
@@ -23,6 +25,7 @@ public class Apply_info {
             int duration,
             int checked
     ) {
+        this.apply_info_id = apply_info_id;
         this.username = username;
         this.password = password;
         this.phone_number = phone_number;
