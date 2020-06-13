@@ -595,7 +595,7 @@ public class UserDao {
         return null;
     }
 
-    List<CommunityAdmin> show_communityadmin(String community) { // lid is known
+    public List<CommunityAdmin> show_communityadmin(String community) { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
@@ -726,7 +726,7 @@ public class UserDao {
         }
     }
 
-    List<Doctor> show_doctor() { // lid is known
+    public List<Doctor> show_doctor() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";

@@ -331,7 +331,7 @@ public class MessageDao {
         }
     }
 
-    List<Apply_medical_admin> show_apply_medical_admin() { // lid is known
+    public List<Apply_medical_admin> show_apply_medical_admin() { // lid is known
         Connection con;
         String driver = "com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
