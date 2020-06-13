@@ -1,5 +1,10 @@
 package example.pojo.Message.Msg;
 
+import example.converter.Converter;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class medical_help {
     public int medical_help_id;
     public String username;
@@ -43,4 +48,36 @@ public class medical_help {
         this.checked = checked;
     }
 
+    // {user=HLSSSS, pwd=123, phonenumber=22222, province=Anhui, address=china, realname=urara, gender=male, age=99, department=1212, symptom=s}
+    public static medical_help convertMapToClass(Map<String, Object> map) {
+        return new medical_help(
+                0,
+                (String)map.get("user"),
+                (String)map.get("pwd"),
+                (String)map.get("phonenumber"),
+                (String)map.get("province"),
+                (String)map.get("address"),
+                (String)map.get("realname"),
+                Converter.genderMap.get((String)map.get("gender")),
+                Integer.parseInt((String)map.get("age")),
+                (String)map.get("department"),
+                (String)map.get("symptom"),
+                0
+        );
+    }
+
+    public static Map<String, Object> convertClassToMap(medical_help help) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("user", help.username);
+        map.put("pwd", help.password);
+        map.put("phonenumber", help.phone_number);
+        map.put("province", help.province);
+        map.put("address", help.address);
+        map.put("realname", help.real_name);
+        map.put("gender", Converter.genderReverseMap.get(help.sex));
+        map.put("age", String.valueOf(help.age));
+        map.put("department", help.department);
+        map.put("symptom", help.symotoms);
+        return map;
+    }
 }

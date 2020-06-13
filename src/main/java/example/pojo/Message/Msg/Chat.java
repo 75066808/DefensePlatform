@@ -27,7 +27,7 @@ public class Chat {
 
 
     // {target=to, sender=test_usr, title=title, main-text=text }
-    static Chat convertMapToClass(Map<String, Object> map) {
+    public static Chat convertMapToClass(Map<String, Object> map) {
         return new Chat(
                 0,
                 (String)map.get("sender"),
@@ -37,7 +37,7 @@ public class Chat {
         );
     }
 
-    static Map<String, Object> convertDataToClass(Chat chat) {
+    public static Map<String, Object> convertClassToMap(Chat chat) {
         Map<String, Object> map = new HashMap<>();
         map.put("sender", chat.from_name);
         map.put("target", chat.to_name);
