@@ -87,7 +87,8 @@ public class UserDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "select * from users where username" + " = " +username;
+            sql = "select * from users where username" + " = '" + username+"'";
+            System.out.println(sql);
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new User(rs.getInt("id"),rs.getString("username"),rs.getString("password"),rs.getString("real_name"));
@@ -163,7 +164,7 @@ public class UserDao {
 
     public int addUser(User user) {
         Connection con;
-        String driver = "com.mysql.jdbc.Driver";
+        String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/test?serverTimezone=UTC";
         String seruser = "root";
         String serpassword = "password";
@@ -177,12 +178,13 @@ public class UserDao {
             con = DriverManager.getConnection(url, seruser, serpassword);
             if (!con.isClosed())
                 System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
-
+            System.out.println(con);
+            System.out.println("建立连接耗时： "  + "ms 毫秒");
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into users (username,password,real_name) values ('" + user.username +"',"+ user.password +",'" + user.real_name +"')";
+            sql = "insert into users (username,password,real_name) values ('" + user.username +"','"+ user.password +"','" + user.real_name +"')";
             statement.executeUpdate(sql);
             sql = "SELECT LAST_INSERT_ID()";
             rs = statement.executeQuery(sql);
@@ -389,13 +391,12 @@ public class UserDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from business_admin= ";
+            sql = "select * from business_admin ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new BusinessAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -445,7 +446,6 @@ public class UserDao {
                 temp = new Business_man(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -576,7 +576,6 @@ public class UserDao {
                 temp = new Citizen(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -627,7 +626,6 @@ public class UserDao {
                 temp = new CommunityAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -758,7 +756,6 @@ public class UserDao {
                 temp = new Doctor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -883,13 +880,12 @@ public class UserDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from apply_doctor ";
+            sql = "select * from medical_admin";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new MedicalAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1022,7 +1018,6 @@ public class UserDao {
                 temp = new InformationAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1189,13 +1184,12 @@ public class UserDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from informationadmin ";
+            sql = "select * from superadmin ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new SuperAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
