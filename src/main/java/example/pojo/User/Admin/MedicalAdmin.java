@@ -25,8 +25,7 @@ public class MedicalAdmin {
             String address,
             String real_name,
             String certificate,
-            String invite_code,
-            int duration
+            String invite_code
     ) {
         this.medical_admin_id = medical_admin_id;
         this.username = username;
@@ -38,7 +37,6 @@ public class MedicalAdmin {
         this.real_name = real_name;
         this.certificate = certificate;
         this.invite_code = invite_code;
-        this.duration = duration;
     }
 
     public MedicalAdmin(Apply_medical_admin apply) {
@@ -51,6 +49,5 @@ public class MedicalAdmin {
         this.real_name = apply.real_name;
         this.certificate = apply.certificate;
         this.invite_code = apply.invite_code;
-        this.duration = apply.duration;
     }
 }

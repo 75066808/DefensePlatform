@@ -44,7 +44,7 @@ public class Converter {
 
     public static Map<String, Integer> colorMap = new HashMap<String, Integer>() {
         {
-            put("green", 0);
+            put("grean", 0);
             put("yellow", 1);
             put("orange", 2);
 

@@ -883,7 +883,7 @@ public class UserDao {
             sql = "select * from medical_admin";
             rs = statement.executeQuery(sql);
             while (rs.next()){
-                temp = new MedicalAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11));
+                temp = new MedicalAdmin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10));
                 list.add(temp);
             }
             con.close();
