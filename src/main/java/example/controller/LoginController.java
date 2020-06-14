@@ -33,7 +33,7 @@ public class LoginController {
     @RequestMapping(value="register", method=RequestMethod.POST)
     @ResponseBody
     public boolean register(String username, String password, String realname) {
-        System.out.println("login");
+        System.out.println("register");
         System.out.println(username);
         System.out.println(password);
         System.out.println(realname);

@@ -338,7 +338,7 @@ public class MessageController {
         System.out.println(id);
         System.out.println(action);
 
-        messageService.feedBackRoleApply(username, function, Converter.applyTypeMap.get(type), page, id, action);
+        messageService.feedBackRoleApply(username, function, Converter.applyFeedBackTypeMap.get(type), page, id, action);
     }
 
     // disagree agree

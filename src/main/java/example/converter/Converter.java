@@ -16,6 +16,18 @@ public class Converter {
         }
     };
 
+    public static Map<String, Integer> applyFeedBackTypeMap = new HashMap<String, Integer>() {
+        {
+            put("Main Admin application", 0);
+            put("Info Admin application", 1);
+            put("Area Admin application", 2);
+            put("Commercial Admin application", 3);
+            put("Doctor application", 4);
+            put("Medical Admin application", 5);
+
+        }
+    };
+
     public static Map<String, Integer> durationMap = new HashMap<String, Integer>() {
         {
             put("forever", 0);
