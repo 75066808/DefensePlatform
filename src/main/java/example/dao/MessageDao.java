@@ -1708,7 +1708,7 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into chat (from_name,to_name,content,title) values ("+","+chat.from_name+","+chat.to_name+",'"+chat.content+"','"+chat.title+ "')";
+            sql = "insert into chat (from_name,to_name,content,title) values ('"+chat.from_name+"','"+chat.to_name+"','"+chat.content+"','"+chat.title+ "')";
             statement.executeUpdate(sql);
 
             con.close();
