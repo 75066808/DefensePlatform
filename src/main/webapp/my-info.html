@@ -803,7 +803,7 @@
         para_to_pass = decodeURI(loc.substr(n2+1,n1-n2));
         var n3 = para_to_pass.lastIndexOf('#');
         var len_rights = para_to_pass.length - n3;
-        //name = para_to_pass.substr(0, n3);  //测试时由于没有网页间用户名的传递，所以需要注释掉此行，手动输入用户名
+        name = para_to_pass.substr(0, n3);  //测试时由于没有网页间用户名的传递，所以需要注释掉此行，手动输入用户名
         var rights = para_to_pass.substr(n3+1,len_rights);
         name_replace(name);
         do_hide(rights);
