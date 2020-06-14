@@ -269,9 +269,10 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into Apply_medical_admin (username, password, phone_number, email, province, address, real_name, certificate, invite_code, duration ,checked) values ('" + apply_medical_admin.username +"','"+ apply_medical_admin.password +"','" + apply_medical_admin.phone_number +"','" + apply_medical_admin.email +"','" + apply_medical_admin.province+"','" + apply_medical_admin.address+"','" + apply_medical_admin.real_name+"','" + apply_medical_admin.certificate +"','" + apply_medical_admin.invite_code + "'," +"0"+")";
+            sql = "insert into apply_medical_admin (username, password, phone_number, email, province, address, real_name, certificate, invite_code, duration ,checked) values ('" + apply_medical_admin.username +"','"+ apply_medical_admin.password +"','" + apply_medical_admin.phone_number +"','" + apply_medical_admin.email +"','" + apply_medical_admin.province+"','" + apply_medical_admin.address+"','" + apply_medical_admin.real_name+"','" + apply_medical_admin.certificate +"','" + apply_medical_admin.invite_code + "'," +"0" + "," + apply_medical_admin.duration+")";
             statement.executeUpdate(sql);
             con.close();
+            System.out.println(sql);
         }
         catch (ClassNotFoundException e) {
             // 数据库驱动类异常处理
@@ -352,7 +353,7 @@ public class MessageDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from apply_doctor ";
+            sql = "select * from apply_medical_admin ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new Apply_medical_admin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(1));
@@ -530,7 +531,8 @@ public class MessageDao {
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
-            sql = "insert into medical_help (username,password,phone_number,province,address,real_name,sex,age,symotoms,checked) values ('" + medical_help.username +"','"+ medical_help.password +"','" + medical_help.phone_number +"','" + medical_help.province +"','" + medical_help.address+"','" + medical_help.real_name+"'," + medical_help.sex + "," + medical_help.age +",'" + medical_help.symotoms + "'," +"0"+")";
+            sql = "insert into medical_help (username,password,phone_number,province,address,real_name,sex,age,department,symotoms,checked) values ('" + medical_help.username +"','"+ medical_help.password +"','" + medical_help.phone_number +"','" + medical_help.province +"','" + medical_help.address+"','" + medical_help.real_name+"'," + medical_help.sex + "," + medical_help.age +",'" + medical_help.department + "','"+ medical_help.symotoms + "'," +"0"+")";
+            System.out.println(sql);
             statement.executeUpdate(sql);
             con.close();
         }
@@ -1006,7 +1008,7 @@ public class MessageDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from medical_help ";
+            sql = "select * from business_admin";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new apply_commerical(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
@@ -1137,7 +1139,7 @@ public class MessageDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from medical_help ";
+            sql = "select * from apply_opening ";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new Apply_opening(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8));
@@ -1754,8 +1756,10 @@ public class MessageDao {
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new Chat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(4));
+                System.out.println(sql);
                 list.add(temp);
             }
+            System.out.println(sql);
             con.close();
             return list;
         }
@@ -1848,6 +1852,7 @@ public class MessageDao {
             sql = "insert into submission (submission_id, username, password, province, address, real_name, age, situation, color, sub_date, checked) values ('" + submission.username +"','"+ submission.password +"','" + submission.province +"','" + submission.address+"','" + submission.real_name+"'," + submission.age + "," + submission.situation + "," + submission.color +",'"+submission.sub_date + "',"  +"0"+")";
             statement.executeUpdate(sql);
             con.close();
+            System.out.println(sql);
         }
         catch (ClassNotFoundException e) {
             // 数据库驱动类异常处理
