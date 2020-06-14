@@ -3,13 +3,10 @@ package example.service;
 import example.dao.MessageDao;
 import example.dao.UserDao;
 
+import example.pojo.User.Admin.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import example.pojo.Message.Msg.*;
-import example.pojo.User.Admin.BusinessAdmin;
-import example.pojo.User.Admin.CommunityAdmin;
-import example.pojo.User.Admin.MedicalAdmin;
-import example.pojo.User.Admin.SuperAdmin;
 import example.pojo.User.Ordinary.Business_man;
 import example.pojo.User.Ordinary.Citizen;
 import example.pojo.User.Ordinary.Doctor;
@@ -208,8 +205,7 @@ public class MessageService {
                 return false;
             }
         }
-        Citizen newcitizen = new Citizen(0, apply.username, apply.password, apply.phone_number, 
-        apply.email, apply.province, apply.address, apply.real_name, apply.community, apply.reason, apply.duration);
+        Citizen newcitizen = new Citizen(apply);
 
         userDao.add_citizen(newcitizen);
         System.out.println("New citizen has been created!");
@@ -228,8 +224,7 @@ public class MessageService {
                 return false;
             }
         }
-        Business_man newmerchant = new Business_man(0, username, apply.password, apply.phone_number, apply.email, 
-        apply.province, apply.address, apply.business_district, apply.duration);
+        Business_man newmerchant = new Business_man(apply);
 
         userDao.add_business_man(newmerchant);
         System.out.println("New businessman has been created!");
@@ -551,52 +546,93 @@ public class MessageService {
         String name;
         switch(type){
             case 0:{
+                if (action.equals("agree")) {
+                    Apply_main main = findMainApplyContent(username, page, id);
+                    SuperAdmin superAdmin = new SuperAdmin(main);
+                    userDao.add_superadmin(superAdmin);
+                }
                 name = delMainApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Main admin application result");
 
                 System.out.println("A message is send to : ");
                 System.out.println(name);
                 sendChat(msg);
+                break;
             }
             case 1:{
+                if (action.equals("agree")) {
+                    Apply_info info = findInfoApplyContent(username, page, id);
+                    InformationAdmin informationAdmin = new InformationAdmin(info);
+                    userDao.add_informationadmin(informationAdmin);
+                }
+
                 name = delInfoApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Information admin application result");
 
                 System.out.println("A message is send to : ");
                 System.out.println(name);
                 sendChat(msg);
+                break;
             }
             case 2:{
+                if (action.equals("agree")) {
+                    apply_community community = findCommunityApplyContent(username, page, id);
+                    CommunityAdmin communityAdmin = new CommunityAdmin(community);
+                    userDao.add_communityadmin(communityAdmin);
+                }
+
                 name = delCommunityApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Community admin application result");
 
                 System.out.println("A message is send to : ");
                 System.out.println(name);
                 sendChat(msg);
+                break;
             }
             case 3:{
+                if (action.equals("agree")) {
+                    apply_commerical commerical = findCommercialApplyContent(username, page, id);
+                    BusinessAdmin businessAdmin = new BusinessAdmin(commerical);
+                    userDao.add_businessadmin(businessAdmin);
+                }
+
                 name = delCommercialApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Commercial admin application result");
 
                 System.out.println("A message is send to : ");
                 System.out.println(name);
                 sendChat(msg);
+                break;
             }
             case 4:{
+                if (action.equals("agree")) {
+                    apply_doctor doctor = findDoctorApplyContent(username, page, id);
+                    Doctor doctors = new Doctor(doctor);
+                    userDao.add_Doctor(doctors);
+                }
+
                 name = delDoctorApplyContent(username, page, id);
-                Chat msg = new Chat(0, "system", name, action, "Doctorapplication result");
+                Chat msg = new Chat(0, "system", name, action, "Doctor application result");
 
                 System.out.println("A message is send to : ");
                 System.out.println(name);
                 sendChat(msg);
+                break;
             }
             case 5:{
+                if (action.equals("agree")) {
+                    Apply_medical_admin medical = findMedicalApplyContent(username, page, id);
+                    MedicalAdmin medicalAdmin = new MedicalAdmin(medical);
+                    userDao.add_medicaladmin(medicalAdmin);
+                }
+
                 name = delMedicalApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Medical admin application result");
 
                 System.out.println("A message is send to : ");
                 System.out.println(name);
                 sendChat(msg);
+                break;
             }
         }
     }

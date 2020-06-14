@@ -1,5 +1,9 @@
 package example.pojo.User.Admin;
 
+import example.pojo.Message.Msg.Apply_business;
+import example.pojo.Message.Msg.Apply_medical_admin;
+import example.pojo.Message.Msg.apply_commerical;
+
 public class BusinessAdmin {
     public int apply_commerical_id;
     public String username;
@@ -40,4 +44,16 @@ public class BusinessAdmin {
         this.duration = duration;
     }
 
+    public BusinessAdmin(apply_commerical apply) {
+        this.username = apply.username;
+        this.password = apply.password;
+        this.phone_number = apply.phone_number;
+        this.email = apply.email;
+        this.province = apply.province;
+        this.address = apply.address;
+        this.business_district = apply.business_district;
+        this.reason = apply.reason;
+        this.invite_code = apply.invite_code;
+        this.duration = apply.duration;
+    }
 }

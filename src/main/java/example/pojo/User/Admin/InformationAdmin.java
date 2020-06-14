@@ -1,5 +1,7 @@
 package example.pojo.User.Admin;
 
+import example.pojo.Message.Msg.Apply_info;
+
 public class InformationAdmin {
     public int informationadmin_id;
     public String username;
@@ -32,6 +34,17 @@ public class InformationAdmin {
         this.reason = reason;
         this.invite_code = invite_code;
         this.duration = duration;
+    }
+
+    public InformationAdmin(Apply_info apply) {
+        this.username = apply.username;
+        this.password = apply.password;
+        this.phone_number = apply.phone_number;
+        this.email = apply.email;
+        this.province = apply.province;
+        this.reason = apply.reason;
+        this.invite_code = apply.invite_code;
+        this.duration = apply.duration;
     }
 
 }
