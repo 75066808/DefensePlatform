@@ -23,7 +23,7 @@ public class MessageController {
     @ResponseBody
     public void sendChat(@RequestBody Map<String, Object> chat) {
         System.out.println("sendChat");
-        System.out.println(new Chat(chat));
+        System.out.println(chat);
         messageService.sendChat(new Chat(chat));
     }
 
@@ -73,7 +73,7 @@ public class MessageController {
     @ResponseBody
     public void sendInviteCode(@RequestBody Map<String, Object> invite) {
         System.out.println("sendInviteCode");
-        System.out.println(new invite_code(invite));
+        System.out.println(invite);
         messageService.sendInviteCode(new invite_code(invite));
     }
 
@@ -83,7 +83,7 @@ public class MessageController {
     @ResponseBody
     public String sendCommunityAdminApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendCommunityAdminApply");
-        System.out.println(new apply_community(apply));
+        System.out.println(apply);
         if (messageService.sendCommunityAdminApply(new apply_community(apply)))
             return "success";
         else
@@ -95,7 +95,7 @@ public class MessageController {
     @ResponseBody
     public String sendCommercialAdminApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendCommercialAdminApply");
-        System.out.println(new apply_commerical(apply));
+        System.out.println(apply);
         if (messageService.sendCommercialAdminApply(new apply_commerical(apply)))
             return "success";
         else
@@ -107,7 +107,7 @@ public class MessageController {
     @ResponseBody
     public String sendMedicalAdminApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendMedicalAdminApply");
-        System.out.println(new Apply_medical_admin(apply));
+        System.out.println(apply);
         if (messageService.sendMedicalAdminApply(new Apply_medical_admin(apply)))
             return "success";
         else
@@ -119,7 +119,7 @@ public class MessageController {
     @ResponseBody
     public String sendInformationAdminApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendInformationAdminApply");
-        System.out.println(new Apply_info(apply));
+        System.out.println(apply);
         if (messageService.sendInformationAdminApply(new Apply_info(apply)))
             return "success";
         else
@@ -131,7 +131,7 @@ public class MessageController {
     @ResponseBody
     public String sendSuperAdminApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendSuperAdminApply");
-        System.out.println(new Apply_main(apply));
+        System.out.println(apply);
         if (messageService.sendSuperAdminApply(new Apply_main(apply)))
             return "success";
         else
@@ -143,7 +143,7 @@ public class MessageController {
     @ResponseBody
     public String sendDoctorApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendDoctorApply");
-        System.out.println(new apply_doctor(apply));
+        System.out.println(apply);
         if (messageService.sendDoctorApply(new apply_doctor(apply)))
             return "success";
         else
@@ -155,7 +155,7 @@ public class MessageController {
     @ResponseBody
     public String sendCitizenApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendCitizenApply");
-        System.out.println(new Apply_citizen(apply));
+        System.out.println(apply);
         if (messageService.sendCitizenApply(new Apply_citizen(apply)))
             return "success";
         else
@@ -167,7 +167,7 @@ public class MessageController {
     @ResponseBody
     public String sendMerchantApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendMerchantApply");
-        System.out.println(new Apply_business(apply));
+        System.out.println(apply);
         if (messageService.sendMerchatApply(new Apply_business(apply)))
             return "success";
         else
@@ -179,7 +179,7 @@ public class MessageController {
     @ResponseBody
     public String sendOpeningApply(@RequestBody Map<String, Object> apply) {
         System.out.println("sendOpeningApply");
-        System.out.println(new Apply_opening(apply));
+        System.out.println(apply);
         if (messageService.sendOpeningApply(new Apply_opening(apply)))
             return "success";
         else
@@ -361,7 +361,7 @@ public class MessageController {
     @ResponseBody
     public void sendReport(@RequestBody Map<String, Object> report) {
         System.out.println("sendReport");
-        System.out.println(new submission(report));
+        System.out.println(report);
         messageService.sendReport(new submission(report));
     }
 
@@ -378,7 +378,7 @@ public class MessageController {
     @ResponseBody
     public void sendMedicalHelp(@RequestBody Map<String, Object> help) {
         System.out.println("sendMedicalHelp");
-        System.out.println(new medical_help(help));
+        System.out.println(help);
         messageService.sendMedicalHelp(new medical_help(help));
     }
 
@@ -424,7 +424,7 @@ public class MessageController {
     @ResponseBody
     public void sendDistributeMedicalHelp(@RequestBody Map<String, Object> help) {
         System.out.println("sendDistributeMedicalHelp");
-        System.out.println(new medical_help_d(help));
+        System.out.println(help);
 
         messageService.sendDistributeMedicalHelp(new medical_help_d(help));
     }
