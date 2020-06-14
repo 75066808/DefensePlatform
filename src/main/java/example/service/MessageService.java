@@ -650,7 +650,7 @@ public class MessageService {
         report.sub_date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")).substring(0, 10);
         messageDao.add_submission(report);
         // a message to community admin if innormal
-        if(report.situation == 0){
+        if(report.situation == 1){
 
             System.out.println("Innormal submission");
 
