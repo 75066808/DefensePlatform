@@ -1,5 +1,7 @@
 package example.pojo.User.Admin;
 
+import example.pojo.Message.Msg.Apply_main;
+
 public class SuperAdmin {
     public int superadmin_id;
     public String username;
@@ -35,6 +37,18 @@ public class SuperAdmin {
         this.reason = reason;
         this.invite_code = invite_code;
         this.duration = duration;
+    }
+
+    public SuperAdmin(Apply_main apply) {
+        this.username = apply.username;
+        this.password = apply.password;
+        this.phone_number = apply.phone_number;
+        this.email = apply.email;
+        this.province = apply.province;
+        this.address = apply.address;
+        this.reason = apply.reason;
+        this.invite_code = apply.invite_code;
+        this.duration = apply.duration;
     }
 
 }

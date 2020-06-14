@@ -1,5 +1,7 @@
 package example.pojo.User.Ordinary;
 
+import example.pojo.Message.Msg.Apply_citizen;
+
 public class Citizen {
     public int citizen_id;
     public String username;
@@ -38,5 +40,18 @@ public class Citizen {
         this.reason = reason;
         this.real_name = real_name;
         this.duration = duration;
+    }
+
+    public Citizen(Apply_citizen apply) {
+        this.username = apply.username;
+        this.password = apply.password;
+        this.phone_number = apply.phone_number;
+        this.email = apply.email;
+        this.province = apply.province;
+        this.address = apply.address;
+        this.community = apply.community;
+        this.reason = apply.reason;
+        this.real_name = apply.real_name;
+        this.duration = apply.duration;
     }
 }
