@@ -22,6 +22,8 @@ public class MessageController {
     @RequestMapping(value="/chat/send", method=RequestMethod.POST)
     @ResponseBody
     public void sendChat(@RequestBody Map<String, Object> chat) {
+        System.out.println("sendChat");
+        System.out.println(new Chat(chat));
         messageService.sendChat(new Chat(chat));
     }
 
@@ -29,12 +31,18 @@ public class MessageController {
     @RequestMapping(value="/chat/find/num", method=RequestMethod.POST)
     @ResponseBody
     public int findChatNum(String username, String function) {
+        System.out.println("findChatNum");
+        System.out.println(username);
         return messageService.findChatNum(username);
     }
 
     @RequestMapping(value="/chat/find/page", method=RequestMethod.POST)
     @ResponseBody
     public List<Map<String, Object>> findChatPage(String username, String function, int page) {
+        System.out.println("findChatPage");
+        System.out.println(username);
+        System.out.println(page);
+
         List<Map<String, Object>> list = new LinkedList<>();
         List<Chat> chats = messageService.findChatPage(username, page);
 
@@ -46,6 +54,10 @@ public class MessageController {
     @RequestMapping(value="/chat/find/content", method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> findChatContent(String username, int page, int num) {
+        System.out.println("findChatContent");
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(num);
         return messageService.findChatContent(username, page, num).toMap();
     }
 
@@ -60,6 +72,8 @@ public class MessageController {
     @RequestMapping(value="/invite/send", method=RequestMethod.POST)
     @ResponseBody
     public void sendInviteCode(@RequestBody Map<String, Object> invite) {
+        System.out.println("sendInviteCode");
+        System.out.println(new invite_code(invite));
         messageService.sendInviteCode(new invite_code(invite));
     }
 
@@ -68,6 +82,8 @@ public class MessageController {
     @RequestMapping(value="/apply/community/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendCommunityAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendCommunityAdminApply");
+        System.out.println(new apply_community(apply));
         if (messageService.sendCommunityAdminApply(new apply_community(apply)))
             return "success";
         else
@@ -78,6 +94,8 @@ public class MessageController {
     @RequestMapping(value="/apply/commercial/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendCommercialAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendCommercialAdminApply");
+        System.out.println(new apply_commerical(apply));
         if (messageService.sendCommercialAdminApply(new apply_commerical(apply)))
             return "success";
         else
@@ -88,6 +106,8 @@ public class MessageController {
     @RequestMapping(value="/apply/medical/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendMedicalAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendMedicalAdminApply");
+        System.out.println(new Apply_medical_admin(apply));
         if (messageService.sendMedicalAdminApply(new Apply_medical_admin(apply)))
             return "success";
         else
@@ -98,6 +118,8 @@ public class MessageController {
     @RequestMapping(value="/apply/information/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendInformationAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendInformationAdminApply");
+        System.out.println(new Apply_info(apply));
         if (messageService.sendInformationAdminApply(new Apply_info(apply)))
             return "success";
         else
@@ -108,6 +130,8 @@ public class MessageController {
     @RequestMapping(value="/apply/super/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendSuperAdminApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendSuperAdminApply");
+        System.out.println(new Apply_main(apply));
         if (messageService.sendSuperAdminApply(new Apply_main(apply)))
             return "success";
         else
@@ -118,6 +142,8 @@ public class MessageController {
     @RequestMapping(value="/apply/doctor/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendDoctorApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendDoctorApply");
+        System.out.println(new apply_doctor(apply));
         if (messageService.sendDoctorApply(new apply_doctor(apply)))
             return "success";
         else
@@ -128,6 +154,8 @@ public class MessageController {
     @RequestMapping(value="/apply/citizen/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendCitizenApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendCitizenApply");
+        System.out.println(new Apply_citizen(apply));
         if (messageService.sendCitizenApply(new Apply_citizen(apply)))
             return "success";
         else
@@ -138,6 +166,8 @@ public class MessageController {
     @RequestMapping(value="/apply/merchant/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendMerchantApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendMerchantApply");
+        System.out.println(new Apply_business(apply));
         if (messageService.sendMerchatApply(new Apply_business(apply)))
             return "success";
         else
@@ -148,6 +178,8 @@ public class MessageController {
     @RequestMapping(value="/apply/opening/send", method=RequestMethod.POST)
     @ResponseBody
     public String sendOpeningApply(@RequestBody Map<String, Object> apply) {
+        System.out.println("sendOpeningApply");
+        System.out.println(new Apply_opening(apply));
         if (messageService.sendOpeningApply(new Apply_opening(apply)))
             return "success";
         else
@@ -166,6 +198,10 @@ public class MessageController {
     @RequestMapping(value="/apply/role/find/num", method=RequestMethod.POST)
     @ResponseBody
     public int findRoleApplyNum(String username, String function, @RequestParam(value="form-type") String type) {
+        System.out.println("findRoleApplyNum");
+        System.out.println(username);
+        System.out.println(type);
+
         switch(type) {
             case "Main Admin application":
                 return messageService.findMainApplyNum(username);
@@ -187,6 +223,11 @@ public class MessageController {
     @RequestMapping(value="/apply/role/find/page", method=RequestMethod.POST)
     @ResponseBody
     public List<Map<String, Object>> findRoleApplyPage(String username, String function, @RequestParam(value="form-type") String type, int page) {
+        System.out.println("findRoleApplyPage");
+        System.out.println(username);
+        System.out.println(type);
+        System.out.println(page);
+
         List<Map<String, Object>> list = new LinkedList<>();
         switch(type) {
             case "Main Admin application":
@@ -227,6 +268,12 @@ public class MessageController {
     @RequestMapping(value="/apply/role/find/content", method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> findRoleApplyContent(String username, int page, int num, @RequestParam(value="form-type") String type) {
+        System.out.println("findRoleApplyContent");
+        System.out.println(username);
+        System.out.println(type);
+        System.out.println(page);
+        System.out.println(num);
+
         switch(type) {
             case "Main Admin application":
                 return messageService.findMainApplyContent(username, page, num).toMap();
@@ -248,12 +295,18 @@ public class MessageController {
     @RequestMapping(value="/apply/opening/find/num", method=RequestMethod.POST)
     @ResponseBody
     public int findOpeningApplyNum(String username, String function) {
+        System.out.println("findOpeningApplyNum");
+        System.out.println(username);
         return messageService.findOpeningApplyNum(username);
     }
 
     @RequestMapping(value="/apply/opening/find/page", method=RequestMethod.POST)
     @ResponseBody
     public List<Map<String, Object>> findOpeningApplyPage(String username, String function, int page) {
+        System.out.println("findOpeningApplyPage");
+        System.out.println(username);
+        System.out.println(page);
+
         List<Map<String, Object>> list = new LinkedList<>();
         List<Apply_opening> openings = messageService.findOpeningApplyPage(username, page);
 
@@ -266,6 +319,11 @@ public class MessageController {
     @RequestMapping(value="/apply/opening/find/content", method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> findOpeningApplyContent(String username, int page, int num) {
+        System.out.println("findOpeningApplyContent");
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(num);
+
         return messageService.findOpeningApplyContent(username, page, num).toMap();
     }
 
@@ -273,6 +331,13 @@ public class MessageController {
     @RequestMapping(value="/apply/role/feedback", method=RequestMethod.POST)
     @ResponseBody
     public void feedBackRoleApply(String username, String function, @RequestParam(value="form-type") String type, int page, int id, String action) {
+        System.out.println("feedBackRoleApply");
+        System.out.println(username);
+        System.out.println(type);
+        System.out.println(page);
+        System.out.println(id);
+        System.out.println(action);
+
         messageService.feedBackRoleApply(username, function, Converter.applyTypeMap.get(type), page, id, action);
     }
 
@@ -280,6 +345,12 @@ public class MessageController {
     @RequestMapping(value="/apply/opening/feedback", method=RequestMethod.POST)
     @ResponseBody
     public void feedBackOpeningApply(String username, String function, int page, int id, String action) {
+        System.out.println("feedBackOpeningApply");
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(id);
+        System.out.println(action);
+
         messageService.feedBackOpeningApply(username, function, page, id, action);
     }
 
@@ -289,12 +360,16 @@ public class MessageController {
     @RequestMapping(value="/report/send", method=RequestMethod.POST)
     @ResponseBody
     public void sendReport(@RequestBody Map<String, Object> report) {
+        System.out.println("sendReport");
+        System.out.println(new submission(report));
         messageService.sendReport(new submission(report));
     }
 
     @RequestMapping(value="/report/find", method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> findReport(String username, String function) {
+        System.out.println("findReport");
+        System.out.println(username);
         return messageService.findReport(username);
     }
 
@@ -302,6 +377,8 @@ public class MessageController {
     @RequestMapping(value="/medical_help/send", method=RequestMethod.POST)
     @ResponseBody
     public void sendMedicalHelp(@RequestBody Map<String, Object> help) {
+        System.out.println("sendMedicalHelp");
+        System.out.println(new medical_help(help));
         messageService.sendMedicalHelp(new medical_help(help));
     }
 
@@ -309,6 +386,8 @@ public class MessageController {
     @RequestMapping(value="/medical_help/find/num", method=RequestMethod.POST)
     @ResponseBody
     public int findMedicalHelpNum(String username, String function) {
+        System.out.println("findMedicalHelpNum");
+        System.out.println(username);
         return messageService.findMedicalApplyNum(username);
     }
     // {user=HLSSSS, pwd=123, phonenumber=22222, province=Anhui, address=china, realname=urara, gender=male, age=99, department=1212, symptom=s}
@@ -316,6 +395,10 @@ public class MessageController {
     @RequestMapping(value="/medical_help/find/page", method=RequestMethod.POST)
     @ResponseBody
     public List<Map<String, Object>> findMedicalHelpPage(String username, String function, int page) {
+        System.out.println("findMedicalHelpPage");
+        System.out.println(username);
+        System.out.println(page);
+
         List<Map<String, Object>> list = new LinkedList<>();
         List<medical_help> helps = messageService.findMedicalHelpPage(username, page);
 
@@ -328,6 +411,11 @@ public class MessageController {
     @RequestMapping(value="/medical_help/find/content", method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> findMedicalHelpContent(String username, int page, int num) {
+        System.out.println("findMedicalHelpContent");
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(num);
+
         return messageService.findMedicalHelpContent(username, page, num).toMap();
     }
 
@@ -335,18 +423,29 @@ public class MessageController {
     @RequestMapping(value="/medical_help/distribute/send", method=RequestMethod.POST)
     @ResponseBody
     public void sendDistributeMedicalHelp(@RequestBody Map<String, Object> help) {
+        System.out.println("sendDistributeMedicalHelp");
+        System.out.println(new medical_help_d(help));
+
         messageService.sendDistributeMedicalHelp(new medical_help_d(help));
     }
 
     @RequestMapping(value="/medical_help/distribute/find/num", method=RequestMethod.POST)
     @ResponseBody
     public int findDistributeMedicalHelpNum(String username, String function) {
+        System.out.println("findDistributeMedicalHelpNum");
+        System.out.println(username);
+
         return messageService.findDistributeMedicalHelpNum(username);
     }
 
     @RequestMapping(value="/medical_help/distribute/find/page", method=RequestMethod.POST)
     @ResponseBody
     public List<Map<String, Object>> findDistributeMedicalHelpPage(String username, String function, int page) {
+        System.out.println("findDistributeMedicalHelpPage");
+        System.out.println(username);
+        System.out.println(page);
+
+
         List<Map<String, Object>> list = new LinkedList<>();
         List<medical_help_d> helps = messageService.findDistributeMedicalHelpPage(username, page);
 
@@ -359,6 +458,11 @@ public class MessageController {
     @RequestMapping(value="/medical_help/distribute/find/content", method=RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> findDistributeMedicalHelpContent(String username, int page, int num) {
+        System.out.println("findDistributeMedicalHelpContent");
+        System.out.println(username);
+        System.out.println(page);
+        System.out.println(num);
+
         return messageService.findDistributeMedicalHelpContent(username, page, num).toMap();
     }
 }

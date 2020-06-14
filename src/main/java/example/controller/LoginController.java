@@ -22,6 +22,10 @@ public class LoginController {
     @RequestMapping(value="login", method=RequestMethod.POST)
     @ResponseBody
     public String login(String username, String password) {
+        System.out.println("login");
+        System.out.println(username);
+        System.out.println(password);
+
         return loginService.login(username, password);
     }
 
@@ -29,6 +33,10 @@ public class LoginController {
     @RequestMapping(value="register", method=RequestMethod.POST)
     @ResponseBody
     public boolean register(String username, String password, String realname) {
+        System.out.println("login");
+        System.out.println(username);
+        System.out.println(password);
+        System.out.println(realname);
         return loginService.register(new User(0, username, password, realname));
     }
 
