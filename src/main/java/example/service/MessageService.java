@@ -551,6 +551,14 @@ public class MessageService {
         String name;
         switch(type){
             case 0:{
+                if(action.equals("agree")){
+                    Apply_main apply = findMainApplyContent(username, page, id);
+                    Business_man newmerchant = new Business_man(0, username, apply.password, apply.phone_number, apply.email, 
+                        apply.province, apply.address, apply.business_district, apply.duration);
+
+                    userDao.add_business_man(newmerchant);
+                    userDao.add_superadmin(newAdmin);
+                }
                 name = delMainApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Main admin application result");
 
@@ -559,6 +567,10 @@ public class MessageService {
                 sendChat(msg);
             }
             case 1:{
+                if(action.equals("agree")){
+                    InformationAdmin informationAdmin = findInfoApplyContent(username, page, id);
+                    userDao.add_informationadmin(informationAdmin);
+                }
                 name = delInfoApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Information admin application result");
 
@@ -567,6 +579,10 @@ public class MessageService {
                 sendChat(msg);
             }
             case 2:{
+                if(action.equals("agree")){
+                    CommunityAdmin communityAdmin = findCommunityApplyContent(username, page, id);
+                    userDao.add_communityadmin(communityAdmin);
+                }
                 name = delCommunityApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Community admin application result");
 
@@ -575,6 +591,10 @@ public class MessageService {
                 sendChat(msg);
             }
             case 3:{
+                if(action.equals("agree")){
+                    BusinessAdmin businessAdmin = findCommercialApplyContent(username, page, id);
+                    userDao.add_businessadmin(businessAdmin);
+                }
                 name = delCommercialApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Commercial admin application result");
 
@@ -583,14 +603,22 @@ public class MessageService {
                 sendChat(msg);
             }
             case 4:{
+                if(action.equals("agree")){
+                    Doctor doctor = findMainApplyContent(username, page, id);
+                    userDao.add_Doctor(doctor);
+                }
                 name = delDoctorApplyContent(username, page, id);
-                Chat msg = new Chat(0, "system", name, action, "Doctorapplication result");
+                Chat msg = new Chat(0, "system", name, action, "Doctor application result");
 
                 System.out.println("A message is send to : ");
                 System.out.println(name);
                 sendChat(msg);
             }
             case 5:{
+                if(action.equals("agree")){
+                    MedicalAdmin medicalAdmin = findMainApplyContent(username, page, id);
+                    userDao.add_medicaladmin(medicalAdmin);
+                }
                 name = delMedicalApply(username, page, id);
                 Chat msg = new Chat(0, "system", name, action, "Medical admin application result");
 
