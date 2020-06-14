@@ -661,7 +661,7 @@ public class UserDao {
             // 1.getConnection()方法，连接MySQL数据库！！
             con = DriverManager.getConnection(url, seruser, serpassword);
             if (!con.isClosed())
-                System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
+                System.out.println("\n\t\t成功以 insert doctor" + seruser + " 身份连接到数据库！！！");
 
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
