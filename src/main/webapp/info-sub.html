@@ -823,9 +823,11 @@
             data: JSON.stringify(formObject),
             success:function(data){
                 alert("提交成功！");
+                jump("info-sub.html");
             },
             error:function(data){
                 alert("错误！！");
+                jump("info-sub.html");
             }
         });
     });

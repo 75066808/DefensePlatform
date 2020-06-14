@@ -775,9 +775,11 @@
                     alert("提交成功！");
                 else
                     alert("验证码错误");
+                jump("apply-info-admin.html");
             },
             error:function(data){
                 alert("错误！！");
+                jump("apply-info-admin.html");
             }
         });
     });

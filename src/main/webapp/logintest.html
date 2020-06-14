@@ -66,7 +66,8 @@ function login(){
         dataType:"text",  
         data:{"username":$("#username").val(),"password":$("#password").val()},
 		error:function(data){
-			alert("请求失败，网络异常")
+			alert("请求失败，网络异常");
+            jump("logintest.html");
 		},
 		/*success:function(data){
 			if(true==data.result){

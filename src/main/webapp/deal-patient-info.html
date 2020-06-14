@@ -1186,9 +1186,11 @@
                 $("#demo-age-input").val(data.age);
                 $("#demo-department-input").val(data.department);
                 $("#demo-textarea-input").val(data.symptom);
+                jump("deal-patient-info.html");
             },
             error : function(data){
               console.log("错误！");
+              jump("deal-patient-info.html");
             }
         });
     }
@@ -1223,9 +1225,11 @@
         success: function(data){
             console.log(data);
             refresh_list(data);
+            jump("deal-patient-info.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("deal-patient-info.html");
         }
     });
     }
@@ -1241,9 +1245,11 @@
             total_page_num=parseInt(data);
             $("#message_num").text(total_page_num);
             init_loading_info();
+            jump("deal-patient-info.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("deal-patient-info.html");
         }
     });
     }

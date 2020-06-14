@@ -662,9 +662,11 @@
             data: JSON.stringify(formObject),
             success:function(data){
                 alert("提交成功！");
+                jump("my-info-send.html");
             },
             error:function(data){
                 alert("错误！！");
+                jump("my-info-send.html");
             }
         });
     });

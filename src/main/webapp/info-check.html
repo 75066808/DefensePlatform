@@ -650,9 +650,11 @@
             $("#yesterday_normal").text(data.yesterday_normal);
             $("#today_unnormal").text(data.today_unnormal);
             $("#yesterday_unnormal").text(data.yesterday_unnormal);
+            jump("info-check.html");
         },
         error : function(data){
-            alert("获取信息失败")
+            alert("获取信息失败");
+            jump("info-check.html");
         }
     });
     }

@@ -1515,10 +1515,13 @@
         url: "/message/apply/role/feedback",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "disagree"},
         success: function(data){
-            alert("拒绝成功！")
+            alert("拒绝成功！");
+            jump("approval-forms.html");
         },
         error : function(data){
             alert("拒绝失败！");
+            jump("approval-forms.html");
+
         }
     });
     }
@@ -1529,10 +1532,13 @@
         url: "/message/apply/role/feedback",
         data:{"username" : name, "function": "approval-forms", "form-type":current_role, "page" : page_num, "id" : which_info, "action" : "agree"},
         success: function(data){
-            alert("同意成功！")
+            alert("同意成功！");
+            jump("approval-forms.html");
+        
         },
         error : function(data){
             alert("同意失败！");
+            jump("approval-forms.html");
         }
     });
     }
@@ -1635,9 +1641,11 @@
                 $("#med-Code-input").val(data.invite_code);
                 $("#med-time-input").val(data.time);
               }
+              jump("approval-forms.html");
             },
             error : function(data){
               console.log("错误！");
+              jump("approval-forms.html");
             }
         });
     }
@@ -1682,9 +1690,11 @@
         success: function(data){
             console.log(data);
             refresh_list(data);
+            jump("approval-forms.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("approval-forms.html");
         }
     });
     }
@@ -1704,9 +1714,11 @@
             total_page_num=parseInt(data);
             $("#message_num").text(total_page_num);
             init_loading_info();
+            jump("approval-forms.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("approval-forms.html");
         }
     });
     }

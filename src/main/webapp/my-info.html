@@ -828,9 +828,11 @@
               $("#msgfromuser").text(data.sender);
               $("#msgtitle").text(data.title);
               $("#main-text").val(data.main_text);
+              jump("my-info.html");
             },
             error : function(data){
               console.log("错误！");
+              jump("my-info.html");
             }
         });
     }
@@ -865,9 +867,11 @@
         success: function(data){
             console.log(data);
             refresh_list(data);
+            jump("my-info.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("my-info.html");
         }
     });
     }
@@ -883,9 +887,11 @@
             total_page_num=parseInt(data);
             $("#message_num").text(total_page_num);
             init_loading_info();
+            jump("my-info.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("my-info.html");
         }
     });
     }

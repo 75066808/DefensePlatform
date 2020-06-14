@@ -870,10 +870,12 @@
         url: "/message/apply/opening/feedback",
         data:{"username" : name, "function": "approval-opening", "page" : page_num, "id" : which_info, "action" : "disagree"},
         success: function(data){
-            alert("拒绝成功！")
+            alert("拒绝成功！");
+            jump("approval-opening.html");
         },
         error : function(data){
             alert("拒绝失败！");
+            jump("approval-opening.html");
         }
     });
     }
@@ -884,10 +886,12 @@
         url: "/message/apply/opening/feedback",
         data:{"username" : name, "function": "approval-opening", "page" : page_num, "id" : which_info, "action" : "agree"},
         success: function(data){
-            alert("同意成功！")
+            alert("同意成功！");
+            jump("approval-opening.html");
         },
         error : function(data){
             alert("同意失败！");
+            jump("approval-opening.html");
         }
     });
     }　
@@ -910,9 +914,11 @@
                 $("#demo-shop-input").val(data.shop_name);
                 $("#demo-textarea-input").val(data.reason);
                 $("#demo-time-input").val(data.time);
+                jump("approval-opening.html");
             },
             error : function(data){
               console.log("错误！");
+              jump("approval-opening.html");
             }
         });
     }
@@ -947,9 +953,11 @@
         success: function(data){
             console.log(data);
             refresh_list(data);
+            jump("approval-opening.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("approval-opening.html");
         }
     });
     }
@@ -965,9 +973,11 @@
             total_page_num=parseInt(data);
             $("#message_num").text(total_page_num);
             init_loading_info();
+            jump("approval-opening.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("approval-opening.html");
         }
     });
     }

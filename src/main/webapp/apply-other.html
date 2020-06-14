@@ -772,9 +772,11 @@
             datatype: "text",
             success:function(data){
                 alert("提交成功！");
+                jump("apply-other.html");
             },
             error:function(data){
                 alert("错误！！");
+                jump("apply-other.html");
             }
         });
     });

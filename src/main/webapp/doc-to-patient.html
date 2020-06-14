@@ -935,9 +935,11 @@
                 $("#demo-age-input").val(data.age);
                 $("#demo-department-input").val(data.department);
                 $("#demo-textarea-input").val(data.symptom);
+                jump("doc-to-patient.html");
             },
             error : function(data){
               console.log("错误！");
+              jump("doc-to-patient.html");
             }
         });
     }
@@ -972,9 +974,11 @@
         success: function(data){
             console.log(data);
             refresh_list(data);
+            jump("doc-to-patient.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("doc-to-patient.html");
         }
     });
     }
@@ -990,9 +994,11 @@
             total_page_num=parseInt(data);
             $("#message_num").text(total_page_num);
             init_loading_info();
+            jump("doc-to-patient.html");
         },
         error : function(data){
             console.log("错误！");
+            jump("doc-to-patient.html");
         }
     });
     }
@@ -1037,9 +1043,11 @@
             data: JSON.stringify(formObject),
             success:function(data){
                 alert("提交成功！");
+                jump("doc-to-patient.html");
             },
             error:function(data){
                 alert("错误！！");
+                jump("doc-to-patient.html");
             }
         });
     });

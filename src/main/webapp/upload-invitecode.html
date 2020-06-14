@@ -681,9 +681,11 @@
             data: JSON.stringify(formObject),
             success:function(data){
                 alert("提交成功！");
+                jump("upload-invitecode.html");
             },
             error:function(data){
                 alert("错误！！");
+                jump("upload-invitecode.html");
             }
         });
     });
