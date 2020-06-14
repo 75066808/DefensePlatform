@@ -181,13 +181,12 @@ public class MessageDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from invite_code where "+code;
+            sql = "select * from invite_code where code = '"+code+"'";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new invite_code(rs.getString(1),rs.getInt(2));
                 return temp;
             }
-            statement.executeUpdate(sql);
             con.close();
             return null;
         }
@@ -359,7 +358,6 @@ public class MessageDao {
                 temp = new Apply_medical_admin(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(1));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -491,7 +489,6 @@ public class MessageDao {
                 temp = new apply_doctor(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getString(11),rs.getInt(12),rs.getInt(13));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -622,7 +619,6 @@ public class MessageDao {
                 temp = new medical_help(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getInt(9),rs.getString(10),rs.getString(11),rs.getInt(12));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -752,7 +748,6 @@ public class MessageDao {
                 temp = new medical_help_d(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getInt(13));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -786,15 +781,20 @@ public class MessageDao {
             Class.forName(driver);
             // 1.getConnection()方法，连接MySQL数据库！！
             con = DriverManager.getConnection(url, seruser, serpassword);
+
+            System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbb！！！");
             if (!con.isClosed())
                 System.out.println("\n\t\t成功以 " + seruser + " 身份连接到数据库！！！");
 
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa！！！");
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
 
+            System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbbbbb！！！");
             sql = "insert into apply_community (username,password,phone_number,email,province,address,community,reason,invite_code,duration,checked) values ('" + apply_community.username +"','"+ apply_community.password +"','" + apply_community.phone_number +"','" + apply_community.email +"','" + apply_community.province+"','" + apply_community.address+"','" + apply_community.community+"','" + apply_community.reason +"','" + apply_community.invite_code+"','" + apply_community.duration + "'," +"0"+")";
             statement.executeUpdate(sql);
+            System.out.println("qqqqqqqqqqqqqqqqqqqqqqqqqqqq！！！");
             con.close();
         }
         catch (ClassNotFoundException e) {
@@ -882,7 +882,6 @@ public class MessageDao {
                 temp = new apply_community(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1013,7 +1012,6 @@ public class MessageDao {
                 temp = new apply_commerical(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1145,7 +1143,6 @@ public class MessageDao {
                 temp = new Apply_opening(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1276,7 +1273,6 @@ public class MessageDao {
                 temp = new Apply_info(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1409,7 +1405,6 @@ public class MessageDao {
                 temp = new Apply_main(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1541,7 +1536,6 @@ public class MessageDao {
                 temp = new Apply_citizen(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getString(10),rs.getInt(11),rs.getInt(12));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1673,7 +1667,6 @@ public class MessageDao {
                 temp = new Apply_business(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1757,13 +1750,12 @@ public class MessageDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from chat where to_name = " +username;
+            sql = "select * from chat where to_name = '" +username+"'";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new Chat(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(4));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1806,13 +1798,12 @@ public class MessageDao {
             // 2.创建statement类对象，用来执行SQL语句！！
             Statement statement = con.createStatement();
             // 要执行的SQL语句
-            sql = "select * from medical_help_d where doctorname = " +doctorname;
+            sql = "select * from medical_help_d where doctorname = '" +doctorname+"'";
             rs = statement.executeQuery(sql);
             while (rs.next()){
                 temp = new medical_help_d(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getInt(9),rs.getInt(10),rs.getString(11),rs.getString(12),rs.getInt(13));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
@@ -1943,7 +1934,6 @@ public class MessageDao {
                 temp = new submission(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9),rs.getString(10),rs.getInt(11));
                 list.add(temp);
             }
-            statement.executeUpdate(sql);
             con.close();
             return list;
         }
