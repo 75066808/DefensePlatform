@@ -315,7 +315,7 @@
 					            <!--===================================================-->
 					            <!-- END BASIC FORM ELEMENTS -->
                                 <div class="panel-footer text-right">
-                                    <button id="submit_btn" class="btn btn-success" type="submit">Submit</button>
+                                    <button id="submit_btn" class="btn btn-success" type="button">Submit</button>
                                 </div>
 					
                             </div>
@@ -681,11 +681,9 @@
             data: JSON.stringify(formObject),
             success:function(data){
                 alert("提交成功！");
-                jump("upload-invitecode.html");
             },
             error:function(data){
                 alert("错误！！");
-                jump("upload-invitecode.html");
             }
         });
     });

@@ -344,7 +344,7 @@
 					                    </div>
                                     </div>
                                     <div class="panel-footer text-right">
-                                        <button id="submit_btn" class="btn btn-success" type="submit">Submit</button>
+                                        <button id="submit_btn" class="btn btn-success" type="button">Submit</button>
                                     </div>
 					            </form>
 					            <!--===================================================-->
@@ -714,11 +714,9 @@
             datatype: "text",
             success:function(data){
                 alert("提交成功！");
-                jump("submit-opening-apply.html");
             },
             error:function(data){
                 alert("错误！！");
-                jump("submit-opening-apply.html");
             }
         });
     });
